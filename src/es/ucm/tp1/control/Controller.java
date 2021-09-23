@@ -6,7 +6,7 @@ import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.view.GamePrinter;
 
 public class Controller {
-
+	private int a = 0;
 	private static final String PROMPT = "Command > ";
 
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
