@@ -1,5 +1,6 @@
 package es.ucm.tp1.control;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 import es.ucm.tp1.logic.Game;
@@ -46,9 +47,55 @@ public class Controller {
 		System.out.println(printer.endMessage());
 	}
 
-	public void run() {
-		// TODO fill your code
-		printGame();
+	private boolean userAction(String userInput) {
+		boolean endGame = false;
+		if (userInput.startsWith("h")) {
+			
+			for (int i = 0; i < HELP.length; i++) {
+				System.out.println(HELP[i]);
+			}
+			
+		}
+		else if (userInput.startsWith("q")) {
+			//TODO coche sube
+		}
+		else if (userInput.startsWith("a")) {
+			//TODO coche baja
+		}
+		else if (userInput.startsWith("n") || userInput.equals("")) {
+			//TODO coche avanza (update)
+		}
+		else if (userInput.startsWith("e")) {
+			endGame = true;
+		}
+		else if (userInput.startsWith("r")) {
+			//TODO reset
+		}
+		else if (userInput.startsWith("t")) {
+			//TODO test mode
+		}
+		else
+			System.out.println(UNKNOWN_COMMAND_MSG);
+		
+		return endGame;
 	}
+	
+	public void run() {
+		
+		boolean endGame = false;
+		
+		while (!endGame) {
+			
+			printGame();
+			
+			endGame = userAction(scanner.nextLine().toLowerCase());
+			
+			
+		}
+		
+		printGame();
+		System.out.println(printer.endMessage());
+	}
+	
 
 }
