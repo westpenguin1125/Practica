@@ -17,7 +17,7 @@ public class Game {
 	}
 	
 	public int getRoadWidth() {
-		return 3;
+		return 5;
 	}
 	
 	public String getGameStatus() {
