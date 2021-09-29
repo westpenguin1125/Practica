@@ -10,6 +10,8 @@ public class Game {
 	private long seed;
 	private Level level;
 	private Player player;
+	
+	private boolean testingFlag;
 
 	public Game(long seed, Level level) {
 		
@@ -19,15 +21,17 @@ public class Game {
 		
 		coinList = new CoinList(level.getRoadLength());
 		obstacleList = new ObstacleList(level.getRoadLength());
-		
 	}
 	
 	public void initialize() {
-		//TODO inicializar con la clase RANDOM usando el seed
+		//TODO comportamiento necesario para inicializar los atributos de game cuando se use el comando reset o se inicie un juego
+		//Estos atributos toman en cuenta el level y la seed para tomar sus valores
+		player.initialize(0, getRoadWidth() / 2);
+		
 	}
 	
 	public void toggleTest() {
-		// TODO 
+		// TODO comportamiento necesario para actualizar el flag testingFlag cuando se indique por comando
 	}
 	
 	public int getVisibility() {
@@ -37,9 +41,13 @@ public class Game {
 	public int getRoadWidth() {
 		return level.getRoadWidth();
 	}
-	
 
+	public boolean gameObjIsIn(Position pos) {
+		return (coinList.coinIn(pos) || obstacleList.obstacleIn(pos));
+	}
+	
 	public String positionToString(int x, int y) {
-		return "";//TODO dibuja el objeto que está en la posición
+		//TODO dibuja el objeto que está en la posición
+		return "";
 	}
 }

@@ -2,12 +2,18 @@ package es.ucm.tp1.logic;
 
 public class Coin {
 	
-	private int x, y;
+	private Position pos;
+	private Game game;
 	
-	public Coin(int x, int y) {
+	public Coin(int x, int y, Game game) {
 		
-		this.x = x;
-		this.y = y;
+		this.game = game;
 		
+		pos = new Position(x, y);
+		
+	}
+	
+	public Position getPos() {
+		return pos;
 	}
 }

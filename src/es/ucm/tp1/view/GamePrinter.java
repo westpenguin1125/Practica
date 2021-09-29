@@ -36,7 +36,6 @@ public class GamePrinter {
 	public String newLine; 
 
 	protected Game game;
-	
 
 	public GamePrinter(Game game) {
 		this.game = game;

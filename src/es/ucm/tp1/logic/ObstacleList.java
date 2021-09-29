@@ -21,7 +21,7 @@ public class ObstacleList {
 		}
 	}
 	
-	public void removeCoin(Obstacle o) {
+	public void removeObstacle(Obstacle o) {
 		Obstacle aux[] = new Obstacle[numObstacles];
 		int i = 0;
 		
@@ -33,6 +33,15 @@ public class ObstacleList {
 		}
 		numObstacles = i;
 		obstacleList = aux;
+	}
+	
+	public boolean obstacleIn(Position pos) {
+		int i = 0;
+		
+		while(i < numObstacles && !obstacleList[i].getPos().equals(pos))
+			i++;
+		
+		return !(i == numObstacles);
 	}
 	
 }
