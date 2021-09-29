@@ -5,7 +5,6 @@ public class ObstacleList {
 	private Obstacle obstacleList[];
 	private int numObstacles;
 	
-	
 	public ObstacleList(int L) {
 		
 		obstacleList = new Obstacle[L];
@@ -34,14 +33,4 @@ public class ObstacleList {
 		numObstacles = i;
 		obstacleList = aux;
 	}
-	
-	public boolean obstacleIn(Position pos) {
-		int i = 0;
-		
-		while(i < numObstacles && !obstacleList[i].getPos().equals(pos))
-			i++;
-		
-		return !(i == numObstacles);
-	}
-	
 }

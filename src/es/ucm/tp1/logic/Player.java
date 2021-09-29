@@ -2,21 +2,27 @@ package es.ucm.tp1.logic;
 
 public class Player {
 
-	private Position pos;
+	private int x, y;
+	
 	private int numCoins;
 	
 	private Game game;
 	
-	public Player(int x, int y) {
+	public Player(int x, int y, Game game) {
 		
-		pos = new Position(x, y);
+		this.x = x; 
+		this.y = y;
+		
 		this.numCoins = 0;
 		
+		this.game = game;
+		
 	}
 	
-	public void moveTo(int x, int y) {
-		pos.moveTo(x, y);
+	public void initialize(int iniX, int iniY) {
+		x = iniX;
+		y = iniY;
+		
 		numCoins = 0;
 	}
-	
 }

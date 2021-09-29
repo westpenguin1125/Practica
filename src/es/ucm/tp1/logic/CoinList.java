@@ -33,14 +33,4 @@ public class CoinList {
 		numCoins = i;
 		coinList = aux;
 	}
-	
-	public boolean coinIn(Position pos) {
-		int i = 0;
-		
-		while(i < numCoins && !coinList[i].getPos().equals(pos))
-			i++;
-		
-		return !(i == numCoins);
-	}
-	
 }

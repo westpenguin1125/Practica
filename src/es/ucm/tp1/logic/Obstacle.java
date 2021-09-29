@@ -2,18 +2,14 @@ package es.ucm.tp1.logic;
 
 public class Obstacle {
 	
-	private Position pos;
+	private int x, y;
 	private Game game;
 	
 	public Obstacle(int x, int y, Game game) {
 		
+		this.x = x;
+		this.y = y;
+
 		this.game = game;
-		
-		pos = new Position(x, y); 
-	
-	}
-	
-	public Position getPos() {
-		return pos;
 	}
 }
