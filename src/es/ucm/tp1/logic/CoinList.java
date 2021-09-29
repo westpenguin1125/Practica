@@ -33,5 +33,4 @@ public class CoinList {
 		numCoins = i;
 		coinList = aux;
 	}
-	
 }

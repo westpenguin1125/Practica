@@ -5,7 +5,6 @@ public class ObstacleList {
 	private Obstacle obstacleList[];
 	private int numObstacles;
 	
-	
 	public ObstacleList(int L) {
 		
 		obstacleList = new Obstacle[L];
@@ -21,7 +20,7 @@ public class ObstacleList {
 		}
 	}
 	
-	public void removeCoin(Obstacle o) {
+	public void removeObstacle(Obstacle o) {
 		Obstacle aux[] = new Obstacle[numObstacles];
 		int i = 0;
 		
@@ -34,5 +33,4 @@ public class ObstacleList {
 		numObstacles = i;
 		obstacleList = aux;
 	}
-	
 }
