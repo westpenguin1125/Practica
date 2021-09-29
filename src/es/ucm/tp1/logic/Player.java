@@ -2,16 +2,15 @@ package es.ucm.tp1.logic;
 
 public class Player {
 
-	private int x, y;
+	private Position pos;
 	
 	private int numCoins;
 	
 	private Game game;
 	
-	public Player(int x, int y, Game game) {
+	public Player(Position pos, Game game) {
 		
-		this.x = x; 
-		this.y = y;
+		this.pos = pos;
 		
 		this.numCoins = 0;
 		
@@ -19,10 +18,12 @@ public class Player {
 		
 	}
 	
-	public void initialize(int iniX, int iniY) {
-		x = iniX;
-		y = iniY;
-		
+	public void moveTo(Position pos) {
+		this.pos.moveTo(pos);
+	}
+	
+	public void initialize(Position pos) {
+		moveTo(pos);
 		numCoins = 0;
 	}
 }

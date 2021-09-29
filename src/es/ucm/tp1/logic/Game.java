@@ -22,15 +22,19 @@ public class Game {
 		this.seed = seed;
 		this.level = level;
 		
-		player = new Player(0, level.getRoadWidth() / 2, this);
+		player = new Player(new Position(0, level.getRoadWidth() / 2), this);
 		
 		testingFlag = false;
+	}
+	
+	public boolean gameObjIsIn(Position pos) {
+		return (coinList.someIn(pos) || obstacleList.someIn(pos));
 	}
 	
 	public void initialize() {
 		//TODO comportamiento necesario para inicializar los atributos de game cuando se use el comando reset o se inicie un juego
 		//Estos atributos toman en cuenta el level y la seed para tomar sus valores
-		player.initialize(0,  getRoadWidth() / 2);
+		player.initialize(new Position(0, level.getRoadWidth() / 2));
 		
 		//TODO inicializacion de las listas y del random
 		

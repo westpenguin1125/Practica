@@ -21,10 +21,12 @@ public class CoinList {
 	}
 	
 	public void removeCoin(Coin c) {
+
 		Coin aux[] = new Coin[numCoins];
 		int i = 0;
 		
 		for (Coin coin : coinList) {
+			//TODO sobrescribir el metodo equals de la clase Coin para que se pueda hacer de forma correcta esta comparación
 			if (coin != c) {
 				aux[i] = coin;
 				i++;
@@ -33,4 +35,14 @@ public class CoinList {
 		numCoins = i;
 		coinList = aux;
 	}
+	
+	public boolean someIn(Position pos) {
+		int i = 0;
+		
+		while(i < numCoins && !coinList[i].isIn(pos))
+			i++;
+		
+		return !(i == numCoins);
+	}
+	
 }
