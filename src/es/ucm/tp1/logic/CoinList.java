@@ -45,4 +45,8 @@ public class CoinList {
 		return !(i == numCoins);
 	}
 	
+	public void tryToAddIn(Coin c) {
+		if(c.canBeOnTheRoad())
+			addCoin(c);
+	}
 }

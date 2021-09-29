@@ -12,7 +12,7 @@ public class Obstacle {
 		this.game = game;
 	}
 	
-	public Position getpos() {
+	public Position getPos() {
 		return pos;
 	}
 	
@@ -20,7 +20,7 @@ public class Obstacle {
 		return (this.pos.equals(pos));
 	}
 	
-	public boolean canBeOnTheRoad(Position pos) {
+	public boolean canBeOnTheRoad() {
 		//Returns true if any object is on the position pos
 		return !game.gameObjIsIn(pos);
 	}

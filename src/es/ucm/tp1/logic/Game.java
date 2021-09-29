@@ -1,5 +1,7 @@
 package es.ucm.tp1.logic;
 
+import java.util.Random;
+
 import es.ucm.tp1.control.Level;
 
 public class Game {
@@ -31,13 +33,36 @@ public class Game {
 		return (coinList.someIn(pos) || obstacleList.someIn(pos));
 	}
 	
+	private int getRandomLane() {
+		//TODO fixear Random
+		return Random.nextInt() % getRoadWidth();
+	}
+	
+	private void tryToFillObjectLists() {
+		double rand;
+		
+		for(int i = getVisibility() / 2; i < getRoadLength(); i++) {
+			//TOCOMMENT he visto en los tests que puede haber mas de un obstaculo en una misma columna
+			//TOASK consultar si primero se añaden coins y luego obstacles o al reves
+			//TODO fixear Random
+			
+			rand = Random.nextDouble();
+			if(rand < level.getCoinFrequency())
+				coinList.tryToAddIn(new Coin(new Position(i, getRandomLane()), this));
+			
+			rand = Random.nextDouble();
+			if(rand < level.getObstacleFrequency())
+				obstacleList.tryToAddIn(new Obstacle(new Position(i, getRandomLane()), this));
+		}
+	}
+	
 	public void initialize() {
 		//TODO comportamiento necesario para inicializar los atributos de game cuando se use el comando reset o se inicie un juego
 		//Estos atributos toman en cuenta el level y la seed para tomar sus valores
 		player.initialize(new Position(0, level.getRoadWidth() / 2));
 		
-		//TODO inicializacion de las listas y del random
-		
+		//TODO inicializacion del random
+		tryToFillObjectLists();
 	}
 	
 	public void toggleTest() {
@@ -46,6 +71,10 @@ public class Game {
 	
 	public int getVisibility() {
 		return level.getVisibility();
+	}
+	
+	public int getRoadLength() {
+		return level.getRoadLength();
 	}
 	
 	public int getRoadWidth() {

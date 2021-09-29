@@ -20,7 +20,7 @@ public class Coin {
 		return (this.pos.equals(pos));
 	}
 	
-	public boolean canBeOnTheRoad(Position pos) {
+	public boolean canBeOnTheRoad() {
 		//Returns true if any object is on the position pos
 		return !game.gameObjIsIn(pos);
 	}
