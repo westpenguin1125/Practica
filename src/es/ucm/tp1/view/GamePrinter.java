@@ -61,7 +61,7 @@ public class GamePrinter {
 
 	private String getInfo() {
 
-		// TODO add yout code
+		// TODO add your code
 		return "";
 	}
 

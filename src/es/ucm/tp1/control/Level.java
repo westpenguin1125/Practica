@@ -32,6 +32,8 @@ public enum Level {
 		}
 		return null;
 	}
+	
+	
 
 	public static String all(String separator) {
 		StringBuilder buffer = new StringBuilder();
@@ -45,4 +47,26 @@ public enum Level {
 		}
 		return buffer.toString();
 	}
+
+	
+	public int getRoadLength() {
+		return length;
+	}
+	
+	public int getRoadWidth() {
+		return width;
+	}
+	
+	public int getVisibility(){
+		return visibility;
+	}
+	
+	public double getCoinFrequency() {
+		return coinFrequency;
+	}
+	
+	public double getObstacleFrequency() {
+		return obstacleFrequency;
+	}
+	
 }
