@@ -12,27 +12,27 @@ public class ObstacleList {
 		numObstacles = 0;
 		
 	}
-	//TODO mirar tipo parametros y tipo aux está mal eeeeee
-public void addObstacle(Obstacle c) {
+	
+	public void addObstacle(Obstacle o) {
 		
 		if (numObstacles < obstacleList.length) {
-			obstacleList[numObstacles] = c;
+			obstacleList[numObstacles] = o;
 			numObstacles++;
 		}
 	}
 	
-	public void removeCoin(Coin c) {
-		Coin aux[] = new Coin[numObstacles];
+	public void removeCoin(Obstacle o) {
+		Obstacle aux[] = new Obstacle[numObstacles];
 		int i = 0;
-		for (Coin obstacle : obstacleList) {
-			if (obstacle != c) {
+		
+		for (Obstacle obstacle : obstacleList) {
+			if (obstacle != o) {
 				aux[i] = obstacle;
 				i++;
 			}
 		}
 		numObstacles = i;
 		obstacleList = aux;
-		
 	}
 	
 }

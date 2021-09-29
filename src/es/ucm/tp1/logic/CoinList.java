@@ -23,6 +23,7 @@ public class CoinList {
 	public void removeCoin(Coin c) {
 		Coin aux[] = new Coin[numCoins];
 		int i = 0;
+		
 		for (Coin coin : coinList) {
 			if (coin != c) {
 				aux[i] = coin;
@@ -31,7 +32,6 @@ public class CoinList {
 		}
 		numCoins = i;
 		coinList = aux;
-		
 	}
 	
 }
