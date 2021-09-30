@@ -50,4 +50,9 @@ public class ObstacleList {
 			addObstacle(o);
 	}
 	
+	@Override
+	public String toString() {
+		return obstacleList[0].toString();
+	}
+	
 }

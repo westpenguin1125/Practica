@@ -50,8 +50,8 @@ public class CoinList {
 			addCoin(c);
 	}
 
-	public String positionToString(int x, int y) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public String toString() {
+		return coinList[0].toString();
 	}
 }

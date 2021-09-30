@@ -97,14 +97,18 @@ public class Game {
 	
 	public String positionToString(int x, int y) {
 		//TODO dibuja el objeto que está en la posición
+		String s;
+		Position pos = new Position(x, y);
 		
-		if (player.isIn(x, y)) {
-			return player.toString();
-		}
-		String s = coinList.positionToString(x, y);
-		if(s != null)
-			return s;
+		if (player.isIn(x, y)) 
+			s = player.toString();
+		else if(coinList.someIn(pos))
+			s = coinList.toString();
+		else if(obstacleList.someIn(pos))
+			s = obstacleList.toString();
+		else
+			s = "";
 		
-		return "";
+		return s;
 	}
 }
