@@ -83,11 +83,13 @@ public class Controller {
 	public void run() {
 		
 		boolean endGame = false;
+		game.initialize();
 		
 		while (!endGame) {
 			
 			printGame();
 			
+			//TODO REVISAR 
 			endGame = userAction(scanner.nextLine().toLowerCase());
 			
 			

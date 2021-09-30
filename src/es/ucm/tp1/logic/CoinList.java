@@ -49,4 +49,9 @@ public class CoinList {
 		if(c.canBeOnTheRoad())
 			addCoin(c);
 	}
+
+	public String positionToString(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -2,6 +2,9 @@ package es.ucm.tp1.logic;
 
 public class Coin {
 	
+	
+	final private String COIN_SYMBOL = "¢";
+	
 	private Position pos;
 	private Game game;
 	
@@ -23,6 +26,11 @@ public class Coin {
 	public boolean canBeOnTheRoad() {
 		//Returns true if any object is on the position pos
 		return !game.gameObjIsIn(pos);
+	}
+	
+	@Override
+	public String toString() {
+		return COIN_SYMBOL;
 	}
 	
 }
