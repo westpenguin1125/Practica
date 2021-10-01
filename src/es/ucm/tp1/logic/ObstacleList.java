@@ -45,7 +45,7 @@ public class ObstacleList {
 		return !(i == numObstacles);
 	}
 
-	public void tryToAddIn(Obstacle o) {
+	public void tryToAdd(Obstacle o) {
 		if(o.canBeOnTheRoad())
 			addObstacle(o);
 	}

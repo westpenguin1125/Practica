@@ -37,9 +37,25 @@ public class Game {
 		return (coinList.someIn(pos) || obstacleList.someIn(pos));
 	}
 	
+	private double getRandomNumber() {
+		return random.nextDouble();
+	}
+	
 	private int getRandomLane() {
 		//TODO fixear Random
-		return random.nextInt() % getRoadWidth();
+		return (int) (getRandomNumber() * getRoadWidth());
+	}
+	
+	private void tryToAddCoin(Coin c, double freq) {
+		
+		if(getRandomNumber() < freq)
+			coinList.tryToAdd(c);
+	}
+	
+	private void tryToAddObstacle(Obstacle o, double freq) {
+		
+		if(getRandomNumber() < freq)
+			obstacleList.tryToAdd(o);
 	}
 	
 	private void tryToFillObjectLists() {
@@ -49,14 +65,8 @@ public class Game {
 			//TOCOMMENT he visto en los tests que puede haber mas de un obstaculo en una misma columna
 			//TOASK consultar si primero se añaden coins y luego obstacles o al reves
 			//TODO fixear Random
-			
-			rand = random.nextDouble();
-			if(rand < level.getCoinFrequency())
-				coinList.tryToAddIn(new Coin(new Position(i, getRandomLane()), this));
-			
-			rand = random.nextDouble();
-			if(rand < level.getObstacleFrequency())
-				obstacleList.tryToAddIn(new Obstacle(new Position(i, getRandomLane()), this));
+			tryToAddObstacle(new Obstacle(new Position(i, getRandomLane()), this), level.getObstacleFrequency());
+			tryToAddCoin(new Coin(new Position(i, getRandomLane()), this), level.getCoinFrequency());
 		}
 	}
 	
