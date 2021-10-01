@@ -8,10 +8,10 @@ public class Coin {
 	private Position pos;
 	private Game game;
 	
-	public Coin(Position pos, Game game) {
+	public Coin(int x, int y, Game game) {
 		
-		this.pos = pos;
-		
+		this.pos = new Position(x, y);
+		 
 		this.game = game;
 	}
 	
@@ -31,6 +31,19 @@ public class Coin {
 	@Override
 	public String toString() {
 		return COIN_SYMBOL;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		else if(obj == null)
+			return false;
+		else if(getClass() != obj.getClass())
+			return false;
+		else {
+			return pos.equals(((Coin) obj).pos);
+		}
 	}
 	
 }

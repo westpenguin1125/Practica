@@ -42,7 +42,6 @@ public class Game {
 	}
 	
 	private int getRandomLane() {
-		//TODO fixear Random
 		return (int) (getRandomNumber() * getRoadWidth());
 	}
 	
@@ -62,21 +61,15 @@ public class Game {
 		double rand;
 		
 		for(int i = getVisibility() / 2; i < getRoadLength(); i++) {
-			//TOCOMMENT he visto en los tests que puede haber mas de un obstaculo en una misma columna
-			//TOASK consultar si primero se añaden coins y luego obstacles o al reves
-			//TODO fixear Random
-			tryToAddObstacle(new Obstacle(new Position(i, getRandomLane()), this), level.getObstacleFrequency());
-			tryToAddCoin(new Coin(new Position(i, getRandomLane()), this), level.getCoinFrequency());
+			tryToAddObstacle(new Obstacle(i, getRandomLane(), this), level.getObstacleFrequency());
+			tryToAddCoin(new Coin(i, getRandomLane(), this), level.getCoinFrequency());
 		}
 	}
 	
 	public void initialize() {
-		//TODO comportamiento necesario para inicializar los atributos de game cuando se use el comando reset o se inicie un juego
-		//Estos atributos toman en cuenta el level y la seed para tomar sus valores
 		player.initialize(new Position(0, level.getRoadWidth() / 2));
 		random.setSeed(seed);
 		
-		//TODO inicializacion del random
 		tryToFillObjectLists();
 	}
 	
@@ -106,7 +99,6 @@ public class Game {
 	}
 	
 	public String positionToString(int x, int y) {
-		//TODO dibuja el objeto que está en la posición
 		String s;
 		Position pos = new Position(x, y);
 		

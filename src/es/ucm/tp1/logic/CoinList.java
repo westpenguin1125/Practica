@@ -26,8 +26,7 @@ public class CoinList {
 		int i = 0;
 		
 		for (Coin coin : coinList) {
-			//TODO sobrescribir el metodo equals de la clase Coin para que se pueda hacer de forma correcta esta comparación
-			if (coin != c) {
+			if (!coin.equals(c)) {
 				aux[i] = coin;
 				i++;
 			}

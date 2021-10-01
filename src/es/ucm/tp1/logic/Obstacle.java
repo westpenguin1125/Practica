@@ -8,9 +8,9 @@ public class Obstacle {
 	private Position pos;
 	private Game game;
 	
-	public Obstacle(Position pos, Game game) {
+	public Obstacle(int x, int y, Game game) {
 		
-		this.pos = pos;
+		this.pos = new Position(x, y);
 
 		this.game = game;
 	}
@@ -31,6 +31,19 @@ public class Obstacle {
 	@Override
 	public String toString() {
 		return OBSTACLE_SYMBOL;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		else if(obj == null)
+			return false;
+		else if(getClass() != obj.getClass())
+			return false;
+		else {
+			return pos.equals(((Obstacle) obj).pos);
+		}
 	}
 	
 }

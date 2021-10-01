@@ -26,8 +26,7 @@ public class ObstacleList {
 		int i = 0;
 		
 		for (Obstacle obstacle : obstacleList) {
-			//TODO sobrescribir el metodo equals de la clase Obstacle para que se pueda hacer de forma correcta esta comparación
-			if (obstacle != o) {
+			if (!obstacle.equals(o)) {
 				aux[i] = obstacle;
 				i++;
 			}
