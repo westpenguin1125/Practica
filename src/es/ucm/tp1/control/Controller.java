@@ -92,7 +92,6 @@ public class Controller {
 			//TODO REVISAR 
 			endGame = userAction(scanner.nextLine().toLowerCase());
 			
-			
 		}
 		
 		printGame();

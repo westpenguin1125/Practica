@@ -67,7 +67,7 @@ public class Game {
 	}
 	
 	public void initialize() {
-		player.initialize(new Position(0, level.getRoadWidth() / 2));
+		player.initialize(0, level.getRoadWidth() / 2);
 		random.setSeed(seed);
 		
 		tryToFillObjectLists();
@@ -88,7 +88,7 @@ public class Game {
 	public int getRoadWidth() {
 		return level.getRoadWidth();
 	}
-	
+		
 	public void checkCollitions() {
 		if (coinList.someIn(player.getPos())) {
 			player.increaseCoins();

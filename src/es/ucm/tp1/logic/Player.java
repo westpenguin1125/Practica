@@ -23,35 +23,46 @@ public class Player {
 		
 	}
 	
-	public void moveTo(Position pos) {
-		this.pos.moveTo(pos);
-	}
-	
-	public void initialize(Position pos) {
-		moveTo(pos);
+	public void initialize(int x, int y) {
+		moveTo(new Position(x, y));
 		numCoins = 0;
 	}
 
 	public boolean isIn(int x, int y) {
 		return pos.equals(new Position(x, y));
 	}
-	
-	@Override
-	public String toString() {
-		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
-	}
 
 	public Position getPos() {
 		return pos;
 	}
-
+	
+	private void moveTo(Position pos) {
+		this.pos.moveTo(pos);
+	}
+		//TOCOMMENT No quedan muy bonitas estas funciones con la clase Position, la verdad
+	public void moveForward() {
+		moveTo(new Position(pos.getX() + 1, pos.getY()));
+	}
+	
+	public void moveDown() {
+		moveTo(new Position(pos.getX(), pos.getY() + 1));
+	}
+	
+	public void moveUp() {
+		moveTo(new Position(pos.getX(), pos.getY() - 1));
+	}
+	
 	public void increaseCoins() {
 		numCoins++;
 	}
 
 	public void decreaseLife() {
 		numLifes--;
-		
+	}
+	
+	@Override
+	public String toString() {
+		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
 	}
 	
 }
