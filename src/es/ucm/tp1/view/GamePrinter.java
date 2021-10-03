@@ -37,9 +37,12 @@ public class GamePrinter {
 
 	protected Game game;
 	
+	private boolean testMode;
+	
 
 	public GamePrinter(Game game) {
 		this.game = game;
+		testMode = false;
 		
 
 		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
@@ -59,10 +62,21 @@ public class GamePrinter {
 	
 
 
+	
+	public void setTestMode(boolean testMode) {
+		this.testMode = testMode; 
+		
+	}
+	
 	private String getInfo() {
-
-		// TODO add your code
-		return "";
+		//TODO Información inicial
+		
+		if (!testMode){
+		System.out.println("se mide el tiempo");	
+		}
+		
+		
+	return "";
 	}
 
 	
@@ -104,4 +118,7 @@ public class GamePrinter {
 		
 		return s;
 	}
+
+
+
 }

@@ -25,7 +25,12 @@ public class Controller {
 		"[t]est: enables test mode",	
 	};
 	/* @formatter:off */
-
+	private static final String[] INFO = new String[] {
+		"Available objects:",
+		 "[Car] the racin car",
+		 "[Coin] gives 1 coin to the player",
+		 "[Obstacle] hits car",
+	};
 	private Game game;
 
 	private Scanner scanner;
@@ -50,11 +55,12 @@ public class Controller {
 	private boolean userAction(String userInput) {
 		boolean endGame = false;
 		if (userInput.startsWith("h")) {
-			
-			for (int i = 0; i < HELP.length; i++) {
+			for (int i = 0; i < HELP.length; i++) 
 				System.out.println(HELP[i]);
-			}
-			
+		}
+		else if (userInput.startsWith("i")) {
+			for (int i = 0; i < INFO.length; i++) 
+				System.out.println(INFO[i]);
 		}
 		else if (userInput.startsWith("q")) {
 			//TODO coche sube
@@ -72,7 +78,7 @@ public class Controller {
 			//TODO reset
 		}
 		else if (userInput.startsWith("t")) {
-			//TODO test mode
+			printer.setTestMode(true);
 		}
 		else
 			System.out.println(UNKNOWN_COMMAND_MSG);
