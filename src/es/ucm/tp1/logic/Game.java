@@ -3,6 +3,7 @@ package es.ucm.tp1.logic;
 import java.util.Random;
 
 import es.ucm.tp1.control.Level;
+import es.ucm.tp1.control.Commands;
 
 public class Game {
 	
@@ -16,12 +17,14 @@ public class Game {
 	
 	private boolean testingFlag;
 	private Random random;
+	private int numCicles;
 
 	public Game(long seed, Level level) {
 
 		coinList = new CoinList(level.getRoadLength());
 		obstacleList = new ObstacleList(level.getRoadLength());
 		
+		numCicles = 0;
 		this.seed = seed;
 		this.level = level;
 		
@@ -43,6 +46,10 @@ public class Game {
 	
 	private int getRandomLane() {
 		return (int) (getRandomNumber() * getRoadWidth());
+	}
+	
+	public int getNumCicles() {
+		return numCicles;
 	}
 	
 	private void tryToAddCoin(Coin c, double freq) {
@@ -69,8 +76,36 @@ public class Game {
 	public void initialize() {
 		player.initialize(0, level.getRoadWidth() / 2);
 		random.setSeed(seed);
+		numCicles = 0;
 		
 		tryToFillObjectLists();
+	}
+	
+	public void update(Commands comando) {
+		numCicles++;
+		
+		switch (comando) {
+		//Preguntar codigo repetido?
+		case UP:
+			player.moveUp();
+			player.moveForward();
+			break;
+		case DOWN:
+			player.moveDown();
+			player.moveForward();
+			break;
+		case FORWARD:
+			player.moveForward();
+			break;
+		case RESET:
+			initialize();
+			break;
+
+			//TODO increase coins
+			
+		default:
+			break;
+		}
 	}
 	
 	public void toggleTest() {

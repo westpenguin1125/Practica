@@ -63,22 +63,23 @@ public class Controller {
 				System.out.println(INFO[i]);
 		}
 		else if (userInput.startsWith("q")) {
-			//TODO coche sube
+			game.update(Commands.UP);
 		}
 		else if (userInput.startsWith("a")) {
-			//TODO coche baja
+			game.update(Commands.DOWN);
 		}
 		else if (userInput.startsWith("n") || userInput.equals("")) {
-			//TODO coche avanza (update)
+			game.update(Commands.FORWARD);
 		}
 		else if (userInput.startsWith("e")) {
 			endGame = true;
 		}
 		else if (userInput.startsWith("r")) {
-			//TODO reset
+			game.update(Commands.RESET);
 		}
 		else if (userInput.startsWith("t")) {
 			printer.setTestMode(true);
+			game.toggleTest();
 		}
 		else
 			System.out.println(UNKNOWN_COMMAND_MSG);
