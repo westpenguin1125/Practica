@@ -15,29 +15,24 @@ public class Game {
 	
 	private Player player;
 	
-	private boolean testingFlag;
 	private Random random;
 	private int numCicles;
-
+	private boolean testingFlag;
+	
 	public Game(long seed, Level level) {
 
 		coinList = new CoinList(level.getRoadLength());
 		obstacleList = new ObstacleList(level.getRoadLength());
-		
-		numCicles = 0;
+
 		this.seed = seed;
 		this.level = level;
 		
 		player = new Player(0, level.getRoadWidth() / 2, this);
 		
+		random = new Random(seed);
+		numCicles = 0;
 		testingFlag = false;
 		
-		random = new Random(seed);
-		
-	}
-	
-	public boolean gameObjIsIn(Position pos) {
-		return (coinList.someIn(pos) || obstacleList.someIn(pos));
 	}
 	
 	private double getRandomNumber() {
@@ -46,10 +41,6 @@ public class Game {
 	
 	private int getRandomLane() {
 		return (int) (getRandomNumber() * getRoadWidth());
-	}
-	
-	public int getNumCicles() {
-		return numCicles;
 	}
 	
 	private void tryToAddCoin(Coin c, double freq) {
@@ -100,16 +91,33 @@ public class Game {
 		case RESET:
 			initialize();
 			break;
-
-			//TODO increase coins
 			
 		default:
 			break;
 		}
+		
+		checkCollitions();
 	}
 	
 	public void toggleTest() {
 		// TODO comportamiento necesario para actualizar el flag testingFlag cuando se indique por comando
+	}
+	
+	public boolean gameObjIsIn(Position pos) {
+		return (coinList.someIn(pos) || obstacleList.someIn(pos));
+	}
+	
+	public void checkCollitions() {
+		if (coinList.someIn(player.getPos())) {
+			player.increaseCoins();
+		}
+		else if (obstacleList.someIn(player.getPos())) {
+			player.decreaseLife();
+		}
+	}
+	
+	public int getNumCicles() {
+		return numCicles;
 	}
 	
 	public int getVisibility() {
@@ -122,15 +130,6 @@ public class Game {
 	
 	public int getRoadWidth() {
 		return level.getRoadWidth();
-	}
-		
-	public void checkCollitions() {
-		if (coinList.someIn(player.getPos())) {
-			player.increaseCoins();
-		}
-		else if (obstacleList.someIn(player.getPos())) {
-			player.decreaseLife();
-		}
 	}
 	
 	public String positionToString(int x, int y) {
