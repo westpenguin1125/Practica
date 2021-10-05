@@ -28,8 +28,8 @@ public class Player {
 		numCoins = 0;
 	}
 
-	public boolean isIn(int x, int y) {
-		return pos.equals(new Position(x, y));
+	public boolean isIn(Position pos) {
+		return this.pos.equals(pos);
 	}
 
 	public Position getPos() {

@@ -51,6 +51,7 @@ public class CoinList {
 
 	@Override
 	public String toString() {
+		//cambiar indice 
 		return coinList[0].toString();
 	}
 }

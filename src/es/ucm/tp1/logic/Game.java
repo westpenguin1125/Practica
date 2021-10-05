@@ -16,7 +16,6 @@ public class Game {
 	private Player player;
 	
 	private Random random;
-	private int numCicles;
 	private boolean testingFlag;
 	
 	public Game(long seed, Level level) {
@@ -30,7 +29,6 @@ public class Game {
 		player = new Player(0, level.getRoadWidth() / 2, this);
 		
 		random = new Random(seed);
-		numCicles = 0;
 		testingFlag = false;
 		
 	}
@@ -67,22 +65,22 @@ public class Game {
 	public void initialize() {
 		player.initialize(0, level.getRoadWidth() / 2);
 		random.setSeed(seed);
-		numCicles = 0;
 		
 		tryToFillObjectLists();
 	}
 	
 	public void update(Commands comando) {
-		numCicles++;
 		
 		switch (comando) {
 		//Preguntar codigo repetido?
 		case UP:
-			player.moveUp();
+			if (player.getPos().getY() > 0) 
+				player.moveUp();
 			player.moveForward();
 			break;
 		case DOWN:
-			player.moveDown();
+			if (player.getPos().getY() <  level.getRoadWidth() - 1) 
+				player.moveDown();
 			player.moveForward();
 			break;
 		case FORWARD:
@@ -90,9 +88,6 @@ public class Game {
 			break;
 		case RESET:
 			initialize();
-			break;
-			
-		default:
 			break;
 		}
 		
@@ -116,10 +111,6 @@ public class Game {
 		}
 	}
 	
-	public int getNumCicles() {
-		return numCicles;
-	}
-	
 	public int getVisibility() {
 		return level.getVisibility();
 	}
@@ -134,9 +125,9 @@ public class Game {
 	
 	public String positionToString(int x, int y) {
 		String s;
-		Position pos = new Position(x, y);
+		Position pos = new Position(x + player.getPos().getX(), y);
 		
-		if (player.isIn(x, y)) 
+		if (player.isIn(pos)) 
 			s = player.toString();
 		else if(coinList.someIn(pos))
 			s = coinList.toString();
