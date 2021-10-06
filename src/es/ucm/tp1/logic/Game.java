@@ -43,14 +43,14 @@ public class Game {
 	
 	private void tryToAddCoin(Coin c, double freq) {
 		
-		if(getRandomNumber() < freq)
-			coinList.tryToAdd(c);
+		if(getRandomNumber() < freq && !gameObjIsIn(c.getPos()))
+			coinList.addCoin(c);
 	}
 	
 	private void tryToAddObstacle(Obstacle o, double freq) {
 		
-		if(getRandomNumber() < freq)
-			obstacleList.tryToAdd(o);
+		if(getRandomNumber() < freq && !gameObjIsIn(o.getPos()))
+			obstacleList.addObstacle(o);
 	}
 	
 	private void tryToFillObjectLists() {
