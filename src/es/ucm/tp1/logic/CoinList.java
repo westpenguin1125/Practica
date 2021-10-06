@@ -43,11 +43,6 @@ public class CoinList {
 		
 		return !(i == numCoins);
 	}
-	
-	public void tryToAdd(Coin c) {
-		if(c.canBeOnTheRoad())
-			addCoin(c);
-	}
 
 	@Override
 	public String toString() {

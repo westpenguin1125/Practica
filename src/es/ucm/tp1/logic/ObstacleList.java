@@ -43,11 +43,6 @@ public class ObstacleList {
 		
 		return !(i == numObstacles);
 	}
-
-	public void tryToAdd(Obstacle o) {
-		if(o.canBeOnTheRoad())
-			addObstacle(o);
-	}
 	
 	@Override
 	public String toString() {
