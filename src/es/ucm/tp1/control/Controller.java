@@ -6,6 +6,7 @@ import java.util.Scanner;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.view.GamePrinter;
 
+
 public class Controller {
 
 	private static final String PROMPT = "Command > ";
@@ -37,10 +38,13 @@ public class Controller {
 	
 	private GamePrinter printer;
 
+	private boolean endGame;
+	
 	public Controller(Game game, Scanner scanner) {
 		this.game = game;
 		this.scanner = scanner;
 		this.printer = new GamePrinter(game);
+		endGame = false;
 	}
 
 	public void printGame() {
@@ -52,53 +56,76 @@ public class Controller {
 		System.out.println(printer.endMessage());
 	}
 
-	private boolean userAction(String userInput) {
-		boolean endGame = false;
+	private Commands readCommand(String userInput) {
+		Commands comando;
 		if (userInput.startsWith("h")) {
-			for (int i = 0; i < HELP.length; i++) 
-				System.out.println(HELP[i]);
+			comando = Commands.HELP;
 		}
 		else if (userInput.startsWith("i")) {
-			for (int i = 0; i < INFO.length; i++) 
-				System.out.println(INFO[i]);
+			comando = Commands.INFO;
 		}
 		else if (userInput.startsWith("q")) {
-			game.update(Commands.UP);
+			comando = Commands.UP;
 		}
 		else if (userInput.startsWith("a")) {
-			game.update(Commands.DOWN);
+			comando = Commands.DOWN;
 		}
 		else if (userInput.startsWith("n") || userInput.equals("")) {
-			game.update(Commands.FORWARD);
+			comando = Commands.FORWARD;
 		}
 		else if (userInput.startsWith("e")) {
-			endGame = true;
+			comando = Commands.EXIT;
 		}
 		else if (userInput.startsWith("r")) {
-			game.update(Commands.RESET);
+			comando = Commands.RESET;
 		}
 		else if (userInput.startsWith("t")) {
-			printer.setTestMode(true);
-			game.toggleTest();
+			comando = Commands.TEST;
 		}
-		else
+		else {
 			System.out.println(UNKNOWN_COMMAND_MSG);
-		
-		return endGame;
+			//TOALGO
+			comando = null;
+		}
+	
+		return comando;
 	}
 	
 	public void run() {
 		
-		boolean endGame = false;
+		Commands command;
 		game.initialize();
+		printGame();
 		
 		while (!endGame) {
+			command = readCommand(scanner.nextLine().toLowerCase());
 			
-			printGame();
-			
-			//TODO REVISAR 
-			endGame = userAction(scanner.nextLine().toLowerCase());
-			
+			if(command != null) {
+				if(command == Commands.HELP ||
+					command == Commands.INFO ||
+					command == Commands.EXIT) {
+					switch(command) {
+						case HELP:
+						for (int i = 0; i < HELP.length; i++) 
+							System.out.println(HELP[i]);
+						break;
+						case INFO:
+							for (int i = 0; i < INFO.length; i++) 
+								System.out.println(INFO[i]);
+						case EXIT:
+							endGame = true;
+					}
+				}
+				else {
+					game.update(command);
+					printGame();
+					
+					//REMOVE DEAD OBJECTS
+					
+					//CHECK END
+					//endGame = game.endGame();
+				}
+			}
 		}
 		
 		printGame();

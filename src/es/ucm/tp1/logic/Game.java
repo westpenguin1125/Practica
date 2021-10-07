@@ -17,6 +17,8 @@ public class Game {
 	
 	private Random random;
 	private boolean testingFlag;
+	//TOASK Este atributo es de Game?
+	private int numCycles;
 	
 	public Game(long seed, Level level) {
 
@@ -30,6 +32,7 @@ public class Game {
 		
 		random = new Random(seed);
 		testingFlag = false;
+		numCycles = 0;
 		
 	}
 	
@@ -91,24 +94,35 @@ public class Game {
 			break;
 		}
 		
-		checkCollitions();
+		numCycles++;
+		player.doCollitions();
 	}
 	
 	public void toggleTest() {
 		// TODO comportamiento necesario para actualizar el flag testingFlag cuando se indique por comando
+		testingFlag = true;
+	}
+	
+	public Coin coinIn(Position pos) {
+		return coinList.coinIn(pos);
+	}
+	
+	public Obstacle obstacleIn(Position pos) {
+		return obstacleList.obstacleIn(pos);
 	}
 	
 	public boolean gameObjIsIn(Position pos) {
-		return (coinList.someIn(pos) || obstacleList.someIn(pos));
+		return (coinIn(pos) != null || obstacleIn(pos) != null);
 	}
 	
-	public void checkCollitions() {
-		if (coinList.someIn(player.getPos())) {
-			player.increaseCoins();
-		}
-		else if (obstacleList.someIn(player.getPos())) {
-			player.decreaseLife();
-		}
+	
+	
+	public boolean getTestingFlag() {
+		return testingFlag;
+	}
+	
+	public int getNumCycles() {
+		return numCycles;
 	}
 	
 	public int getVisibility() {
@@ -127,11 +141,12 @@ public class Game {
 		String s;
 		Position pos = new Position(x + player.getPos().getX(), y);
 		
+		//TOASK se podría cambiar para pasar el objeto a imprimir en lugar de la lista
 		if (player.isIn(pos)) 
 			s = player.toString();
-		else if(coinList.someIn(pos))
+		else if(coinList.coinIn(pos) != null)
 			s = coinList.toString();
-		else if(obstacleList.someIn(pos))
+		else if(obstacleList.obstacleIn(pos) != null)
 			s = obstacleList.toString();
 		else
 			s = "";

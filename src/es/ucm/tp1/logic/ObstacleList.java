@@ -10,6 +10,10 @@ public class ObstacleList {
 		obstacleList = new Obstacle[L];
 		numObstacles = 0;
 		
+	} 
+	
+	public int getNumObstacles() {
+		return numObstacles;
 	}
 	
 	public void addObstacle(Obstacle o) {
@@ -35,13 +39,13 @@ public class ObstacleList {
 		obstacleList = aux;
 	}
 	
-	public boolean someIn(Position pos) {
+	public Obstacle obstacleIn(Position pos) {
 		int i = 0;
 		
 		while(i < numObstacles && !obstacleList[i].isIn(pos))
 			i++;
 		
-		return !(i == numObstacles);
+		return (i == numObstacles) ? null : obstacleList[i];
 	}
 	
 	@Override

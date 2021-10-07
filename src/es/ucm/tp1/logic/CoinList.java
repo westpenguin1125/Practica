@@ -12,6 +12,10 @@ public class CoinList {
 		
 	}
 	
+	public int getNumCoins() {
+		return numCoins;
+	}
+	
 	public void addCoin(Coin c) {
 		
 		if (numCoins < coinList.length) {
@@ -35,13 +39,13 @@ public class CoinList {
 		coinList = aux;
 	}
 	
-	public boolean someIn(Position pos) {
+	public Coin coinIn(Position pos) {
 		int i = 0;
 		
 		while(i < numCoins && !coinList[i].isIn(pos))
 			i++;
 		
-		return !(i == numCoins);
+		return (i == numCoins) ? null : coinList[i];
 	}
 
 	@Override

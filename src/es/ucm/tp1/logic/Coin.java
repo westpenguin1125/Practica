@@ -7,12 +7,15 @@ public class Coin {
 	
 	private Position pos;
 	private Game game;
+	private boolean activated;
 	
 	public Coin(int x, int y, Game game) {
 		
 		this.pos = new Position(x, y);
 		 
 		this.game = game;
+		
+		activated = true;
 	}
 	
 	public Position getPos() {
@@ -23,9 +26,8 @@ public class Coin {
 		return (this.pos.equals(pos));
 	}
 	
-	public boolean canBeOnTheRoad() {
-		//Returns true if any object is on the position pos
-		return !game.gameObjIsIn(pos);
+	public void deactivate() {
+		activated = false;
 	}
 	
 	@Override

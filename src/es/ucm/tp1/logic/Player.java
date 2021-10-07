@@ -36,6 +36,19 @@ public class Player {
 		return pos;
 	}
 	
+	public void doCollitions() {
+		Coin c = game.coinIn(pos);
+		Obstacle o = game.obstacleIn(pos);
+		
+		if(c != null) {
+			c.deactivate();
+			increaseCoins();
+		}
+		else if(o != null) {
+			decreaseLife();
+		}
+}
+	
 	private void moveTo(Position pos) {
 		this.pos.moveTo(pos);
 	}
