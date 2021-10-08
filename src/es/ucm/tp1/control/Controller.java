@@ -56,31 +56,31 @@ public class Controller {
 		System.out.println(printer.endMessage());
 	}
 
-	private Commands readCommand(String userInput) {
-		Commands comando;
+	private Command readCommand(String userInput) {
+		Command comando;
 		if (userInput.startsWith("h")) {
-			comando = Commands.HELP;
+			comando = Command.HELP;
 		}
 		else if (userInput.startsWith("i")) {
-			comando = Commands.INFO;
+			comando = Command.INFO;
 		}
 		else if (userInput.startsWith("q")) {
-			comando = Commands.UP;
+			comando = Command.UP;
 		}
 		else if (userInput.startsWith("a")) {
-			comando = Commands.DOWN;
+			comando = Command.DOWN;
 		}
 		else if (userInput.startsWith("n") || userInput.equals("")) {
-			comando = Commands.FORWARD;
+			comando = Command.FORWARD;
 		}
 		else if (userInput.startsWith("e")) {
-			comando = Commands.EXIT;
+			comando = Command.EXIT;
 		}
 		else if (userInput.startsWith("r")) {
-			comando = Commands.RESET;
+			comando = Command.RESET;
 		}
 		else if (userInput.startsWith("t")) {
-			comando = Commands.TEST;
+			comando = Command.TEST;
 		}
 		else {
 			System.out.println(UNKNOWN_COMMAND_MSG);
@@ -93,7 +93,7 @@ public class Controller {
 	
 	public void run() {
 		
-		Commands command;
+		Command command;
 		game.initialize();
 		printGame();
 		
@@ -101,9 +101,9 @@ public class Controller {
 			command = readCommand(scanner.nextLine().toLowerCase());
 			
 			if(command != null) {
-				if(command == Commands.HELP ||
-					command == Commands.INFO ||
-					command == Commands.EXIT) {
+				if(command == Command.HELP ||
+					command == Command.INFO ||
+					command == Command.EXIT) {
 					switch(command) {
 						case HELP:
 						for (int i = 0; i < HELP.length; i++) 

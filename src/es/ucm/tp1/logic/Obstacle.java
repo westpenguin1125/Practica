@@ -4,28 +4,28 @@ public class Obstacle {
 	
 	final private String OBSTACLE_SYMBOL = "░";
 
-	
-	private Position pos;
+	private int x;
+	private int y;
 	private Game game;
 	
 	public Obstacle(int x, int y, Game game) {
 		
-		this.pos = new Position(x, y);
+		this.x = x;
+		this.y = y;
 
 		this.game = game;
 	}
 	
-	public Position getPos() {
-		return pos;
+	public int getX() {
+		return x;
 	}
 	
-	public boolean isIn(Position pos) {
-		return (this.pos.equals(pos));
+	public int getY() {
+		return y;
 	}
 	
-	public boolean canBeOnTheRoad() {
-		//Returns true if any object is on the position pos
-		return !game.gameObjIsIn(pos);
+	public boolean isIn(int x, int y) {
+		return (this.x == x && this.y == y);
 	}
 	
 	@Override
@@ -33,6 +33,7 @@ public class Obstacle {
 		return OBSTACLE_SYMBOL;
 	}
 	
+	//Podemos borrarlo?
 	@Override
 	public boolean equals(Object obj) {
 		if(this == obj)
@@ -42,7 +43,8 @@ public class Obstacle {
 		else if(getClass() != obj.getClass())
 			return false;
 		else {
-			return pos.equals(((Obstacle) obj).pos);
+			return (x == ((Obstacle) obj).getX() && 
+					y == ((Obstacle) obj).getY());
 		}
 	}
 	

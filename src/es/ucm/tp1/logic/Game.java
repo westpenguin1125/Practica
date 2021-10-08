@@ -3,7 +3,7 @@ package es.ucm.tp1.logic;
 import java.util.Random;
 
 import es.ucm.tp1.control.Level;
-import es.ucm.tp1.control.Commands;
+import es.ucm.tp1.control.Command;
 
 public class Game {
 	
@@ -46,18 +46,17 @@ public class Game {
 	
 	private void tryToAddCoin(Coin c, double freq) {
 		
-		if(getRandomNumber() < freq && !gameObjIsIn(c.getPos()))
+		if(getRandomNumber() < freq && !gameObjIsIn(c.getX(), c.getY()))
 			coinList.addCoin(c);
 	}
 	
 	private void tryToAddObstacle(Obstacle o, double freq) {
 		
-		if(getRandomNumber() < freq && !gameObjIsIn(o.getPos()))
+		if(getRandomNumber() < freq && !gameObjIsIn(o.getX(), o.getY()))
 			obstacleList.addObstacle(o);
 	}
 	
 	private void tryToFillObjectLists() {
-		double rand;
 		
 		for(int i = getVisibility() / 2; i < getRoadLength(); i++) {
 			tryToAddObstacle(new Obstacle(i, getRandomLane(), this), level.getObstacleFrequency());
@@ -72,50 +71,49 @@ public class Game {
 		tryToFillObjectLists();
 	}
 	
-	public void update(Commands comando) {
+	public void update(Command command) {
 		
-		switch (comando) {
-		//Preguntar codigo repetido?
-		case UP:
-			if (player.getPos().getY() > 0) 
-				player.moveUp();
-			player.moveForward();
-			break;
-		case DOWN:
-			if (player.getPos().getY() <  level.getRoadWidth() - 1) 
-				player.moveDown();
-			player.moveForward();
-			break;
-		case FORWARD:
-			player.moveForward();
-			break;
-		case RESET:
+		if(command == Command.RESET)
 			initialize();
-			break;
+		else {
+			if(command == Command.UP && player.getY() > 0)
+				player.moveUp();
+			else if(command == Command.DOWN && player.getY() < level.getRoadWidth() - 1)
+				player.moveDown();
+			
+			player.moveForward();	
 		}
 		
 		numCycles++;
 		player.doCollitions();
 	}
 	
+	//TODO
+	public void removeDeadObjects() {
+		
+	}
+	
+	//TODO
+	public boolean checkEnd() {
+		return false;
+	}
+	
 	public void toggleTest() {
-		// TODO comportamiento necesario para actualizar el flag testingFlag cuando se indique por comando
+		//TOASK Esto es todo?
 		testingFlag = true;
 	}
 	
-	public Coin coinIn(Position pos) {
-		return coinList.coinIn(pos);
+	public Coin coinIn(int x, int y) {
+		return coinList.coinIn(x, y);
 	}
 	
-	public Obstacle obstacleIn(Position pos) {
-		return obstacleList.obstacleIn(pos);
+	public Obstacle obstacleIn(int x, int y) {
+		return obstacleList.obstacleIn(x, y);
 	}
 	
-	public boolean gameObjIsIn(Position pos) {
-		return (coinIn(pos) != null || obstacleIn(pos) != null);
+	public boolean gameObjIsIn(int x, int y) {
+		return (coinIn(x, y) != null || obstacleIn(x, y) != null);
 	}
-	
-	
 	
 	public boolean getTestingFlag() {
 		return testingFlag;
@@ -138,19 +136,19 @@ public class Game {
 	}
 	
 	public String positionToString(int x, int y) {
-		String s;
-		Position pos = new Position(x + player.getPos().getX(), y);
+		String symbolToPrint;
+		Coin c = coinList.coinIn(x + player.getX(), y);
+		Obstacle o = obstacleList.obstacleIn(x + player.getX(), y);
 		
-		//TOASK se podría cambiar para pasar el objeto a imprimir en lugar de la lista
-		if (player.isIn(pos)) 
-			s = player.toString();
-		else if(coinList.coinIn(pos) != null)
-			s = coinList.toString();
-		else if(obstacleList.obstacleIn(pos) != null)
-			s = obstacleList.toString();
+		if (player.isIn(x + player.getX(), y)) 
+			symbolToPrint = player.toString();
+		else if(c != null)
+			symbolToPrint = c.toString();
+		else if(o != null)
+			symbolToPrint = o.toString();
 		else
-			s = "";
+			symbolToPrint = "";
 		
-		return s;
+		return symbolToPrint;
 	}
 }

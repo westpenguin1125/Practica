@@ -39,15 +39,16 @@ public class ObstacleList {
 		obstacleList = aux;
 	}
 	
-	public Obstacle obstacleIn(Position pos) {
+	public Obstacle obstacleIn(int x, int y) {
 		int i = 0;
 		
-		while(i < numObstacles && !obstacleList[i].isIn(pos))
+		while(i < numObstacles && !obstacleList[i].isIn(x, y))
 			i++;
 		
 		return (i == numObstacles) ? null : obstacleList[i];
 	}
 	
+	//Podemos borrarlo?
 	@Override
 	public String toString() {
 		return obstacleList[0].toString();

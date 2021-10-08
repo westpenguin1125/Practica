@@ -6,7 +6,8 @@ public class Player {
 	private final String PLAYER_SYMBOL_DEAD= "@";
 
 	
-	private Position pos;
+	private int x;
+	private int y;
 	
 	private int numCoins;
 	private int numLifes;
@@ -15,7 +16,8 @@ public class Player {
 	
 	public Player(int x, int y, Game game) {
 		
-		this.pos = new Position(x, y);
+		this.x = x;
+		this.y = y;
 		
 		numCoins = 0;
 		numLifes = 1;
@@ -24,21 +26,43 @@ public class Player {
 	}
 	
 	public void initialize(int x, int y) {
-		moveTo(new Position(x, y));
+		this.x = x;
+		this.y = y;
 		numCoins = 0;
 	}
-
-	public boolean isIn(Position pos) {
-		return this.pos.equals(pos);
+	
+	private void moveTo(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
-
-	public Position getPos() {
-		return pos;
+	
+	public void moveForward() {
+		x++;
+	}
+	
+	public void moveDown() {
+		y++;
+	}
+	
+	public void moveUp() {
+		y--;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public boolean isIn(int x, int y) {
+		return (this.x == x && this.y == y);
 	}
 	
 	public void doCollitions() {
-		Coin c = game.coinIn(pos);
-		Obstacle o = game.obstacleIn(pos);
+		Coin c = game.coinIn(x, y);
+		Obstacle o = game.obstacleIn(x, y);
 		
 		if(c != null) {
 			c.deactivate();
@@ -47,22 +71,6 @@ public class Player {
 		else if(o != null) {
 			decreaseLife();
 		}
-}
-	
-	private void moveTo(Position pos) {
-		this.pos.moveTo(pos);
-	}
-		//TOCOMMENT No quedan muy bonitas estas funciones con la clase Position, la verdad
-	public void moveForward() {
-		moveTo(new Position(pos.getX() + 1, pos.getY()));
-	}
-	
-	public void moveDown() {
-		moveTo(new Position(pos.getX(), pos.getY() + 1));
-	}
-	
-	public void moveUp() {
-		moveTo(new Position(pos.getX(), pos.getY() - 1));
 	}
 	
 	public void increaseCoins() {

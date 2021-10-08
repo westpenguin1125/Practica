@@ -39,18 +39,18 @@ public class CoinList {
 		coinList = aux;
 	}
 	
-	public Coin coinIn(Position pos) {
+	public Coin coinIn(int x, int y) {
 		int i = 0;
 		
-		while(i < numCoins && !coinList[i].isIn(pos))
+		while(i < numCoins && !coinList[i].isIn(x, y))
 			i++;
 		
 		return (i == numCoins) ? null : coinList[i];
 	}
-
+	
+	//Podemos borrarlo?
 	@Override
 	public String toString() {
-		//cambiar indice 
 		return coinList[0].toString();
 	}
 }

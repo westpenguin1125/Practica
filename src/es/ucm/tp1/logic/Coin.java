@@ -4,26 +4,34 @@ public class Coin {
 	
 	
 	final private String COIN_SYMBOL = "¢";
+
+	private int x;
+	private int y;
 	
-	private Position pos;
 	private Game game;
+	
 	private boolean activated;
 	
 	public Coin(int x, int y, Game game) {
 		
-		this.pos = new Position(x, y);
+		this.x = x;
+		this.y = y;
 		 
 		this.game = game;
 		
 		activated = true;
 	}
 	
-	public Position getPos() {
-		return pos;
+	public int getX() {
+		return x;
 	}
 	
-	public boolean isIn(Position pos) {
-		return (this.pos.equals(pos));
+	public int getY() {
+		return y;
+	}
+	
+	public boolean isIn(int x, int y) {
+		return (this.x == x && this.y == y);
 	}
 	
 	public void deactivate() {
@@ -35,6 +43,7 @@ public class Coin {
 		return COIN_SYMBOL;
 	}
 	
+	//Podemos borrarlo?
 	@Override
 	public boolean equals(Object obj) {
 		if(this == obj)
@@ -44,7 +53,8 @@ public class Coin {
 		else if(getClass() != obj.getClass())
 			return false;
 		else {
-			return pos.equals(((Coin) obj).pos);
+			return (this.x == ((Coin) obj).getX() &&
+					this.y == ((Coin) obj).getY());
 		}
 	}
 	

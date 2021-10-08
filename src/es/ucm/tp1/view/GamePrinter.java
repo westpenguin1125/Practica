@@ -57,13 +57,11 @@ public class GamePrinter {
 	
 	private String getInfo() {
 		//TODO Información inicial
-		
 		if (!game.getTestingFlag()){
-		System.out.println("se mide el tiempo");	
+			System.out.println("se mide el tiempo");
 		}
 		
-		
-	return "";
+		return "";
 	}
 
 	
