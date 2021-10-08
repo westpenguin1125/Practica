@@ -38,6 +38,12 @@ public class CoinList {
 		numCoins = i;
 		coinList = aux;
 	}
+
+	public void removeDeadObjects() {
+		for(int i = 0; i < numCoins; i++)
+			if(coinList[i].isDeactivated())
+				removeCoin(coinList[i]);
+	}
 	
 	public Coin coinIn(int x, int y) {
 		int i = 0;

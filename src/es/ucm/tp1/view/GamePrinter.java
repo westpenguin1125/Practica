@@ -64,7 +64,6 @@ public class GamePrinter {
 		return "";
 	}
 
-	
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
@@ -93,7 +92,6 @@ public class GamePrinter {
 
 		return str.toString();
 	}
-
 	
 	public String endMessage(){
 		

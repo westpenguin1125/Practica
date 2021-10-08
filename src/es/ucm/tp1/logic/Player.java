@@ -36,6 +36,10 @@ public class Player {
 		this.y = y;
 	}
 	
+	public boolean isAlive() {
+		return numLifes > 0;
+	}
+	
 	public void moveForward() {
 		x++;
 	}

@@ -120,10 +120,8 @@ public class Controller {
 					game.update(command);
 					printGame();
 					
-					//REMOVE DEAD OBJECTS
-					
-					//CHECK END
-					//endGame = game.endGame();
+					game.removeDeadObjects();
+					endGame = game.checkEnd();
 				}
 			}
 		}

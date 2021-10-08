@@ -90,12 +90,12 @@ public class Game {
 	
 	//TODO
 	public void removeDeadObjects() {
-		
+		coinList.removeDeadObjects();
 	}
 	
 	//TODO
 	public boolean checkEnd() {
-		return false;
+		return !player.isAlive() || player.getX() > level.getRoadLength();
 	}
 	
 	public void toggleTest() {

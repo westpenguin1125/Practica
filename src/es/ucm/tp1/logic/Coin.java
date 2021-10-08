@@ -30,6 +30,10 @@ public class Coin {
 		return y;
 	}
 	
+	public boolean isDeactivated() {
+		return !activated;
+	}
+	
 	public boolean isIn(int x, int y) {
 		return (this.x == x && this.y == y);
 	}
