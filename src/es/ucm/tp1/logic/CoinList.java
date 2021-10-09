@@ -31,27 +31,26 @@ public class CoinList {
 		
 		for (int i = 0; i < numCoins; i++) {
 			if (!coinList[i].equals(c)) {
-				aux[i] = coinList[i];
+				aux[num] = coinList[i];
 				num++;
 			}
 		}
+		
 		numCoins = num;
 		coinList = aux;
 	}
 
 	public void removeDeadObjects() {
 		for(int i = 0; i < numCoins; i++) {
-			
 			if(coinList[i].isDeactivated())
 				removeCoin(coinList[i]);
-			
 		}
 	}
 	
 	public Coin coinIn(int x, int y) {
 		int i = 0;
-		
-		while(i < numCoins && !coinList[i].isIn(x, y)) 
+
+		while(i < numCoins && !coinList[i].isIn(x, y))
 			i++;
 		
 		return (i == numCoins) ? null : coinList[i];

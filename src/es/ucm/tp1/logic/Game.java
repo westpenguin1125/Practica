@@ -136,6 +136,7 @@ public class Game {
 		return level.getRoadWidth();
 	}
 	
+	//Se debería sumar aqui esto? no Pertenece a Game creo yo
 	public String positionToString(int x, int y) {
 		String symbolToPrint;
 		Coin c = coinList.coinIn(x + player.getX(), y);
