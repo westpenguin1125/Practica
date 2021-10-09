@@ -94,35 +94,27 @@ public class Controller {
 	public void run() {
 		
 		Command command;
+		
 		game.initialize();
 		printGame();
 		
 		while (!endGame) {
 			command = readCommand(scanner.nextLine().toLowerCase());
 			
-			if(command != null) {
-				if(command == Command.HELP ||
-					command == Command.INFO ||
-					command == Command.EXIT) {
-					switch(command) {
-						case HELP:
-						for (int i = 0; i < HELP.length; i++) 
-							System.out.println(HELP[i]);
-						break;
-						case INFO:
-							for (int i = 0; i < INFO.length; i++) 
-								System.out.println(INFO[i]);
-						case EXIT:
-							endGame = true;
-					}
-				}
-				else {
-					game.update(command);
-					printGame();
+			if(command == Command.HELP) 
+				for (int i = 0; i < HELP.length; i++) 
+					System.out.println(HELP[i]);
+			else if(command == Command.INFO)
+				for (int i = 0; i < INFO.length; i++) 
+					System.out.println(INFO[i]);
+			else if(command == Command.EXIT) 
+				endGame = true;
+			else if(command != null){
+				game.update(command);
+				printGame();
 					
-					game.removeDeadObjects();
-					endGame = game.checkEnd();
-				}
+				game.removeDeadObjects();
+				endGame = game.checkEnd();
 			}
 		}
 		

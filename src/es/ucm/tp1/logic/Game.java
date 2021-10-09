@@ -69,6 +69,7 @@ public class Game {
 		random.setSeed(seed);
 		
 		tryToFillObjectLists();
+		numCycles = 0;
 	}
 	
 	public void update(Command command) {
@@ -84,8 +85,8 @@ public class Game {
 			player.moveForward();	
 		}
 		
-		numCycles++;
 		player.doCollitions();
+		numCycles++;
 	}
 	
 	//TODO
