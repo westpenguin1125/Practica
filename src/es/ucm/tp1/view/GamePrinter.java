@@ -55,14 +55,39 @@ public class GamePrinter {
 		newLine =  System.getProperty("line.separator");
 	}
 	
-	private String getInfo() {
+	private StringBuilder getInfo() {
 		//TODO Información inicial
-		if (!game.getTestingFlag()){
-			System.out.println("se mide el tiempo");
+		StringBuilder info = new StringBuilder();
+		info.append("Distance: ");
+		info.append(game.getRoadLength() - game.getPlayerXPosition());
+		info.append(System.getProperty("line.separator"));
+		
+		info.append("Coins: ");
+		info.append(game.getPlayerCoins());
+		info.append(System.getProperty("line.separator"));
+		
+		info.append("Cycle: ");
+		info.append(game.getNumCycles());
+		info.append(System.getProperty("line.separator"));
+		
+		info.append("Total obstacles: ");
+		info.append(game.getNumObstacles());
+		info.append(System.getProperty("line.separator"));
+		
+		info.append("Total coins: ");
+		info.append(game.getNumCoins());
+		info.append(System.getProperty("line.separator"));
+		
+		if (game.getTestingFlag()) {
+			info.append("Elapsed Time: ");
+			long elapsedTime = game.getStartTime() - System.currentTimeMillis();
+			info.append(elapsedTime / 1000  + "." + elapsedTime % 1000);
+			info.append(System.getProperty("line.separator"));
 		}
 		
-		return "";
+		return info;
 	}
+	
 
 	@Override
 	public String toString() {

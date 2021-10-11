@@ -59,6 +59,9 @@ public class Player {
 	public int getY() {
 		return y;
 	}
+	public int getNumCoins() {
+		return numCoins;
+	}
 	
 	public boolean isIn(int x, int y) {
 		return (this.x == x && this.y == y);

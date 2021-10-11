@@ -47,7 +47,7 @@ public enum Level {
 		}
 		return buffer.toString();
 	}
-
+	
 	
 	public int getRoadLength() {
 		return length;

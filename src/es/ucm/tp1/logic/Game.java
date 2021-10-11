@@ -5,6 +5,7 @@ import java.util.Random;
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.control.Command;
 
+
 public class Game {
 	
 	private CoinList coinList;
@@ -19,6 +20,7 @@ public class Game {
 	private boolean testingFlag;
 	//TOASK Este atributo es de Game?
 	private int numCycles;
+	private long startTime;
 	
 	public Game(long seed, Level level) {
 
@@ -87,6 +89,13 @@ public class Game {
 		
 		player.doCollitions();
 		numCycles++;
+		if (numCycles == 1) {
+			startTime = System.currentTimeMillis();
+		}
+	}
+	
+	public long getStartTime() {
+		return startTime;
 	}
 	
 	//TODO
@@ -136,6 +145,22 @@ public class Game {
 		return level.getRoadWidth();
 	}
 	
+	
+	public int getPlayerXPosition() {
+		return player.getX();
+	}
+	public int getPlayerCoins() {
+		return player.getNumCoins();
+	}
+	
+	public Object getNumObstacles() {
+		return obstacleList.getNumObstacles();
+	}
+	
+	public Object getNumCoins() {
+		return coinList.getNumCoins();
+	}
+	
 	//Se debería sumar aqui esto? no Pertenece a Game creo yo
 	public String positionToString(int x, int y) {
 		String symbolToPrint;
@@ -153,4 +178,7 @@ public class Game {
 		
 		return symbolToPrint;
 	}
+
+
+
 }
