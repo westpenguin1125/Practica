@@ -55,7 +55,7 @@ public class GamePrinter {
 		newLine =  System.getProperty("line.separator");
 	}
 	
-	private StringBuilder getInfo() {
+	private String getInfo() {
 		//TODO Información inicial
 		StringBuilder info = new StringBuilder();
 		info.append("Distance: ");
@@ -71,21 +71,21 @@ public class GamePrinter {
 		info.append(System.getProperty("line.separator"));
 		
 		info.append("Total obstacles: ");
-		info.append(game.getNumObstacles());
+		info.append(game.getNumObstacles());//hacerlo con statics 
 		info.append(System.getProperty("line.separator"));
 		
 		info.append("Total coins: ");
-		info.append(game.getNumCoins());
+		info.append(game.getNumCoins());//hacerlo con statics 
 		info.append(System.getProperty("line.separator"));
 		
 		if (game.getTestingFlag()) {
 			info.append("Elapsed Time: ");
-			long elapsedTime = game.getStartTime() - System.currentTimeMillis();
-			info.append(elapsedTime / 1000  + "." + elapsedTime % 1000);
+			long elapsedTime = game.getElapsedTime();
+			info.append(String.format("%.02f", ((float)elapsedTime / 1000)));
+			info.append(" s");
 			info.append(System.getProperty("line.separator"));
 		}
-		
-		return info;
+		return info.toString();
 	}
 	
 

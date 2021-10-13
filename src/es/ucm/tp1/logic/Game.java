@@ -21,6 +21,7 @@ public class Game {
 	//TOASK Este atributo es de Game?
 	private int numCycles;
 	private long startTime;
+	private long elapsedTime;
 	
 	public Game(long seed, Level level) {
 
@@ -69,6 +70,7 @@ public class Game {
 	public void initialize() {
 		player.initialize(0, level.getRoadWidth() / 2);
 		random.setSeed(seed);
+		elapsedTime = 0;
 		
 		tryToFillObjectLists();
 		numCycles = 0;
@@ -92,10 +94,13 @@ public class Game {
 		if (numCycles == 1) {
 			startTime = System.currentTimeMillis();
 		}
+		else {
+			elapsedTime = System.currentTimeMillis() - startTime;
+		}
 	}
 	
-	public long getStartTime() {
-		return startTime;
+	public long getElapsedTime() {
+		return elapsedTime;
 	}
 	
 	//TODO
