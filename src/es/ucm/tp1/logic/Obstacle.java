@@ -8,14 +8,15 @@ public class Obstacle {
 
 	private int x;
 	private int y;
+	
 	private Game game;
 	
 	public Obstacle(int x, int y, Game game) {
+
+		this.game = game;
 		
 		this.x = x;
 		this.y = y;
-
-		this.game = game;
 	}
 	
 	public void onEnter() {
@@ -43,7 +44,6 @@ public class Obstacle {
 		return OBSTACLE_SYMBOL;
 	}
 	
-	//Podemos borrarlo?
 	@Override
 	public boolean equals(Object obj) {
 		if(this == obj)

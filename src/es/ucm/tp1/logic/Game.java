@@ -18,9 +18,10 @@ public class Game {
 	private Player player;
 	
 	private Random random;
+	
 	private boolean testingFlag;
-	//TOASK Este atributo es de Game?
 	private int numCycles;
+	
 	private long startTime;
 	private long elapsedTime;
 	
@@ -81,39 +82,34 @@ public class Game {
 	
 	public void update(Command command) {
 		
-		if(command == Command.RESET)
-			initialize();
-		else {
-			if(command == Command.UP && player.getY() > 0)
-				player.moveUp();
-			else if(command == Command.DOWN && player.getY() < level.getRoadWidth() - 1)
-				player.moveDown();
+		if(command == Command.UP && player.getY() > 0)
+			player.moveUp();
+		else if(command == Command.DOWN && player.getY() < level.getRoadWidth() - 1)
+			player.moveDown();
 			
-			player.moveForward();	
-			
-			player.doCollitions();
-			
-			numCycles++;
-			if (numCycles == 1) {
-				startTime = System.currentTimeMillis();
-			}
-			else {
-				elapsedTime = System.currentTimeMillis() - startTime;
-			}
-		}
+		player.moveForward();	
 		
+		player.doCollitions();
+			
+		numCycles++;
+		if (numCycles == 1) {
+			startTime = System.currentTimeMillis();
+		}
+		else {
+			elapsedTime = System.currentTimeMillis() - startTime;
+		}
 	}
 	
 	public void removeDeadObjects() {
-		coinList.removeDeadObjects();
-	}
-	
-	public boolean checkEnd() {
-		return !playerIsAlive() || win();
+		coinList.removeDeadCoins();
 	}
 	
 	public void toggleTest() {
 		testingFlag = true;
+	}
+	
+	public boolean checkEnd() {
+		return !playerIsAlive() || win();
 	}
 	
 	public Coin coinIn(int x, int y) {

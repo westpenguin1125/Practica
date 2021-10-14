@@ -4,7 +4,8 @@ public class Player {
 
 	private final String PLAYER_SYMBOL_ALIVE = ">";
 	private final String PLAYER_SYMBOL_DEAD= "@";
-
+	
+	private Game game;
 	
 	private int x;
 	private int y;
@@ -12,53 +13,24 @@ public class Player {
 	private int numCoins;
 	private int numLifes;
 	
-	private Game game;
-	
 	public Player(int x, int y, Game game) {
+
+		this.game = game;
 		
 		this.x = x;
 		this.y = y;
 		
+		//Esto hace falta?
 		numLifes = 1;
-		this.game = game;
-		
+		numCoins = 5;
 	}
 	
 	public void initialize(int x, int y) {
 		this.x = x;
 		this.y = y;
+		
 		numCoins = 5;
-	}
-	
-	public boolean isAlive() {
-		return numLifes > 0;
-	}
-	
-	public void moveForward() {
-		x++;
-	}
-	
-	public void moveDown() {
-		y++;
-	}
-	
-	public void moveUp() {
-		y--;
-	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
-	}
-	public int getNumCoins() {
-		return numCoins;
-	}
-	
-	public boolean isIn(int x, int y) {
-		return (this.x == x && this.y == y);
+		numLifes = 1;
 	}
 	
 	public void doCollitions() {
@@ -74,12 +46,44 @@ public class Player {
 		}
 	}
 	
+	public void moveForward() {
+		x++;
+	}
+	
+	public void moveDown() {
+		y++;
+	}
+	
+	public void moveUp() {
+		y--;
+	}
+	
 	public void increaseCoins() {
 		numCoins++;
 	}
 
 	public void decreaseLife() {
 		numLifes--;
+	}
+	
+	public boolean isAlive() {
+		return numLifes > 0;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public int getNumCoins() {
+		return numCoins;
+	}
+	
+	public boolean isIn(int x, int y) {
+		return (this.x == x && this.y == y);
 	}
 	
 	@Override

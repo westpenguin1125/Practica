@@ -7,11 +7,22 @@ public class Coin {
 
 	private static int numCoins;
 	
+	private Game game;
+	
 	private int x;
 	private int y;
 	
-	private Game game;
+	private boolean activated;
 	
+	public Coin(int x, int y, Game game) {
+
+		this.game = game;
+
+		this.x = x;
+		this.y = y;
+		
+		activated = true;
+	}
 	
 	public void onEnter() {
 		numCoins++;
@@ -23,18 +34,6 @@ public class Coin {
 	
 	public static int getNumCoins() {
 		return numCoins;
-	}
-	
-	private boolean activated;
-	
-	public Coin(int x, int y, Game game) {
-		
-		this.x = x;
-		this.y = y;
-		 
-		this.game = game;
-		
-		activated = true;
 	}
 	
 	public int getX() {
@@ -63,7 +62,6 @@ public class Coin {
 		return COIN_SYMBOL;
 	}
 	
-	//Podemos borrarlo?
 	@Override
 	public boolean equals(Object obj) {
 		if(this == obj)

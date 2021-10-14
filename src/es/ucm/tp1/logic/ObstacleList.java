@@ -12,8 +12,6 @@ public class ObstacleList {
 		
 	} 
 	
-	
-	
 	public void addObstacle(Obstacle o) {
 		
 		if (numObstacles < obstacleList.length) {

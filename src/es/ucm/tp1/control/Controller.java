@@ -46,6 +46,16 @@ public class Controller {
 		this.printer = new GamePrinter(game);
 		endGame = false;
 	}
+	
+	private String getUserInput() {
+		String userInput;
+		
+		System.out.println("Command >");
+		userInput = scanner.nextLine().toLowerCase();
+		System.out.println("[DEBUG] Executing: " + userInput);
+		
+		return userInput;
+	}
 
 	public void printGame() {
 		System.out.println(printer);
@@ -55,7 +65,7 @@ public class Controller {
 		System.out.println(printer.endMessage());
 	}
 
-	private Command readCommand(String userInput) {
+	private Command toCommand(String userInput) {
 		Command comando;
 		
 		if (userInput.startsWith("h")) {
@@ -84,7 +94,6 @@ public class Controller {
 		}
 		else {
 			System.out.println(UNKNOWN_COMMAND_MSG);
-			//TOALGO
 			comando = null;
 		}
 	
@@ -94,18 +103,12 @@ public class Controller {
 	public void run() {
 		
 		Command command;
-		String userInput;
 		
 		game.initialize();
 		printGame();
 		
 		while (!endGame) {
-			
-			//Esto se entromete un poco en las funciones de GamePrinter, hay que pensar otra forma
-			System.out.println("Command >");
-			userInput = scanner.nextLine().toLowerCase();
-			System.out.println("[DEBUG] Executing: " + userInput);
-			command = readCommand(userInput);
+			command = toCommand(getUserInput());
 			
 			if(command == Command.HELP) 
 				for (int i = 0; i < HELP.length; i++) 
@@ -118,6 +121,8 @@ public class Controller {
 			else if(command != null){
 				if(command == Command.TEST)
 					game.toggleTest();
+				else if(command == Command.RESET)
+					game.initialize();
 				else {
 					game.update(command);
 					game.removeDeadObjects();

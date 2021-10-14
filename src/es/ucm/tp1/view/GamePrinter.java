@@ -52,8 +52,12 @@ public class GamePrinter {
 		newLine =  System.getProperty("line.separator");
 	}
 	
+	private String elapsedTimeWithFormat() {
+		return String.format("%.02f", ((float)game.getElapsedTime() / 1000));
+	}
+	
 	private String getInfo() {
-		//TODO Información inicial
+		
 		StringBuilder info = new StringBuilder();
 		info.append("Distance: ");
 		info.append(game.getRoadLength() - game.getPlayerXPosition());
@@ -76,9 +80,9 @@ public class GamePrinter {
 		
 		if (!game.getTestingFlag()) {
 			info.append(newLine);
+			
 			info.append("Elapsed Time: ");
-			long elapsedTime = game.getElapsedTime();
-			info.append(String.format("%.02f", ((float)elapsedTime / 1000)));
+			info.append(elapsedTimeWithFormat());
 			info.append(" s");
 		}
 		
@@ -119,9 +123,8 @@ public class GamePrinter {
 		
 		String s = GAME_OVER_MSG;
 		
-		if (game.win()) {
+		if (game.win()) 
 			s += WIN_MSG;
-		}
 		else if(!game.playerIsAlive())
 			s += CRASH_MSG;
 		else
