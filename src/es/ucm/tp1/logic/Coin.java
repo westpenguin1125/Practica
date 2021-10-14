@@ -32,6 +32,10 @@ public class Coin {
 		numCoins--;
 	}
 	
+	public void deactivate() {
+		activated = false;
+	}
+	
 	public static int getNumCoins() {
 		return numCoins;
 	}
@@ -46,11 +50,6 @@ public class Coin {
 	
 	public boolean isDeactivated() {
 		return !activated;
-	}
-	
-	public void deactivate() {
-		activated = false;
-		
 	}
 	
 	public boolean isIn(int x, int y) {

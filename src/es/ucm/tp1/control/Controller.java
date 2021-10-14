@@ -17,7 +17,7 @@ public class Controller {
 	private static final String[] HELP = new String[] {
 		"Available commands:",
 		"[h]elp: show this help",
-		"[i]nfo: prints gameobjet info",
+		"[i]nfo: prints gameobject info",
 		"[n]one | []: update",
 		"[q]: go up",
 		"[a]: go down",
@@ -28,7 +28,7 @@ public class Controller {
 	/* @formatter:off */
 	private static final String[] INFO = new String[] {
 		"Available objects"	+ ":",
-		 "[Car] the racin car",
+		 "[Car] the racing car",
 		 "[Coin] gives 1 coin to the player",
 		 "[Obstacle] hits car",
 	};
@@ -50,9 +50,11 @@ public class Controller {
 	private String getUserInput() {
 		String userInput;
 		
-		System.out.println("Command >");
-		userInput = scanner.nextLine().toLowerCase();
+		System.out.println("Command > ");
+		userInput = scanner.nextLine();
 		System.out.println("[DEBUG] Executing: " + userInput);
+		
+		userInput = userInput.toLowerCase();
 		
 		return userInput;
 	}
@@ -93,7 +95,7 @@ public class Controller {
 			comando = Command.TEST;
 		}
 		else {
-			System.out.println(UNKNOWN_COMMAND_MSG);
+			System.out.println("[ERROR]: " + UNKNOWN_COMMAND_MSG);
 			comando = null;
 		}
 	
