@@ -34,9 +34,9 @@ public class Game {
 		player = new Player(0, level.getRoadWidth() / 2, this);
 		
 		random = new Random(seed);
+		
 		testingFlag = false;
 		numCycles = 0;
-		
 	}
 	
 	private double getRandomNumber() {
@@ -68,12 +68,14 @@ public class Game {
 	}
 	
 	public void initialize() {
-		player.initialize(0, level.getRoadWidth() / 2);
 		random.setSeed(seed);
-		elapsedTime = 0;
+		player.initialize(0, level.getRoadWidth() / 2);
 		
 		tryToFillObjectLists();
 		numCycles = 0;
+
+		startTime = System.currentTimeMillis();
+		elapsedTime = 0;
 	}
 	
 	public void update(Command command) {
@@ -90,6 +92,7 @@ public class Game {
 		}
 		
 		player.doCollitions();
+		
 		numCycles++;
 		if (numCycles == 1) {
 			startTime = System.currentTimeMillis();
@@ -99,16 +102,10 @@ public class Game {
 		}
 	}
 	
-	public long getElapsedTime() {
-		return elapsedTime;
-	}
-	
-	//TODO
 	public void removeDeadObjects() {
 		coinList.removeDeadObjects();
 	}
 	
-	//TODO
 	public boolean checkEnd() {
 		return !player.isAlive() || player.getX() > level.getRoadLength();
 	}
@@ -130,6 +127,10 @@ public class Game {
 		return (coinIn(x, y) != null || obstacleIn(x, y) != null);
 	}
 	
+	public long getElapsedTime() {
+		return elapsedTime;
+	}
+	
 	public boolean getTestingFlag() {
 		return testingFlag;
 	}
@@ -149,7 +150,6 @@ public class Game {
 	public int getRoadWidth() {
 		return level.getRoadWidth();
 	}
-	
 	
 	public int getPlayerXPosition() {
 		return player.getX();
@@ -183,7 +183,4 @@ public class Game {
 		
 		return symbolToPrint;
 	}
-
-
-
 }

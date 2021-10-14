@@ -50,9 +50,6 @@ public class GamePrinter {
 
 		indentedLlanesSeparator = String.format("%n%s%s%n", margin, lanesSeparator);
 		newLine =  System.getProperty("line.separator");
-		
-
-		newLine =  System.getProperty("line.separator");
 	}
 	
 	private String getInfo() {
@@ -60,31 +57,31 @@ public class GamePrinter {
 		StringBuilder info = new StringBuilder();
 		info.append("Distance: ");
 		info.append(game.getRoadLength() - game.getPlayerXPosition());
-		info.append(System.getProperty("line.separator"));
+		info.append(newLine);
 		
 		info.append("Coins: ");
 		info.append(game.getPlayerCoins());
-		info.append(System.getProperty("line.separator"));
+		info.append(newLine);
 		
 		info.append("Cycle: ");
 		info.append(game.getNumCycles());
-		info.append(System.getProperty("line.separator"));
+		info.append(newLine);
 		
 		info.append("Total obstacles: ");
 		info.append(game.getNumObstacles());//hacerlo con statics 
-		info.append(System.getProperty("line.separator"));
+		info.append(newLine);
 		
 		info.append("Total coins: ");
 		info.append(game.getNumCoins());//hacerlo con statics 
-		info.append(System.getProperty("line.separator"));
 		
-		if (game.getTestingFlag()) {
+		if (!game.getTestingFlag()) {
+			info.append(newLine);
 			info.append("Elapsed Time: ");
 			long elapsedTime = game.getElapsedTime();
 			info.append(String.format("%.02f", ((float)elapsedTime / 1000)));
 			info.append(" s");
-			info.append(System.getProperty("line.separator"));
 		}
+		
 		return info.toString();
 	}
 	
@@ -123,6 +120,8 @@ public class GamePrinter {
 		String s = GAME_OVER_MSG;
 		
 		// TODO your code here
+		//Una funcion que valore la informacion de game
+		//y devuelva la constante necesaria para informar de un choque, victoria o abandono
 		
 		return s;
 	}

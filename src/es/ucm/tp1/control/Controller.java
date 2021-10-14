@@ -50,7 +50,6 @@ public class Controller {
 	public void printGame() {
 		System.out.println(printer);
 	}
-	
 
 	public void printEndMessage() {
 		System.out.println(printer.endMessage());
@@ -58,6 +57,7 @@ public class Controller {
 
 	private Command readCommand(String userInput) {
 		Command comando;
+		
 		if (userInput.startsWith("h")) {
 			comando = Command.HELP;
 		}
@@ -94,12 +94,18 @@ public class Controller {
 	public void run() {
 		
 		Command command;
+		String userInput;
 		
 		game.initialize();
 		printGame();
 		
 		while (!endGame) {
-			command = readCommand(scanner.nextLine().toLowerCase());
+			
+			//Esto se entromete un poco en las funciones de GamePrinter, hay que pensar otra forma
+			System.out.println("Command >");
+			userInput = scanner.nextLine().toLowerCase();
+			System.out.println("[DEBUG] Executing: " + userInput);
+			command = readCommand(userInput);
 			
 			if(command == Command.HELP) 
 				for (int i = 0; i < HELP.length; i++) 
@@ -110,16 +116,19 @@ public class Controller {
 			else if(command == Command.EXIT) 
 				endGame = true;
 			else if(command != null){
-				game.update(command);
+				if(command == Command.TEST)
+					game.toggleTest();
+				else {
+					game.update(command);
+					game.removeDeadObjects();
+					endGame = game.checkEnd();
+				}
 				printGame();
-					
-				game.removeDeadObjects();
-				endGame = game.checkEnd();
 			}
 		}
 		
 		printGame();
-		System.out.println(printer.endMessage());
+		printEndMessage();
 	}
 	
 
