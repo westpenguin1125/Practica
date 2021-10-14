@@ -22,8 +22,6 @@ public enum Level {
 		this.coinFrequency = coinFrequency;
 	}
 
-	// TODO fill your code
-
 	public static Level valueOfIgnoreCase(String inputString) {
 		for (Level level : Level.values()) {
 			if (level.name().equalsIgnoreCase(inputString)) {
@@ -32,8 +30,6 @@ public enum Level {
 		}
 		return null;
 	}
-	
-	
 
 	public static String all(String separator) {
 		StringBuilder buffer = new StringBuilder();
@@ -68,5 +64,4 @@ public enum Level {
 	public double getObstacleFrequency() {
 		return obstacleFrequency;
 	}
-	
 }

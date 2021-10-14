@@ -68,11 +68,11 @@ public class GamePrinter {
 		info.append(newLine);
 		
 		info.append("Total obstacles: ");
-		info.append(game.getNumObstacles());//hacerlo con statics 
+		info.append(game.getNumObstacles());
 		info.append(newLine);
 		
 		info.append("Total coins: ");
-		info.append(game.getNumCoins());//hacerlo con statics 
+		info.append(game.getNumCoins());
 		
 		if (!game.getTestingFlag()) {
 			info.append(newLine);
@@ -119,9 +119,13 @@ public class GamePrinter {
 		
 		String s = GAME_OVER_MSG;
 		
-		// TODO your code here
-		//Una funcion que valore la informacion de game
-		//y devuelva la constante necesaria para informar de un choque, victoria o abandono
+		if (game.win()) {
+			s += WIN_MSG;
+		}
+		else if(!game.playerIsAlive())
+			s += CRASH_MSG;
+		else
+			s += DO_EXIT_MSG;
 		
 		return s;
 	}

@@ -27,7 +27,7 @@ public class Controller {
 	};
 	/* @formatter:off */
 	private static final String[] INFO = new String[] {
-		"Available objects:",
+		"Available objects"	+ ":",
 		 "[Car] the racin car",
 		 "[Coin] gives 1 coin to the player",
 		 "[Obstacle] hits car",
@@ -127,7 +127,6 @@ public class Controller {
 			}
 		}
 		
-		printGame();
 		printEndMessage();
 	}
 	

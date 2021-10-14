@@ -12,31 +12,15 @@ public class ObstacleList {
 		
 	} 
 	
-	public int getNumObstacles() {
-		return numObstacles;
-	}
+	
 	
 	public void addObstacle(Obstacle o) {
 		
 		if (numObstacles < obstacleList.length) {
 			obstacleList[numObstacles] = o;
 			numObstacles++;
+			o.onEnter();
 		}
-	}
-	
-	public void removeObstacle(Obstacle o) {
-		
-		Obstacle aux[] = new Obstacle[numObstacles];
-		int i = 0;
-		
-		for (Obstacle obstacle : obstacleList) {
-			if (!obstacle.equals(o)) {
-				aux[i] = obstacle;
-				i++;
-			}
-		}
-		numObstacles = i;
-		obstacleList = aux;
 	}
 	
 	public Obstacle obstacleIn(int x, int y) {
@@ -47,11 +31,4 @@ public class ObstacleList {
 		
 		return (i == numObstacles) ? null : obstacleList[i];
 	}
-	
-	//Podemos borrarlo?
-	@Override
-	public String toString() {
-		return obstacleList[0].toString();
-	}
-	
 }

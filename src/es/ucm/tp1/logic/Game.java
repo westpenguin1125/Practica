@@ -8,6 +8,7 @@ import es.ucm.tp1.control.Command;
 
 public class Game {
 	
+	private final String GOAL_SYMBOL = "¦";
 	private CoinList coinList;
 	private ObstacleList obstacleList;
 	
@@ -89,17 +90,18 @@ public class Game {
 				player.moveDown();
 			
 			player.moveForward();	
+			
+			player.doCollitions();
+			
+			numCycles++;
+			if (numCycles == 1) {
+				startTime = System.currentTimeMillis();
+			}
+			else {
+				elapsedTime = System.currentTimeMillis() - startTime;
+			}
 		}
 		
-		player.doCollitions();
-		
-		numCycles++;
-		if (numCycles == 1) {
-			startTime = System.currentTimeMillis();
-		}
-		else {
-			elapsedTime = System.currentTimeMillis() - startTime;
-		}
 	}
 	
 	public void removeDeadObjects() {
@@ -107,11 +109,10 @@ public class Game {
 	}
 	
 	public boolean checkEnd() {
-		return !player.isAlive() || player.getX() > level.getRoadLength();
+		return !playerIsAlive() || win();
 	}
 	
 	public void toggleTest() {
-		//TOASK Esto es todo?
 		testingFlag = true;
 	}
 	
@@ -159,25 +160,35 @@ public class Game {
 	}
 	
 	public Object getNumObstacles() {
-		return obstacleList.getNumObstacles();
+		return Obstacle.getNumObstacles();
 	}
 	
 	public Object getNumCoins() {
-		return coinList.getNumCoins();
+		return Coin.getNumCoins();
+	}
+	public boolean playerIsAlive() {
+		return player.isAlive();
 	}
 	
-	//Se debería sumar aqui esto? no Pertenece a Game creo yo
+	public boolean win() {
+		return player.getX() > getRoadLength();
+	}
+	
 	public String positionToString(int x, int y) {
-		String symbolToPrint;
-		Coin c = coinList.coinIn(x + player.getX(), y);
-		Obstacle o = obstacleList.obstacleIn(x + player.getX(), y);
+		x +=  player.getX();
 		
-		if (player.isIn(x + player.getX(), y)) 
+		String symbolToPrint;
+		Coin c = coinList.coinIn(x, y);
+		Obstacle o = obstacleList.obstacleIn(x, y);
+		
+		if (player.isIn(x, y)) 
 			symbolToPrint = player.toString();
 		else if(c != null)
 			symbolToPrint = c.toString();
 		else if(o != null)
 			symbolToPrint = o.toString();
+		else if (getRoadLength() == x) 
+			symbolToPrint = GOAL_SYMBOL;
 		else
 			symbolToPrint = "";
 		

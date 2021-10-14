@@ -19,7 +19,6 @@ public class Player {
 		this.x = x;
 		this.y = y;
 		
-		numCoins = 5;
 		numLifes = 1;
 		this.game = game;
 		
@@ -29,11 +28,6 @@ public class Player {
 		this.x = x;
 		this.y = y;
 		numCoins = 5;
-	}
-	
-	private void moveTo(int x, int y) {
-		this.x = x;
-		this.y = y;
 	}
 	
 	public boolean isAlive() {

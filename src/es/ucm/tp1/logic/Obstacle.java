@@ -4,6 +4,8 @@ public class Obstacle {
 	
 	final private String OBSTACLE_SYMBOL = "░";
 
+	private static int numObstacles;
+
 	private int x;
 	private int y;
 	private Game game;
@@ -14,6 +16,14 @@ public class Obstacle {
 		this.y = y;
 
 		this.game = game;
+	}
+	
+	public void onEnter() {
+		numObstacles++;
+	}
+	
+	public static int getNumObstacles() {
+		return numObstacles;
 	}
 	
 	public int getX() {

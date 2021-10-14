@@ -12,15 +12,12 @@ public class CoinList {
 		
 	}
 	
-	public int getNumCoins() {
-		return numCoins;
-	}
-	
 	public void addCoin(Coin c) {
 		
 		if (numCoins < coinList.length) {
 			coinList[numCoins] = c;
 			numCoins++;
+			c.onEnter();
 		}
 	}
 	
@@ -42,8 +39,10 @@ public class CoinList {
 
 	public void removeDeadObjects() {
 		for(int i = 0; i < numCoins; i++) {
-			if(coinList[i].isDeactivated())
+			if(coinList[i].isDeactivated()) {
+				coinList[i].onDelete();
 				removeCoin(coinList[i]);
+			}
 		}
 	}
 	
@@ -54,11 +53,5 @@ public class CoinList {
 			i++;
 		
 		return (i == numCoins) ? null : coinList[i];
-	}
-	
-	//Podemos borrarlo?
-	@Override
-	public String toString() {
-		return coinList[0].toString();
 	}
 }
