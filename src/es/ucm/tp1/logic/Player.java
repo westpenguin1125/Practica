@@ -17,12 +17,7 @@ public class Player {
 
 		this.game = game;
 		
-		this.x = x;
-		this.y = y;
-		
-		//Esto hace falta?
-		numLifes = 1;
-		numCoins = 5;
+		initialize(x, y);
 	}
 	
 	public void initialize(int x, int y) {

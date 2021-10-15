@@ -37,7 +37,7 @@ public class Game {
 		
 		random = new Random(seed);
 		
-		testingFlag = false;
+		testingFlag = level == Level.TEST;
 		numCycles = 0;
 	}
 	
@@ -75,8 +75,7 @@ public class Game {
 		
 		tryToFillObjectLists();
 		numCycles = 0;
-
-		startTime = System.currentTimeMillis();
+		
 		elapsedTime = 0;
 	}
 	
@@ -92,12 +91,11 @@ public class Game {
 		player.doCollitions();
 			
 		numCycles++;
-		if (numCycles == 1) {
+		
+		if (numCycles == 1)
 			startTime = System.currentTimeMillis();
-		}
-		else {
-			elapsedTime = System.currentTimeMillis() - startTime;
-		}
+		
+		elapsedTime = System.currentTimeMillis() - startTime;
 	}
 	
 	public void removeDeadObjects() {
