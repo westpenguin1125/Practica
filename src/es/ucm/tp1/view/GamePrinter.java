@@ -39,7 +39,6 @@ public class GamePrinter {
 
 	public GamePrinter(Game game) {
 		this.game = game;
-		
 
 		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
 
@@ -51,20 +50,32 @@ public class GamePrinter {
 
 		indentedLlanesSeparator = String.format("%n%s%s%n", margin, lanesSeparator);
 		newLine =  System.getProperty("line.separator");
-		
-
-		newLine =  System.getProperty("line.separator");
 	}
 	
-
-
+	private String elapsedTimeWithFormat() {
+		return String.format("%.02f", ((float)game.getElapsedTime() / 1000));
+	}
+	
 	private String getInfo() {
-
-		// TODO add your code
-		return "";
+		
+		StringBuilder info = new StringBuilder();
+		
+		info.append("Distance: " + game.getRemainingDistance() + newLine);
+		info.append("Coins: " + game.getPlayerCoins() + newLine);
+		info.append("Cycle: " + game.getNumCycles() + newLine);
+		info.append("Total obstacles: " + game.getNumObstacles() + newLine);
+		info.append("Total coins: " + game.getNumCoins());
+		
+		if (!game.getTestingFlag()) {
+			info.append(newLine);
+			
+			info.append("Elapsed Time: " + elapsedTimeWithFormat() + " s");
+		}
+		
+		return info.toString();
 	}
-
 	
+
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
@@ -93,14 +104,21 @@ public class GamePrinter {
 
 		return str.toString();
 	}
-
 	
 	public String endMessage(){
 		
 		String s = GAME_OVER_MSG;
 		
-		// TODO your code here
+		if (game.win()) 
+			s += WIN_MSG;
+		else if(!game.playerIsAlive())
+			s += CRASH_MSG;
+		else
+			s += DO_EXIT_MSG;
 		
 		return s;
 	}
+
+
+
 }

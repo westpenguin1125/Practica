@@ -9,28 +9,49 @@ public class CoinList {
 		
 		coinList = new Coin[L];
 		numCoins = 0;
+
+	}
+	
+	private void removeCoin(Coin c) {
+
+		Coin aux[] = new Coin[numCoins];
+		int num = 0;
 		
+		for (int i = 0; i < numCoins; i++) {
+			if (!coinList[i].equals(c)) {
+				aux[num] = coinList[i];
+				num++;
+			}
+		}
+		
+		numCoins = num;
+		coinList = aux;
+	}
+
+	public void removeDeadCoins() {
+		for(int i = 0; i < numCoins; i++) {
+			if(coinList[i].isDeactivated()) {
+				coinList[i].onDelete();
+				removeCoin(coinList[i]);
+			}
+		}
 	}
 	
 	public void addCoin(Coin c) {
 		
 		if (numCoins < coinList.length) {
 			coinList[numCoins] = c;
+			coinList[numCoins].onEnter();
 			numCoins++;
 		}
 	}
 	
-	public void removeCoin(Coin c) {
-		Coin aux[] = new Coin[numCoins];
+	public Coin coinIn(int x, int y) {
 		int i = 0;
+
+		while(i < numCoins && !coinList[i].isIn(x, y))
+			i++;
 		
-		for (Coin coin : coinList) {
-			if (coin != c) {
-				aux[i] = coin;
-				i++;
-			}
-		}
-		numCoins = i;
-		coinList = aux;
+		return (i == numCoins) ? null : coinList[i];
 	}
 }

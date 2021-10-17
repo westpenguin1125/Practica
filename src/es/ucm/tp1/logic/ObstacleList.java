@@ -10,27 +10,23 @@ public class ObstacleList {
 		obstacleList = new Obstacle[L];
 		numObstacles = 0;
 		
-	}
+	} 
 	
 	public void addObstacle(Obstacle o) {
 		
 		if (numObstacles < obstacleList.length) {
 			obstacleList[numObstacles] = o;
 			numObstacles++;
+			o.onEnter();
 		}
 	}
-	
-	public void removeObstacle(Obstacle o) {
-		Obstacle aux[] = new Obstacle[numObstacles];
+  
+	public Obstacle obstacleIn(int x, int y) {
 		int i = 0;
 		
-		for (Obstacle obstacle : obstacleList) {
-			if (obstacle != o) {
-				aux[i] = obstacle;
-				i++;
-			}
-		}
-		numObstacles = i;
-		obstacleList = aux;
+		while(i < numObstacles && !obstacleList[i].isIn(x, y))
+			i++;
+		
+		return (i == numObstacles) ? null : obstacleList[i];
 	}
 }
