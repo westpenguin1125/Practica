@@ -20,7 +20,7 @@ public class ObstacleList {
 			o.onEnter();
 		}
 	}
-	
+  
 	public Obstacle obstacleIn(int x, int y) {
 		int i = 0;
 		

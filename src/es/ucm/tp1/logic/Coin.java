@@ -2,7 +2,6 @@ package es.ucm.tp1.logic;
 
 public class Coin {
 	
-	
 	final private String COIN_SYMBOL = "¢";
 
 	private static int numCoins;
@@ -17,7 +16,7 @@ public class Coin {
 	public Coin(int x, int y, Game game) {
 
 		this.game = game;
-
+    
 		this.x = x;
 		this.y = y;
 		
