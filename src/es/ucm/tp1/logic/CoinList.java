@@ -11,24 +11,6 @@ public class CoinList {
 		numCoins = 0;
 
 	}
-
-	public void removeDeadCoins() {
-		for(int i = 0; i < numCoins; i++) {
-			if(coinList[i].isDeactivated()) {
-				coinList[i].onDelete();
-				removeCoin(coinList[i]);
-			}
-		}
-	}
-	
-	public void addCoin(Coin c) {
-		
-		if (numCoins < coinList.length) {
-			coinList[numCoins] = c;
-			numCoins++;
-			c.onEnter();
-		}
-	}
 	
 	private void removeCoin(Coin c) {
 
@@ -44,6 +26,24 @@ public class CoinList {
 		
 		numCoins = num;
 		coinList = aux;
+	}
+
+	public void removeDeadCoins() {
+		for(int i = 0; i < numCoins; i++) {
+			if(coinList[i].isDeactivated()) {
+				coinList[i].onDelete();
+				removeCoin(coinList[i]);
+			}
+		}
+	}
+	
+	public void addCoin(Coin c) {
+		
+		if (numCoins < coinList.length) {
+			coinList[numCoins] = c;
+			coinList[numCoins].onEnter();
+			numCoins++;
+		}
 	}
 	
 	public Coin coinIn(int x, int y) {

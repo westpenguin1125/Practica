@@ -20,6 +20,14 @@ public class Player {
 		initialize(x, y);
 	}
 	
+	private void increaseCoins() {
+		numCoins++;
+	}
+
+	private void decreaseLife() {
+		numLifes--;
+	}
+	
 	public void initialize(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -53,14 +61,6 @@ public class Player {
 		y--;
 	}
 	
-	public void increaseCoins() {
-		numCoins++;
-	}
-
-	public void decreaseLife() {
-		numLifes--;
-	}
-	
 	public boolean isAlive() {
 		return numLifes > 0;
 	}
@@ -85,5 +85,4 @@ public class Player {
 	public String toString() {
 		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
 	}
-	
 }

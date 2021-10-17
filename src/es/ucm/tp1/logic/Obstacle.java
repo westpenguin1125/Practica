@@ -56,6 +56,5 @@ public class Obstacle {
 			return (x == ((Obstacle) obj).getX() && 
 					y == ((Obstacle) obj).getY());
 		}
-	}
-	
+	}	
 }

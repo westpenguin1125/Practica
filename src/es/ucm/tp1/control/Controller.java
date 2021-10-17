@@ -59,11 +59,11 @@ public class Controller {
 		return userInput;
 	}
 
-	public void printGame() {
+	private void printGame() {
 		System.out.println(printer);
 	}
 
-	public void printEndMessage() {
+	private void printEndMessage() {
 		System.out.println(printer.endMessage());
 	}
 
@@ -95,7 +95,7 @@ public class Controller {
 			comando = Command.TEST;
 		}
 		else {
-			System.out.println("[ERROR]: " + UNKNOWN_COMMAND_MSG);
+			System.out.println("[ERROR]: " + UNKNOWN_COMMAND_MSG + "\n");
 			comando = null;
 		}
 	
@@ -136,6 +136,4 @@ public class Controller {
 		
 		printEndMessage();
 	}
-	
-
 }

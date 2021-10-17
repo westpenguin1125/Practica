@@ -146,8 +146,8 @@ public class Game {
 		return level.getRoadWidth();
 	}
 	
-	public int getPlayerXPosition() {
-		return player.getX();
+	public int getRemainingDistance() {
+		return getRoadLength() - player.getX();
 	}
 	public int getPlayerCoins() {
 		return player.getNumCoins();

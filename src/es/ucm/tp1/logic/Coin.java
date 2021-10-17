@@ -74,5 +74,4 @@ public class Coin {
 					y == ((Coin) obj).getY());
 		}
 	}
-	
 }

@@ -59,31 +59,17 @@ public class GamePrinter {
 	private String getInfo() {
 		
 		StringBuilder info = new StringBuilder();
-		info.append("Distance: ");
-		info.append(game.getRoadLength() - game.getPlayerXPosition());
-		info.append(newLine);
 		
-		info.append("Coins: ");
-		info.append(game.getPlayerCoins());
-		info.append(newLine);
-		
-		info.append("Cycle: ");
-		info.append(game.getNumCycles());
-		info.append(newLine);
-		
-		info.append("Total obstacles: ");
-		info.append(game.getNumObstacles());
-		info.append(newLine);
-		
-		info.append("Total coins: ");
-		info.append(game.getNumCoins());
+		info.append("Distance: " + game.getRemainingDistance() + newLine);
+		info.append("Coins: " + game.getPlayerCoins() + newLine);
+		info.append("Cycle: " + game.getNumCycles() + newLine);
+		info.append("Total obstacles: " + game.getNumObstacles() + newLine);
+		info.append("Total coins: " + game.getNumCoins());
 		
 		if (!game.getTestingFlag()) {
 			info.append(newLine);
 			
-			info.append("Elapsed Time: ");
-			info.append(elapsedTimeWithFormat());
-			info.append(" s");
+			info.append("Elapsed Time: " + elapsedTimeWithFormat() + " s");
 		}
 		
 		return info.toString();
