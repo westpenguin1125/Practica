@@ -83,6 +83,7 @@ public class Player {
 	
 	@Override
 	public String toString() {
+		//TOASK Quizá esta condicion se deberia evaluar desde game?
 		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
 	}
 }

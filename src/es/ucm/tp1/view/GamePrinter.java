@@ -80,11 +80,7 @@ public class GamePrinter {
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 
-		// Game Status
-		
 		str.append(getInfo());
-		
-		// Paint game
 
 		str.append(indentedRoadBorder);
 
@@ -118,7 +114,4 @@ public class GamePrinter {
 		
 		return s;
 	}
-
-
-
 }

@@ -8,7 +8,7 @@ import es.ucm.tp1.view.GamePrinter;
 
 
 public class Controller {
-	private int a = 0;
+	
 	private static final String PROMPT = "Command > ";
 
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
@@ -50,7 +50,7 @@ public class Controller {
 	private String getUserInput() {
 		String userInput;
 		
-		System.out.println("Command > ");
+		System.out.println(PROMPT);
 		userInput = scanner.nextLine();
 		System.out.println("[DEBUG] Executing: " + userInput);
 		
@@ -70,34 +70,24 @@ public class Controller {
 	private Command toCommand(String userInput) {
 		Command comando;
 		
-		if (userInput.startsWith("h")) {
+		if (userInput.startsWith("h")) 
 			comando = Command.HELP;
-		}
-		else if (userInput.startsWith("i")) {
+		else if (userInput.startsWith("i")) 
 			comando = Command.INFO;
-		}
-		else if (userInput.startsWith("q")) {
+		else if (userInput.startsWith("q")) 
 			comando = Command.UP;
-		}
-		else if (userInput.startsWith("a")) {
+		else if (userInput.startsWith("a")) 
 			comando = Command.DOWN;
-		}
-		else if (userInput.startsWith("n") || userInput.equals("")) {
+		else if (userInput.startsWith("n") || userInput.equals("")) 
 			comando = Command.FORWARD;
-		}
-		else if (userInput.startsWith("e")) {
+		else if (userInput.startsWith("e")) 
 			comando = Command.EXIT;
-		}
-		else if (userInput.startsWith("r")) {
+		else if (userInput.startsWith("r")) 
 			comando = Command.RESET;
-		}
-		else if (userInput.startsWith("t")) {
+		else if (userInput.startsWith("t")) 
 			comando = Command.TEST;
-		}
-		else {
-			System.out.println("[ERROR]: " + UNKNOWN_COMMAND_MSG + "\n");
+		else 
 			comando = null;
-		}
 	
 		return comando;
 	}
@@ -132,6 +122,9 @@ public class Controller {
 				}
 				printGame();
 			}
+			else
+				//TOASK Está bien aqui? y en GamePrinter?
+				System.out.println("[ERROR]: " + UNKNOWN_COMMAND_MSG + "\n");
 		}
 		
 		printEndMessage();

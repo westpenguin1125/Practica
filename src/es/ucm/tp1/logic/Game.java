@@ -24,6 +24,7 @@ public class Game {
 	
 	private long startTime;
 	private long elapsedTime;
+	
 	public Game(long seed, Level level) {
 
 		coinList = new CoinList(level.getRoadLength());
