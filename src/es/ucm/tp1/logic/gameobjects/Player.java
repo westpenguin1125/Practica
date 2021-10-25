@@ -1,4 +1,7 @@
-package es.ucm.tp1.logic;
+package es.ucm.tp1.logic.gameobjects;
+
+//TODO No se sabe si esto se debe hacer. No lo creo
+import es.ucm.tp1.control.commands.Command;
 
 public class Player {
 
@@ -36,6 +39,18 @@ public class Player {
 		numLifes = 1;
 	}
 	
+	//TODO Solo se ha hecho para la corrección de la práctica 1, seguramente haya que quitarlo
+	void update(Command command) {
+		if(command == Command.UP && y > 0)
+			moveUp();
+		else if(command == Command.DOWN && y < game.getRoadWidth() - 1)
+			moveDown();
+			
+		moveForward();	
+		
+		doCollitions();
+	}
+	
 	public void doCollitions() {
 		Coin c = game.coinIn(x, y);
 		Obstacle o = game.obstacleIn(x, y);
@@ -69,10 +84,6 @@ public class Player {
 		return x;
 	}
 	
-	public int getY() {
-		return y;
-	}
-	
 	public int getNumCoins() {
 		return numCoins;
 	}
@@ -83,7 +94,6 @@ public class Player {
 	
 	@Override
 	public String toString() {
-		//TOASK Quizá esta condicion se deberia evaluar desde game?
 		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
 	}
 }

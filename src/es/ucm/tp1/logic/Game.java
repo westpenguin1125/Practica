@@ -3,8 +3,8 @@ package es.ucm.tp1.logic;
 import java.util.Random;
 
 import es.ucm.tp1.control.Level;
-import es.ucm.tp1.control.Command;
-
+//TODO Quizá haya que importar Player. Por ver
+//TODO Quizá haya que importar Command
 
 public class Game {
 	
@@ -81,14 +81,7 @@ public class Game {
 	
 	public void update(Command command) {
 		
-		if(command == Command.UP && player.getY() > 0)
-			player.moveUp();
-		else if(command == Command.DOWN && player.getY() < level.getRoadWidth() - 1)
-			player.moveDown();
-			
-		player.moveForward();	
-		
-		player.doCollitions();
+		player.update(command);
 			
 		numCycles++;
 		
