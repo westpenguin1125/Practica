@@ -1,9 +1,12 @@
-package es.ucm.tp1.logic;
+package es.ucm.tp1.logic.gameobjects;
 
-public class Obstacle {
+import es.ucm.tp1.logic.Game;
+
+public class Obstacle extends GameObject{
 	
 	final private String OBSTACLE_SYMBOL = "░";
-
+	final private String OBSTACLE_INFO = "[Obstacle] hits car";
+	
 	private static int numObstacles;
 
 	private int x;
@@ -11,12 +14,12 @@ public class Obstacle {
 	
 	private Game game;
 	
-	public Obstacle(int x, int y, Game game) {
-
-		this.game = game;
-		
-		this.x = x;
-		this.y = y;
+	public Obstacle() {
+		objectInfo = OBSTACLE_INFO;
+	}
+	
+	public Obstacle(Game game, int x, int y) {
+		super(game, x, y);
 	}
 	
 	public void onEnter() {
@@ -56,5 +59,29 @@ public class Obstacle {
 			return (x == ((Obstacle) obj).getX() && 
 					y == ((Obstacle) obj).getY());
 		}
+	}
+
+	@Override
+	public boolean doCollision() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean receiveCollision(Player player) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onDelete() {
+		// TODO Auto-generated method stub
+		
 	}	
 }

@@ -1,5 +1,7 @@
 package es.ucm.tp1.logic;
 
+import es.ucm.tp1.logic.gameobjects.Coin;
+
 public class CoinList {
 
 	private Coin coinList[];

@@ -1,8 +1,10 @@
 package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
+import es.ucm.tp1.logic.GameObjectGenerator;
+
 import es.ucm.tp1.utils.StringUtils;
-import es.ucm.tp1.view.GamePrinter;
+//import es.ucm.tp1.view.GamePrinter;   -> maybe?
 
 public class InfoCommand extends Command {
 
@@ -17,11 +19,14 @@ public class InfoCommand extends Command {
 	public InfoCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
+	
+
 
 	@Override
 	public boolean execute(Game game) {
-		System.out.print("Available objects:");
-		// TODO add your code
+		System.out.println("Available objects: ");
+		System.out.println(GameObjectGenerator.getObjectInfo());
+		
 		return false;
 	}
 

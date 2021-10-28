@@ -1,13 +1,14 @@
 package es.ucm.tp1.logic.gameobjects;
 
 //TODO No se sabe si esto se debe hacer. No lo creo
-import es.ucm.tp1.control.commands.Command;
+import es.ucm.tp1.logic.Game;
 
-public class Player {
+//TODO extends GameObject
+public class Player extends GameObject{
 
 	private final String PLAYER_SYMBOL_ALIVE = ">";
 	private final String PLAYER_SYMBOL_DEAD= "@";
-	
+	private final String PLAYER_INFO = "[Car] the racing car";
 	private Game game;
 	
 	private int x;
@@ -16,8 +17,12 @@ public class Player {
 	private int numCoins;
 	private int numLifes;
 	
-	public Player(int x, int y, Game game) {
-
+	public Player() {
+		objectInfo = PLAYER_INFO;
+	}
+	
+	public Player(Game game, int x, int y) {
+		
 		this.game = game;
 		
 		initialize(x, y);
@@ -40,16 +45,16 @@ public class Player {
 	}
 	
 	//TODO Solo se ha hecho para la corrección de la práctica 1, seguramente haya que quitarlo
-	void update(Command command) {
-		if(command == Command.UP && y > 0)
-			moveUp();
-		else if(command == Command.DOWN && y < game.getRoadWidth() - 1)
-			moveDown();
-			
-		moveForward();	
-		
-		doCollitions();
-	}
+//	void update(Command command) {
+//		if(command == Command.UP && y > 0)
+//			moveUp();
+//		else if(command == Command.DOWN && y < game.getRoadWidth() - 1)
+//			moveDown();
+//			
+//		moveForward();	
+//		
+//		doCollitions();
+//	}
 	
 	public void doCollitions() {
 		Coin c = game.coinIn(x, y);
@@ -95,5 +100,36 @@ public class Player {
 	@Override
 	public String toString() {
 		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
+	}
+	
+
+	@Override
+	public boolean doCollision() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean receiveCollision(Player player) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onEnter() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onDelete() {
+		// TODO Auto-generated method stub
+		
 	}
 }

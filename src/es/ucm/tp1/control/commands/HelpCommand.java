@@ -19,12 +19,10 @@ public class HelpCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		StringBuilder buffer = new StringBuilder("Available commands:");
-
-		showAvailableCommands();
-
-		System.out.println(buffer.toString());
+		System.out.println("Available commands:");
+		System.out.println(availableCommandsToString());
 
 		return false;
 	}
+	
 }

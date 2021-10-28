@@ -10,7 +10,12 @@ public abstract class GameObject implements Collider {
 	protected Game game;
 
 	protected String symbol;
+	protected String objectInfo;
 
+	protected GameObject() {
+		
+	}
+	
 	public GameObject(Game game, int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -51,6 +56,10 @@ public abstract class GameObject implements Collider {
 	public abstract void update();
 
 	public abstract void onDelete();
+	
+	public String getObjectInfo() {
+		return objectInfo;
+	}
 
 
 	// TODO add your code

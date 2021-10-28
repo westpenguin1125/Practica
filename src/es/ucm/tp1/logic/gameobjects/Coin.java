@@ -1,26 +1,26 @@
-package es.ucm.tp1.logic;
+package es.ucm.tp1.logic.gameobjects;
 
-public class Coin {
+import es.ucm.tp1.logic.Game;
+
+public class Coin extends GameObject{
 	
 	final private String COIN_SYMBOL = "¢";
-
+	final private String COIN_INFO = "[Coin] gives one coin to the player";
 	private static int numCoins;
 	
-	private Game game;
-	
-	private int x;
-	private int y;
+
 	
 	private boolean activated;
 	
-	public Coin(int x, int y, Game game) {
-
-		this.game = game;
-    
-		this.x = x;
-		this.y = y;
+	public Coin() {
+		objectInfo = COIN_INFO;
+	}
+	
+	public Coin( Game game, int x, int y) {
 		
+		super(game, x, y);
 		activated = true;
+
 	}
 	
 	public void onEnter() {
@@ -73,4 +73,26 @@ public class Coin {
 					y == ((Coin) obj).getY());
 		}
 	}
+	
+
+	@Override
+	public boolean doCollision() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean receiveCollision(Player player) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
 }

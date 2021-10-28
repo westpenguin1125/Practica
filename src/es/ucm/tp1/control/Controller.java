@@ -76,7 +76,6 @@ public class Controller {
 		boolean refreshDisplay  = true;
 		
 		game.initialize();
-		printGame();
 		
 		while (!endGame) {
 			

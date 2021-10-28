@@ -1,5 +1,7 @@
 package es.ucm.tp1.logic;
 
+import es.ucm.tp1.logic.gameobjects.Obstacle;
+
 public class ObstacleList {
 	
 	private Obstacle obstacleList[];

@@ -18,12 +18,6 @@ public abstract class Command {
 		new UpdateCommand(),
 	};
 	/* @formatter:on */
-
-	//TOASK esta bn esto?
-	protected static void showAvailableCommands() {
-		for(int i = 0; i < AVAILABLE_COMMANDS.length; i++)
-			System.out.println(AVAILABLE_COMMANDS[i]);
-	}
 	
 	public static Command getCommand(String[] commandWords) {
 		int i = 0;
@@ -74,9 +68,17 @@ public abstract class Command {
 	}
 
 	// TODO Add your code
-	
-	@Override
-	public String toString() {
-		return details + ": " + help;
+	protected static String availableCommandsToString() {
+		StringBuilder buffer = new StringBuilder();
+		
+		//TODO tal vez nos de error en el futuro
+		for (Command command : AVAILABLE_COMMANDS) {
+			buffer.append(command.details + ": " + command.help);
+			buffer.append(System.lineSeparator());
+		}
+		
+		return buffer.toString();
 	}
+	
+	
 }

@@ -2,9 +2,10 @@ package es.ucm.tp1.logic;
 
 import java.util.Random;
 
-import es.ucm.tp1.control.Level;
-//TODO Quizá haya que importar Player. Por ver
-//TODO Quizá haya que importar Command
+import es.ucm.tp1.control.Level;//TODO -> maybe?
+import es.ucm.tp1.logic.gameobjects.Coin;
+import es.ucm.tp1.logic.gameobjects.Obstacle;
+import es.ucm.tp1.logic.gameobjects.Player;
 
 public class Game {
 	
@@ -33,7 +34,7 @@ public class Game {
 		this.seed = seed;
 		this.level = level;
 		
-		player = new Player(0, level.getRoadWidth() / 2, this);
+		player = new Player(this, 0, level.getRoadWidth() / 2 );
 		
 		random = new Random(seed);
 		
@@ -64,8 +65,8 @@ public class Game {
 	private void tryToFillObjectLists() {
 		
 		for(int i = getVisibility() / 2; i < getRoadLength(); i++) {
-			tryToAddObstacle(new Obstacle(i, getRandomLane(), this), level.getObstacleFrequency());
-			tryToAddCoin(new Coin(i, getRandomLane(), this), level.getCoinFrequency());
+			tryToAddObstacle(new Obstacle(this, i, getRandomLane()), level.getObstacleFrequency());
+			tryToAddCoin(new Coin(this, i, getRandomLane()), level.getCoinFrequency());
 		}
 	}
 	
@@ -79,17 +80,7 @@ public class Game {
 		elapsedTime = 0;
 	}
 	
-	public void update(Command command) {
-		
-		player.update(command);
-			
-		numCycles++;
-		
-		if (numCycles == 1)
-			startTime = System.currentTimeMillis();
-		
-		elapsedTime = System.currentTimeMillis() - startTime;
-	}
+	
 	
 	public void removeDeadObjects() {
 		coinList.removeDeadCoins();
