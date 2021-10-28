@@ -24,11 +24,9 @@ public class GameObjectGenerator {
 	
 	public static String getObjectInfo() {
 		StringBuilder buffer = new StringBuilder();
-		//TODO puede dar error en el futuro
-		for (GameObject gameObject : gameObjects) {
-			buffer.append(gameObject.getObjectInfo());
-			buffer.append(System.lineSeparator());
-		}
+		
+		for (GameObject gameObject : gameObjects) 
+			buffer.append(gameObject.getObjectInfo() + System.lineSeparator());
 		
 		return buffer.toString();
 	}

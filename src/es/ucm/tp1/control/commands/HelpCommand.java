@@ -24,5 +24,4 @@ public class HelpCommand extends Command {
 
 		return false;
 	}
-	
 }

@@ -5,12 +5,13 @@ import es.ucm.tp1.logic.Game;
 
 public abstract class GameObject implements Collider {
 
-	protected int x, y;
-
 	protected Game game;
+
+	protected int x, y;
 
 	protected String symbol;
 	protected String objectInfo;
+	//TODO ASK activated es el boolean que usaremos para isAlive()?
 	protected boolean activated;
 
 	protected GameObject() {
@@ -24,21 +25,18 @@ public abstract class GameObject implements Collider {
 		activated = true;
 	}
 
-	protected String getSymbol() {
-		return symbol;
-	}
+	public abstract void onEnter();
+
+	public abstract void update();
+
+	public abstract void onDelete();
 	
 	protected void deactivate() {
 		activated = false;
 	}
 
-	@Override
-	public String toString() {
-		if (isAlive()) {
-			return getSymbol();
-		}
-
-		return "";
+	protected String getSymbol() {
+		return symbol;
 	}
 
 	public boolean isInPosition(int x, int y) {
@@ -52,22 +50,28 @@ public abstract class GameObject implements Collider {
 	public int getY() {
 		return y;
 	}
+	
+	public boolean isDeactivated() {
+		return !activated;
+	}
 
 	public boolean isAlive() {
 		return true;
 	}
-
-	public abstract void onEnter();
-
-	public abstract void update();
-
-	public abstract void onDelete();
 	
 	public String getObjectInfo() {
 		return objectInfo;
 	}
 
+	@Override
+	public String toString() {
+		if (isAlive()) {
+			return getSymbol();
+		}
 
+		return "";
+	}
+	
 	// TODO add your code
 
 }

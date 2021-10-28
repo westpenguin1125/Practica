@@ -34,6 +34,17 @@ public abstract class Command {
 		else
 			return AVAILABLE_COMMANDS[i];
 	}
+	
+	protected static String availableCommandsToString() {
+		StringBuilder buffer = new StringBuilder();
+		
+		for (Command command : AVAILABLE_COMMANDS) {
+			buffer.append(command.details + ": " + command.help);
+			buffer.append(System.lineSeparator());
+		}
+		
+		return buffer.toString();
+	}
 
 	private final String name;
 
@@ -67,19 +78,4 @@ public abstract class Command {
 		}
 		return null;
 	}
-
-	// TODO Add your code
-	protected static String availableCommandsToString() {
-		StringBuilder buffer = new StringBuilder();
-		
-		//TODO tal vez nos de error en el futuro
-		for (Command command : AVAILABLE_COMMANDS) {
-			buffer.append(command.details + ": " + command.help);
-			buffer.append(System.lineSeparator());
-		}
-		
-		return buffer.toString();
-	}
-	
-	
 }

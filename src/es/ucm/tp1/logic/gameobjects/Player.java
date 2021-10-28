@@ -9,10 +9,6 @@ public class Player extends GameObject{
 	private final String PLAYER_SYMBOL_ALIVE = ">";
 	private final String PLAYER_SYMBOL_DEAD= "@";
 	private final String PLAYER_INFO = "[Car] the racing car";
-	private Game game;
-	
-	private int x;
-	private int y;
 	
 	private int numCoins;
 	private int numLifes;
@@ -22,10 +18,10 @@ public class Player extends GameObject{
 	}
 	
 	public Player(Game game, int x, int y) {
-		
-		this.game = game;
+		super(game, x, y);
 		
 		initialize(x, y);
+		//TODO Haria falta asignar el symbol? La funcionalidad es la misma si se deja esto como está y se sobreescribe el getSymbol de GameObject
 	}
 	
 	public void increaseCoins() {
@@ -56,34 +52,9 @@ public class Player extends GameObject{
 		return numLifes > 0;
 	}
 	
-	public int getX() {
-		return x;
-	}
-	
 	public int getNumCoins() {
 		return numCoins;
 	}
-	
-	@Override
-	public String toString() {		System.out.println("me he movido lol");
-
-		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
-	}
-	
-	/*
-	public void doCollitions() {
-		Coin c = game.coinIn(x, y);
-		Obstacle o = game.obstacleIn(x, y);
-		
-		if(c != null) {
-			c.deactivate();
-			increaseCoins();
-		}
-		else if(o != null) {
-			decreaseLife();
-		}
-	}
-	*/
 	
 	@Override
 	public boolean doCollision() {
@@ -96,6 +67,17 @@ public class Player extends GameObject{
 	}
 
 	@Override
+	public void update() {
+		x++;
+		doCollision();
+	}
+	
+	@Override
+	protected String getSymbol() {
+		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
+	}
+
+	@Override
 	public boolean receiveCollision(Player player) {
 		// TODO Auto-generated method stub
 		return false;
@@ -105,14 +87,6 @@ public class Player extends GameObject{
 	public void onEnter() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		x++;
-		doCollision();
-
 	}
 
 	@Override

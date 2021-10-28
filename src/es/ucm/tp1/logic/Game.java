@@ -5,7 +5,10 @@ import java.util.Random;
 import es.ucm.tp1.control.Level;//TODO -> maybe?
 //TODO ASK import de GameObject en Game, si no no se puede pasar como parametro al metodo tryToAddObject
 //Obstacle y Coin son temporales
-import es.ucm.tp1.logic.gameobjects.*;
+import es.ucm.tp1.logic.gameobjects.Coin;
+import es.ucm.tp1.logic.gameobjects.GameObject;
+import es.ucm.tp1.logic.gameobjects.Obstacle;
+import es.ucm.tp1.logic.gameobjects.Player;
 
 
 public class Game {
@@ -59,8 +62,7 @@ public class Game {
 //	}
 	
 	private void tryToAddCoin(Coin c, double freq) {
-		
-		if(getRandomNumber() < freq && gameObjectIn(c.getX(), c.getY()) != null)
+		if(getRandomNumber() < freq && gameObjectIn(c.getX(), c.getY()) != null) 
 			coinList.addCoin(c);
 	}
 	
@@ -91,6 +93,11 @@ public class Game {
 	public void update() {
 		player.update();
 		numCycles++;
+		
+		if(numCycles == 1) 
+			startTime = System.currentTimeMillis();
+		
+		elapsedTime = System.currentTimeMillis() - startTime;
 	}
 	
 	public void removeDeadObjects() {
@@ -167,17 +174,12 @@ public class Game {
 		x +=  player.getX();
 		
 		String symbolToPrint;
-		Coin c = coinList.coinIn(x, y);
-		Obstacle o = obstacleList.obstacleIn(x, y);
+		GameObject obj = objectList.gameObjectIn(x, y);
 		
-		if (player.isInPosition(x, y)) 
+		if(player.isInPosition(x, y))
 			symbolToPrint = player.toString();
-		else if(c != null)
-			symbolToPrint = c.toString();
-		else if(o != null)
-			symbolToPrint = o.toString();
-		else if (getRoadLength() == x) 
-			symbolToPrint = GOAL_SYMBOL;
+		else if(obj != null)
+			symbolToPrint = obj.toString();
 		else
 			symbolToPrint = "";
 		

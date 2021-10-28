@@ -15,7 +15,7 @@ public class UpdateCommand extends Command {
 	public UpdateCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-
+	
 	@Override
 	public boolean execute(Game game) {
 		// TODO add your code

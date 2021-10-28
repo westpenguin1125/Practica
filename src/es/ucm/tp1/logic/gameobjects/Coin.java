@@ -8,10 +8,6 @@ public class Coin extends GameObject{
 	final private String COIN_INFO = "[Coin] gives one coin to the player";
 	private static int numCoins;
 	
-
-	
-
-	
 	public Coin() {
 		objectInfo = COIN_INFO;
 	}
@@ -19,51 +15,12 @@ public class Coin extends GameObject{
 	public Coin( Game game, int x, int y) {
 		
 		super(game, x, y);
-	}
-	
-	public void onEnter() {
-		numCoins++;
-	}
-	
-	public void onDelete() {
-		numCoins--;
+		symbol = COIN_SYMBOL;
 	}
 	
 	public static int getNumCoins() {
 		return numCoins;
 	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
-	}
-	
-	public boolean isDeactivated() {
-		return !activated;
-	}
-	
-	@Override
-	public String toString() {
-		return COIN_SYMBOL;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if(this == obj)
-			return true;
-		else if(obj == null)
-			return false;
-		else if(getClass() != obj.getClass())
-			return false;
-		else {
-			return (x == ((Coin) obj).getX() &&
-					y == ((Coin) obj).getY());
-		}
-	}
-	
 
 	@Override
 	public boolean doCollision() {
@@ -84,7 +41,29 @@ public class Coin extends GameObject{
 		// TODO Auto-generated method stub
 		
 	}
-
 	
+	@Override
+	public void onEnter() {
+		numCoins++;
+	}
 	
+	@Override
+	public void onDelete() {
+		numCoins--;
+	}
+	
+	//TODO ASK Esto sigue teniendo sentido?
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		else if(obj == null)
+			return false;
+		else if(getClass() != obj.getClass())
+			return false;
+		else {
+			return (x == ((Coin) obj).getX() &&
+					y == ((Coin) obj).getY());
+		}
+	}
 }

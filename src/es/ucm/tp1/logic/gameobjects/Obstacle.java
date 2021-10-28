@@ -8,11 +8,6 @@ public class Obstacle extends GameObject{
 	final private String OBSTACLE_INFO = "[Obstacle] hits car";
 	
 	private static int numObstacles;
-
-	private int x;
-	private int y;
-	
-	private Game game;
 	
 	public Obstacle() {
 		objectInfo = OBSTACLE_INFO;
@@ -20,41 +15,11 @@ public class Obstacle extends GameObject{
 	
 	public Obstacle(Game game, int x, int y) {
 		super(game, x, y);
-	}
-	
-	public void onEnter() {
-		numObstacles++;
+		symbol = OBSTACLE_SYMBOL;
 	}
 	
 	public static int getNumObstacles() {
 		return numObstacles;
-	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
-	}
-	
-	@Override
-	public String toString() {
-		return OBSTACLE_SYMBOL;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if(this == obj)
-			return true;
-		else if(obj == null)
-			return false;
-		else if(getClass() != obj.getClass())
-			return false;
-		else {
-			return (x == ((Obstacle) obj).getX() && 
-					y == ((Obstacle) obj).getY());
-		}
 	}
 
 	@Override
@@ -74,10 +39,30 @@ public class Obstacle extends GameObject{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void onEnter() {
+		numObstacles++;
+	}
 
 	@Override
 	public void onDelete() {
 		// TODO Auto-generated method stub
 		
 	}	
+	
+	//TODO ASK tiene sentido mantener esto? Creo que no
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		else if(obj == null)
+			return false;
+		else if(getClass() != obj.getClass())
+			return false;
+		else {
+			return (x == ((Obstacle) obj).getX() && 
+					y == ((Obstacle) obj).getY());
+		}
+	}
 }

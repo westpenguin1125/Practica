@@ -20,8 +20,6 @@ public class InfoCommand extends Command {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
 	
-
-
 	@Override
 	public boolean execute(Game game) {
 		System.out.println("Available objects: ");
@@ -29,5 +27,4 @@ public class InfoCommand extends Command {
 		
 		return false;
 	}
-
 }

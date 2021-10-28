@@ -73,7 +73,7 @@ public class Controller {
 		
 		Command command;
 		String[] parameters;
-		boolean refreshDisplay  = true;
+		boolean refreshDisplay = true;
 		
 		game.initialize();
 		
