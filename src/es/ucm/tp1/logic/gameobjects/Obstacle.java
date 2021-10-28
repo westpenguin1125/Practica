@@ -38,10 +38,6 @@ public class Obstacle extends GameObject{
 		return y;
 	}
 	
-	public boolean isIn(int x, int y) {
-		return (this.x == x && this.y == y);
-	}
-	
 	@Override
 	public String toString() {
 		return OBSTACLE_SYMBOL;
@@ -69,7 +65,7 @@ public class Obstacle extends GameObject{
 
 	@Override
 	public boolean receiveCollision(Player player) {
-		// TODO Auto-generated method stub
+		player.decreaseLife();
 		return false;
 	}
 

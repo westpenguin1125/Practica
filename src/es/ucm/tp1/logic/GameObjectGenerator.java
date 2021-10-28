@@ -6,6 +6,8 @@ import es.ucm.tp1.logic.gameobjects.*;
 
 public class GameObjectGenerator {
 
+	
+	
 //	public static void generateGameObjects(Game game, Level level) {
 //
 //		for (int x = game.getVisibility() / 2; x < game.getRoadLength(); x++) {

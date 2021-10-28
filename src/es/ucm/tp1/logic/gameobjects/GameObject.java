@@ -11,6 +11,7 @@ public abstract class GameObject implements Collider {
 
 	protected String symbol;
 	protected String objectInfo;
+	protected boolean activated;
 
 	protected GameObject() {
 		
@@ -20,10 +21,15 @@ public abstract class GameObject implements Collider {
 		this.x = x;
 		this.y = y;
 		this.game = game;
+		activated = true;
 	}
 
 	protected String getSymbol() {
 		return symbol;
+	}
+	
+	protected void deactivate() {
+		activated = false;
 	}
 
 	@Override

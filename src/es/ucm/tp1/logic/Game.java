@@ -3,13 +3,16 @@ package es.ucm.tp1.logic;
 import java.util.Random;
 
 import es.ucm.tp1.control.Level;//TODO -> maybe?
-import es.ucm.tp1.logic.gameobjects.Coin;
-import es.ucm.tp1.logic.gameobjects.Obstacle;
-import es.ucm.tp1.logic.gameobjects.Player;
+//TODO ASK import de GameObject en Game, si no no se puede pasar como parametro al metodo tryToAddObject
+//Obstacle y Coin son temporales
+import es.ucm.tp1.logic.gameobjects.*;
+
 
 public class Game {
 	
 	private final String GOAL_SYMBOL = "¦";
+	private GameObjectContainer objectList;
+	//TODO Borrar
 	private CoinList coinList;
 	private ObstacleList obstacleList;
 	
@@ -27,7 +30,7 @@ public class Game {
 	private long elapsedTime;
 	
 	public Game(long seed, Level level) {
-
+		objectList = new GameObjectContainer();
 		coinList = new CoinList(level.getRoadLength());
 		obstacleList = new ObstacleList(level.getRoadLength());
   
@@ -50,15 +53,20 @@ public class Game {
 		return (int) (getRandomNumber() * getRoadWidth());
 	}
 	
+	//TODO yatusabes
+//	public void tryToAddObject(GameObject obj, int x, int y) {
+//		
+//	}
+	
 	private void tryToAddCoin(Coin c, double freq) {
 		
-		if(getRandomNumber() < freq && !gameObjIsIn(c.getX(), c.getY()))
+		if(getRandomNumber() < freq && gameObjectIn(c.getX(), c.getY()) != null)
 			coinList.addCoin(c);
 	}
 	
 	private void tryToAddObstacle(Obstacle o, double freq) {
 		
-		if(getRandomNumber() < freq && !gameObjIsIn(o.getX(), o.getY()))
+		if(getRandomNumber() < freq && gameObjectIn(o.getX(), o.getY()) != null)
 			obstacleList.addObstacle(o);
 	}
 	
@@ -80,7 +88,10 @@ public class Game {
 		elapsedTime = 0;
 	}
 	
-	
+	public void update() {
+		player.update();
+		numCycles++;
+	}
 	
 	public void removeDeadObjects() {
 		coinList.removeDeadCoins();
@@ -102,8 +113,8 @@ public class Game {
 		return obstacleList.obstacleIn(x, y);
 	}
 	
-	public boolean gameObjIsIn(int x, int y) {
-		return (coinIn(x, y) != null || obstacleIn(x, y) != null);
+	public GameObject gameObjectIn(int x, int y) {
+		return objectList.gameObjectIn(x, y);
 	}
 	
 	public long getElapsedTime() {
@@ -159,7 +170,7 @@ public class Game {
 		Coin c = coinList.coinIn(x, y);
 		Obstacle o = obstacleList.obstacleIn(x, y);
 		
-		if (player.isIn(x, y)) 
+		if (player.isInPosition(x, y)) 
 			symbolToPrint = player.toString();
 		else if(c != null)
 			symbolToPrint = c.toString();

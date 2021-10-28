@@ -26,7 +26,7 @@ public class ObstacleList {
 	public Obstacle obstacleIn(int x, int y) {
 		int i = 0;
 		
-		while(i < numObstacles && !obstacleList[i].isIn(x, y))
+		while(i < numObstacles && !obstacleList[i].isInPosition(x, y))
 			i++;
 		
 		return (i == numObstacles) ? null : obstacleList[i];

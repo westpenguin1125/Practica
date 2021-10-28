@@ -19,7 +19,7 @@ public class UpdateCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 		// TODO add your code
-		//game.playerMoveForward()
+		game.update();
 		
 		return true;
 	}

@@ -51,7 +51,7 @@ public class CoinList {
 	public Coin coinIn(int x, int y) {
 		int i = 0;
 
-		while(i < numCoins && !coinList[i].isIn(x, y))
+		while(i < numCoins && !coinList[i].isInPosition(x, y))
 			i++;
 		
 		return (i == numCoins) ? null : coinList[i];

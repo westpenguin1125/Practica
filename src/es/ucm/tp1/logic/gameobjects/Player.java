@@ -28,11 +28,11 @@ public class Player extends GameObject{
 		initialize(x, y);
 	}
 	
-	private void increaseCoins() {
+	public void increaseCoins() {
 		numCoins++;
 	}
 
-	private void decreaseLife() {
+	public void decreaseLife() {
 		numLifes--;
 	}
 	
@@ -42,35 +42,6 @@ public class Player extends GameObject{
 		
 		numCoins = 5;
 		numLifes = 1;
-	}
-	
-	//TODO Solo se ha hecho para la corrección de la práctica 1, seguramente haya que quitarlo
-//	void update(Command command) {
-//		if(command == Command.UP && y > 0)
-//			moveUp();
-//		else if(command == Command.DOWN && y < game.getRoadWidth() - 1)
-//			moveDown();
-//			
-//		moveForward();	
-//		
-//		doCollitions();
-//	}
-	
-	public void doCollitions() {
-		Coin c = game.coinIn(x, y);
-		Obstacle o = game.obstacleIn(x, y);
-		
-		if(c != null) {
-			c.deactivate();
-			increaseCoins();
-		}
-		else if(o != null) {
-			decreaseLife();
-		}
-	}
-	
-	public void moveForward() {
-		x++;
 	}
 	
 	public void moveDown() {
@@ -93,19 +64,34 @@ public class Player extends GameObject{
 		return numCoins;
 	}
 	
-	public boolean isIn(int x, int y) {
-		return (this.x == x && this.y == y);
-	}
-	
 	@Override
-	public String toString() {
+	public String toString() {		System.out.println("me he movido lol");
+
 		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
 	}
 	
-
+	/*
+	public void doCollitions() {
+		Coin c = game.coinIn(x, y);
+		Obstacle o = game.obstacleIn(x, y);
+		
+		if(c != null) {
+			c.deactivate();
+			increaseCoins();
+		}
+		else if(o != null) {
+			decreaseLife();
+		}
+	}
+	*/
+	
 	@Override
 	public boolean doCollision() {
-		// TODO Auto-generated method stub
+		GameObject other = game.gameObjectIn(x, y);
+		
+		if(other != null)
+			return other.receiveCollision(this);
+		
 		return false;
 	}
 
@@ -124,7 +110,9 @@ public class Player extends GameObject{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+		x++;
+		doCollision();
+
 	}
 
 	@Override

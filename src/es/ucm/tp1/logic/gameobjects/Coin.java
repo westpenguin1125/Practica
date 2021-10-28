@@ -10,7 +10,7 @@ public class Coin extends GameObject{
 	
 
 	
-	private boolean activated;
+
 	
 	public Coin() {
 		objectInfo = COIN_INFO;
@@ -19,8 +19,6 @@ public class Coin extends GameObject{
 	public Coin( Game game, int x, int y) {
 		
 		super(game, x, y);
-		activated = true;
-
 	}
 	
 	public void onEnter() {
@@ -29,10 +27,6 @@ public class Coin extends GameObject{
 	
 	public void onDelete() {
 		numCoins--;
-	}
-	
-	public void deactivate() {
-		activated = false;
 	}
 	
 	public static int getNumCoins() {
@@ -49,10 +43,6 @@ public class Coin extends GameObject{
 	
 	public boolean isDeactivated() {
 		return !activated;
-	}
-	
-	public boolean isIn(int x, int y) {
-		return (this.x == x && this.y == y);
 	}
 	
 	@Override
@@ -83,7 +73,9 @@ public class Coin extends GameObject{
 
 	@Override
 	public boolean receiveCollision(Player player) {
-		// TODO Auto-generated method stub
+		player.increaseCoins();
+		deactivate();
+		
 		return false;
 	}
 
