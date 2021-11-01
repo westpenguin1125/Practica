@@ -13,26 +13,9 @@ public class Controller {
 
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
 
-	//TODO tirar
-	/* @formatter:off */
-	private static final String[] HELP = new String[] {
-		"Available commands:",
-		"[h]elp: show this help",
-		"[i]nfo: prints gameobject info",
-		"[n]one | []: update",
-		"[q]: go up",
-		"[a]: go down",
-		"[e]xit: exit game",
-		"[r]eset: reset game",
-		"[t]est: enables test mode",	
-	};
-	/* @formatter:off */
-	private static final String[] INFO = new String[] {
-		"Available objects"	+ ":",
-		 "[Car] the racing car",
-		 "[Coin] gives 1 coin to the player",
-		 "[Obstacle] hits car",
-	};
+
+	//TODO comando test "[t]est: enables test mode",	
+
 	
 	private Game game;
 

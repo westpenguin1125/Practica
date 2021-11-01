@@ -31,7 +31,7 @@ public class Coin extends GameObject{
 	@Override
 	public boolean receiveCollision(Player player) {
 		player.increaseCoins();
-		deactivate();
+		kill();
 		
 		return false;
 	}
@@ -52,18 +52,5 @@ public class Coin extends GameObject{
 		numCoins--;
 	}
 	
-	//TODO ASK Esto sigue teniendo sentido?
-	@Override
-	public boolean equals(Object obj) {
-		if(this == obj)
-			return true;
-		else if(obj == null)
-			return false;
-		else if(getClass() != obj.getClass())
-			return false;
-		else {
-			return (x == ((Coin) obj).getX() &&
-					y == ((Coin) obj).getY());
-		}
-	}
+	
 }

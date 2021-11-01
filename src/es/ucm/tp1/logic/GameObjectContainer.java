@@ -22,4 +22,14 @@ public class GameObjectContainer {
 			return objectList.get(i);
 	}
 	
+	public void addObject(GameObject obj) {
+		objectList.add(obj);
+	}
+
+	public void removeDeadObjects() {
+		// TODO Matar objetos
+		
+	}
+	
+
 }

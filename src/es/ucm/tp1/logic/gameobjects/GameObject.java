@@ -12,7 +12,7 @@ public abstract class GameObject implements Collider {
 	protected String symbol;
 	protected String objectInfo;
 	//TODO ASK activated es el boolean que usaremos para isAlive()?
-	protected boolean activated;
+	protected boolean alive;
 
 	protected GameObject() {
 		
@@ -22,7 +22,7 @@ public abstract class GameObject implements Collider {
 		this.x = x;
 		this.y = y;
 		this.game = game;
-		activated = true;
+		alive = true;
 	}
 
 	public abstract void onEnter();
@@ -31,8 +31,8 @@ public abstract class GameObject implements Collider {
 
 	public abstract void onDelete();
 	
-	protected void deactivate() {
-		activated = false;
+	protected void kill() {
+		alive = false;
 	}
 
 	protected String getSymbol() {
@@ -50,13 +50,9 @@ public abstract class GameObject implements Collider {
 	public int getY() {
 		return y;
 	}
-	
-	public boolean isDeactivated() {
-		return !activated;
-	}
 
 	public boolean isAlive() {
-		return true;
+		return alive;
 	}
 	
 	public String getObjectInfo() {

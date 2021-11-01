@@ -51,18 +51,5 @@ public class Obstacle extends GameObject{
 		
 	}	
 	
-	//TODO ASK tiene sentido mantener esto? Creo que no
-	@Override
-	public boolean equals(Object obj) {
-		if(this == obj)
-			return true;
-		else if(obj == null)
-			return false;
-		else if(getClass() != obj.getClass())
-			return false;
-		else {
-			return (x == ((Obstacle) obj).getX() && 
-					y == ((Obstacle) obj).getY());
-		}
-	}
+	
 }

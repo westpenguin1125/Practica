@@ -63,8 +63,9 @@ public class GamePrinter {
 		info.append("Distance: " + game.getRemainingDistance() + newLine);
 		info.append("Coins: " + game.getPlayerCoins() + newLine);
 		info.append("Cycle: " + game.getNumCycles() + newLine);
-		info.append("Total obstacles: " + game.getNumObstacles() + newLine);
-		info.append("Total coins: " + game.getNumCoins());
+		//TODO
+//		info.append("Total obstacles: " + game.getNumObstacles() + newLine);
+//		info.append("Total coins: " + game.getNumCoins());
 		
 		if (!game.getTestingFlag()) {
 			info.append(newLine);

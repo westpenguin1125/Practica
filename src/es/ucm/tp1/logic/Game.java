@@ -5,19 +5,15 @@ import java.util.Random;
 import es.ucm.tp1.control.Level;//TODO -> maybe?
 //TODO ASK import de GameObject en Game, si no no se puede pasar como parametro al metodo tryToAddObject
 //Obstacle y Coin son temporales
-import es.ucm.tp1.logic.gameobjects.Coin;
 import es.ucm.tp1.logic.gameobjects.GameObject;
-import es.ucm.tp1.logic.gameobjects.Obstacle;
 import es.ucm.tp1.logic.gameobjects.Player;
+import es.ucm.tp1.logic.GameObjectGenerator;
 
 
 public class Game {
 	
 	private final String GOAL_SYMBOL = "¦";
 	private GameObjectContainer objectList;
-	//TODO Borrar
-	private CoinList coinList;
-	private ObstacleList obstacleList;
 	
 	private long seed;
 	private Level level;
@@ -34,8 +30,6 @@ public class Game {
 	
 	public Game(long seed, Level level) {
 		objectList = new GameObjectContainer();
-		coinList = new CoinList(level.getRoadLength());
-		obstacleList = new ObstacleList(level.getRoadLength());
   
 		this.seed = seed;
 		this.level = level;
@@ -52,39 +46,22 @@ public class Game {
 		return random.nextDouble();
 	}
 	
-	private int getRandomLane() {
+	public int getRandomLane() {
 		return (int) (getRandomNumber() * getRoadWidth());
 	}
 	
-	//TODO yatusabes
-//	public void tryToAddObject(GameObject obj, int x, int y) {
-//		
-//	}
-	
-	private void tryToAddCoin(Coin c, double freq) {
-		if(getRandomNumber() < freq && gameObjectIn(c.getX(), c.getY()) != null) 
-			coinList.addCoin(c);
-	}
-	
-	private void tryToAddObstacle(Obstacle o, double freq) {
-		
-		if(getRandomNumber() < freq && gameObjectIn(o.getX(), o.getY()) != null)
-			obstacleList.addObstacle(o);
-	}
-	
-	private void tryToFillObjectLists() {
-		
-		for(int i = getVisibility() / 2; i < getRoadLength(); i++) {
-			tryToAddObstacle(new Obstacle(this, i, getRandomLane()), level.getObstacleFrequency());
-			tryToAddCoin(new Coin(this, i, getRandomLane()), level.getCoinFrequency());
+
+	public void tryToAddObject(GameObject obj, double frequency) {
+		if (getRandomNumber() < frequency && gameObjectIn(obj.getX(), obj.getY()) == null) {
+			objectList.addObject(obj);
 		}
 	}
 	
 	public void initialize() {
 		random.setSeed(seed);
 		player.initialize(0, level.getRoadWidth() / 2);
+		GameObjectGenerator.generateGameObjects(this, level);
 		
-		tryToFillObjectLists();
 		numCycles = 0;
 		
 		elapsedTime = 0;
@@ -100,8 +77,16 @@ public class Game {
 		elapsedTime = System.currentTimeMillis() - startTime;
 	}
 	
+	public void PlayerMoveUP() {
+		player.moveUp();
+	}
+	
+	public void PlayerMoveDown() {
+		player.moveDown();
+	}
+
 	public void removeDeadObjects() {
-		coinList.removeDeadCoins();
+		objectList.removeDeadObjects();
 	}
 	
 	public void toggleTest() {
@@ -110,14 +95,6 @@ public class Game {
 	
 	public boolean checkEnd() {
 		return !playerIsAlive() || win();
-	}
-	
-	public Coin coinIn(int x, int y) {
-		return coinList.coinIn(x, y);
-	}
-	
-	public Obstacle obstacleIn(int x, int y) {
-		return obstacleList.obstacleIn(x, y);
 	}
 	
 	public GameObject gameObjectIn(int x, int y) {
@@ -155,13 +132,6 @@ public class Game {
 		return player.getNumCoins();
 	}
 	
-	public Object getNumObstacles() {
-		return Obstacle.getNumObstacles();
-	}
-	
-	public Object getNumCoins() {
-		return Coin.getNumCoins();
-	}
 	public boolean playerIsAlive() {
 		return player.isAlive();
 	}
@@ -185,4 +155,5 @@ public class Game {
 		
 		return symbolToPrint;
 	}
+
 }

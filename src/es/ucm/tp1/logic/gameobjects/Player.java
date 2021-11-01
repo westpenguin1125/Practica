@@ -19,9 +19,7 @@ public class Player extends GameObject{
 	
 	public Player(Game game, int x, int y) {
 		super(game, x, y);
-		
 		initialize(x, y);
-		//TODO Haria falta asignar el symbol? La funcionalidad es la misma si se deja esto como está y se sobreescribe el getSymbol de GameObject
 	}
 	
 	public void increaseCoins() {
@@ -41,11 +39,15 @@ public class Player extends GameObject{
 	}
 	
 	public void moveDown() {
-		y++;
+		if (y < game.getRoadWidth() - 1) {
+			y++;	
+		}
 	}
 	
 	public void moveUp() {
-		y--;
+		if (y > 0) {
+			y--;
+		}
 	}
 	
 	public boolean isAlive() {
