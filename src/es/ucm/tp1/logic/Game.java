@@ -28,6 +28,8 @@ public class Game {
 	private long startTime;
 	private long elapsedTime;
 	
+	private boolean exit;
+	
 	public Game(long seed, Level level) {
 		objectList = new GameObjectContainer();
   
@@ -40,6 +42,8 @@ public class Game {
 		
 		testingFlag = level == Level.TEST;
 		numCycles = 0;
+		
+		exit = false;
 	}
 	
 	private double getRandomNumber() {
@@ -93,8 +97,12 @@ public class Game {
 		testingFlag = true;
 	}
 	
-	public boolean checkEnd() {
-		return !playerIsAlive() || win();
+	public void exitGame() {
+		exit = true;
+	}
+	
+	public boolean isFinished() {
+		return !playerIsAlive() || win() || exit;
 	}
 	
 	public GameObject gameObjectIn(int x, int y) {

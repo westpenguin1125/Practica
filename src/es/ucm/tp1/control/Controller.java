@@ -60,7 +60,7 @@ public class Controller {
 		
 		game.initialize();
 		
-		while (!endGame) {
+		while (!game.isFinished()) {
 			
 			if(refreshDisplay)
 				printGame();
@@ -69,8 +69,10 @@ public class Controller {
 			parameters = getUserInput().toLowerCase().trim().split(" ");
 			command = Command.getCommand(parameters);
 			
-			if(command != null) 
+			if(command != null) {
 				refreshDisplay = command.execute(game);
+				game.removeDeadObjects();
+			}
 		}
 		
 		printEndMessage();

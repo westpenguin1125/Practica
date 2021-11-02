@@ -27,8 +27,15 @@ public class GameObjectContainer {
 	}
 
 	public void removeDeadObjects() {
-		// TODO Matar objetos
+		ArrayList<GameObject> aux = new ArrayList<>();
 		
+		for(GameObject obj : objectList) {
+			if(!obj.isAlive())
+				continue;
+			aux.add(obj); 
+		}
+		
+		objectList = aux;
 	}
 	
 

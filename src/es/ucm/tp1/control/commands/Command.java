@@ -18,6 +18,7 @@ public abstract class Command {
 		new UpdateCommand(),
 		new MoveUpCommand(),
 		new MoveDownCommand(),
+		new ExitCommand(),
 		new ResetCommand(),
 	};
 	/* @formatter:on */
