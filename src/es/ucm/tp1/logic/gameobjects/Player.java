@@ -1,9 +1,7 @@
 package es.ucm.tp1.logic.gameobjects;
 
-//TODO No se sabe si esto se debe hacer. No lo creo
 import es.ucm.tp1.logic.Game;
 
-//TODO extends GameObject
 public class Player extends GameObject{
 
 	private final String PLAYER_SYMBOL_ALIVE = ">";
@@ -72,28 +70,25 @@ public class Player extends GameObject{
 	public void update() {
 		x++;
 		doCollision();
+		if(numLifes == 0)
+			kill();
 	}
 	
 	@Override
 	protected String getSymbol() {
-		return (numLifes > 0) ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
+		return isAlive() ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
 	}
 
 	@Override
 	public boolean receiveCollision(Player player) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void onEnter() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onDelete() {
-		// TODO Auto-generated method stub
-		
 	}
 }

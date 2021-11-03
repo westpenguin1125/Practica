@@ -11,7 +11,6 @@ public abstract class GameObject implements Collider {
 
 	protected String symbol;
 	protected String objectInfo;
-	//TODO ASK activated es el boolean que usaremos para isAlive()?
 	protected boolean alive;
 
 	protected GameObject() {
@@ -67,7 +66,5 @@ public abstract class GameObject implements Collider {
 
 		return "";
 	}
-	
-	// TODO add your code
 
 }

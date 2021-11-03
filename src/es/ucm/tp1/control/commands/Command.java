@@ -26,7 +26,6 @@ public abstract class Command {
 	public static Command getCommand(String[] commandWords) {
 		int i = 0;
 		
-		//TODO Revisar Doble aviso de error en numero incorrecto de parametros
 		while(i < AVAILABLE_COMMANDS.length && 
 			  null == AVAILABLE_COMMANDS[i].parse(commandWords))
 			i++;

@@ -2,9 +2,7 @@ package es.ucm.tp1.logic;
 
 import java.util.Random;
 
-import es.ucm.tp1.control.Level;//TODO -> maybe?
-//TODO ASK import de GameObject en Game, si no no se puede pasar como parametro al metodo tryToAddObject
-//Obstacle y Coin son temporales
+import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
 import es.ucm.tp1.logic.GameObjectGenerator;
@@ -158,6 +156,8 @@ public class Game {
 			symbolToPrint = player.toString();
 		else if(obj != null)
 			symbolToPrint = obj.toString();
+		else if(getRoadWidth() == x)
+			symbolToPrint = GOAL_SYMBOL;
 		else
 			symbolToPrint = "";
 		

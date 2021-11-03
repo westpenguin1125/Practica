@@ -24,7 +24,6 @@ public class Obstacle extends GameObject{
 
 	@Override
 	public boolean doCollision() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -36,8 +35,6 @@ public class Obstacle extends GameObject{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
@@ -47,9 +44,5 @@ public class Obstacle extends GameObject{
 
 	@Override
 	public void onDelete() {
-		// TODO Auto-generated method stub
-		
 	}	
-	
-	
 }

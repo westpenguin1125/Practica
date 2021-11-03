@@ -36,6 +36,6 @@ public class GameObjectGenerator {
 	}
 
 	public static void generateRuntimeObjects(Game game) {
-		// TODO ASK teacher
+		//TODO Práctica 2
 	}
 }

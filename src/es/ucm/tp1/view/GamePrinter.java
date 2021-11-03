@@ -63,7 +63,7 @@ public class GamePrinter {
 		info.append("Distance: " + game.getRemainingDistance() + newLine);
 		info.append("Coins: " + game.getPlayerCoins() + newLine);
 		info.append("Cycle: " + game.getNumCycles() + newLine);
-		//TODO
+		//TODO Mostrar total de monedas y obstaculos
 //		info.append("Total obstacles: " + game.getNumObstacles() + newLine);
 //		info.append("Total coins: " + game.getNumCoins());
 		

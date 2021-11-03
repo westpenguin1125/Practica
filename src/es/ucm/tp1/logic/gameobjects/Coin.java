@@ -13,7 +13,6 @@ public class Coin extends GameObject{
 	}
 	
 	public Coin( Game game, int x, int y) {
-		
 		super(game, x, y);
 		symbol = COIN_SYMBOL;
 	}
@@ -24,7 +23,6 @@ public class Coin extends GameObject{
 
 	@Override
 	public boolean doCollision() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -38,8 +36,6 @@ public class Coin extends GameObject{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
