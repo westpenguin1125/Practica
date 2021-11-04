@@ -6,14 +6,11 @@ public class Player extends GameObject{
 
 	private final String PLAYER_SYMBOL_ALIVE = ">";
 	private final String PLAYER_SYMBOL_DEAD= "@";
-	private final String PLAYER_INFO = "[Car] the racing car";
+	public static final String PLAYER_INFO = "[Car] the racing car";
 	
 	private int numCoins;
 	private int numLifes;
 	
-	public Player() {
-		objectInfo = PLAYER_INFO;
-	}
 	
 	public Player(Game game, int x, int y) {
 		super(game, x, y);
@@ -48,10 +45,6 @@ public class Player extends GameObject{
 		}
 	}
 	
-	public boolean isAlive() {
-		return numLifes > 0;
-	}
-	
 	public int getNumCoins() {
 		return numCoins;
 	}
@@ -77,6 +70,11 @@ public class Player extends GameObject{
 	@Override
 	protected String getSymbol() {
 		return isAlive() ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
+	}
+	
+	@Override
+	public String toString() {
+			return getSymbol();
 	}
 
 	@Override

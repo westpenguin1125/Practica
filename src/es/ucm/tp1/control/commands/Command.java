@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.Game;
+import es.ucm.tp1.view.GamePrinter;
 
 public abstract class Command {
 
@@ -20,6 +21,7 @@ public abstract class Command {
 		new MoveDownCommand(),
 		new ExitCommand(),
 		new ResetCommand(),
+		new TestCommand(),
 	};
 	/* @formatter:on */
 	
@@ -43,7 +45,7 @@ public abstract class Command {
 		
 		for (Command command : AVAILABLE_COMMANDS) {
 			buffer.append(command.details + ": " + command.help);
-			buffer.append(System.lineSeparator());
+			buffer.append(GamePrinter.newLine);
 		}
 		
 		return buffer.toString();

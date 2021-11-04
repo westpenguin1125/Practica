@@ -1,6 +1,10 @@
 package es.ucm.tp1.view;
 
 import es.ucm.tp1.logic.Game;
+import es.ucm.tp1.logic.gameobjects.Coin;
+import es.ucm.tp1.logic.gameobjects.GameObject;
+import es.ucm.tp1.logic.gameobjects.Obstacle;
+import es.ucm.tp1.logic.gameobjects.Player;
 import es.ucm.tp1.utils.*;
 
 
@@ -33,22 +37,14 @@ public class GamePrinter {
 	
 	private static final String GAME_OVER_MSG = "[GAME OVER] "; 
 	
-	public String newLine; 
+	public static String newLine; 
 
 	protected Game game;
 
 	public GamePrinter(Game game) {
 		this.game = game;
 
-		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
-
-		String roadBorder = ROAD_BORDER_PATTERN + StringUtils.repeat(ROAD_BORDER_PATTERN, (CELL_SIZE + 1) *  game.getVisibility());
-		indentedRoadBorder = String.format("%n%s%s%n", margin, roadBorder);
-
-		String laneDelimiter = StringUtils.repeat(LANE_DELIMITER_PATTERN, CELL_SIZE);
-		String lanesSeparator = SPACE + StringUtils.repeat(laneDelimiter + SPACE,  game.getVisibility() - 1) + laneDelimiter + SPACE;
-
-		indentedLlanesSeparator = String.format("%n%s%s%n", margin, lanesSeparator);
+		
 		newLine =  System.getProperty("line.separator");
 	}
 	
@@ -64,8 +60,8 @@ public class GamePrinter {
 		info.append("Coins: " + game.getPlayerCoins() + newLine);
 		info.append("Cycle: " + game.getNumCycles() + newLine);
 		//TODO Mostrar total de monedas y obstaculos
-//		info.append("Total obstacles: " + game.getNumObstacles() + newLine);
-//		info.append("Total coins: " + game.getNumCoins());
+		info.append("Total obstacles: " + Obstacle.getNumObstacles() + newLine);
+		info.append("Total coins: " + Coin.getNumCoins() + newLine);
 		
 		if (!game.getTestingFlag()) {
 			info.append(newLine);
@@ -76,9 +72,34 @@ public class GamePrinter {
 		return info.toString();
 	}
 	
+	public static String getObjectInfo() {
+		StringBuilder buffer = new StringBuilder();
+		
+			buffer.append(Player.PLAYER_INFO + newLine);
+			buffer.append(Coin.COIN_INFO + newLine);
+			buffer.append(Obstacle.OBSTACLE_INFO+ newLine);
+		
+		return buffer.toString();
+	}
+	
 
+	private void setRoad() {
+		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
+
+		String roadBorder = ROAD_BORDER_PATTERN + StringUtils.repeat(ROAD_BORDER_PATTERN, (CELL_SIZE + 1) *  game.getVisibility());
+		indentedRoadBorder = String.format("%n%s%s%n", margin, roadBorder);
+
+		String laneDelimiter = StringUtils.repeat(LANE_DELIMITER_PATTERN, CELL_SIZE);
+		String lanesSeparator = SPACE + StringUtils.repeat(laneDelimiter + SPACE,  game.getVisibility() - 1) + laneDelimiter + SPACE;
+
+		indentedLlanesSeparator = String.format("%n%s%s%n", margin, lanesSeparator);
+	}
+	
 	@Override
 	public String toString() {
+		
+		setRoad();
+		
 		StringBuilder str = new StringBuilder();
 
 		str.append(getInfo());

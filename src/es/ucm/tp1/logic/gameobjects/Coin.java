@@ -5,12 +5,9 @@ import es.ucm.tp1.logic.Game;
 public class Coin extends GameObject{
 	
 	final private String COIN_SYMBOL = "¢";
-	final private String COIN_INFO = "[Coin] gives one coin to the player";
+	final public static String COIN_INFO = "[Coin] gives one coin to the player";
 	private static int numCoins;
 	
-	public Coin() {
-		objectInfo = COIN_INFO;
-	}
 	
 	public Coin( Game game, int x, int y) {
 		super(game, x, y);
@@ -46,6 +43,11 @@ public class Coin extends GameObject{
 	@Override
 	public void onDelete() {
 		numCoins--;
+	}
+
+	public static void reset() {
+	numCoins = 0;
+		
 	}
 	
 	

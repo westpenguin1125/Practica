@@ -24,14 +24,17 @@ public class GameObjectContainer {
 	
 	public void addObject(GameObject obj) {
 		objectList.add(obj);
+		obj.onEnter();
 	}
 
 	public void removeDeadObjects() {
 		ArrayList<GameObject> aux = new ArrayList<>();
 		
 		for(GameObject obj : objectList) {
-			if(!obj.isAlive())
+			if(!obj.isAlive()) {
+				obj.onDelete();
 				continue;
+			}
 			aux.add(obj); 
 		}
 		

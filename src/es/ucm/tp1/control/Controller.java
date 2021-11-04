@@ -74,7 +74,7 @@ public class Controller {
 				game.removeDeadObjects();
 			}
 		}
-		
+		printGame();
 		printEndMessage();
 	}
 }

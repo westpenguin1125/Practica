@@ -16,23 +16,10 @@ public class GameObjectGenerator {
 		}
 	}
 
-	private static final GameObject[] gameObjects = {
-			new Player(),
-			new Coin(),
-			new Obstacle(),
-		};
 	
-	public static String getObjectInfo() {
-		StringBuilder buffer = new StringBuilder();
-		
-		for (GameObject gameObject : gameObjects) 
-			buffer.append(gameObject.getObjectInfo() + System.lineSeparator());
-		
-		return buffer.toString();
-	}
-	
-	public static void reset(Level level) {
-		// TODO add your code
+	public static void reset() {
+		Coin.reset();
+		Obstacle.reset();
 	}
 
 	public static void generateRuntimeObjects(Game game) {

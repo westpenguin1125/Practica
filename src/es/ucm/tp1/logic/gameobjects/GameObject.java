@@ -13,9 +13,6 @@ public abstract class GameObject implements Collider {
 	protected String objectInfo;
 	protected boolean alive;
 
-	protected GameObject() {
-		
-	}
 	
 	public GameObject(Game game, int x, int y) {
 		this.x = x;

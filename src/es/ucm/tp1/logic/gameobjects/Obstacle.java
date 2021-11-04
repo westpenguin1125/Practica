@@ -5,13 +5,10 @@ import es.ucm.tp1.logic.Game;
 public class Obstacle extends GameObject{
 	
 	final private String OBSTACLE_SYMBOL = "░";
-	final private String OBSTACLE_INFO = "[Obstacle] hits car";
+	final public static String OBSTACLE_INFO = "[Obstacle] hits car";
 	
 	private static int numObstacles;
 	
-	public Obstacle() {
-		objectInfo = OBSTACLE_INFO;
-	}
 	
 	public Obstacle(Game game, int x, int y) {
 		super(game, x, y);
@@ -44,5 +41,10 @@ public class Obstacle extends GameObject{
 
 	@Override
 	public void onDelete() {
+	}
+
+	public static void reset() {
+		numObstacles = 0;
+		
 	}	
 }

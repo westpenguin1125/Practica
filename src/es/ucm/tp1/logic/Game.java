@@ -29,19 +29,12 @@ public class Game {
 	private boolean exit;
 	
 	public Game(long seed, Level level) {
-		objectList = new GameObjectContainer();
   
 		this.seed = seed;
 		this.level = level;
 		
 		player = new Player(this, 0, level.getRoadWidth() / 2 );
-		
-		random = new Random(seed);
-		
-		testingFlag = level == Level.TEST;
-		numCycles = 0;
-		
-		exit = false;
+		initialize();
 	}
 	
 	private double getRandomNumber() {
@@ -59,14 +52,25 @@ public class Game {
 		}
 	}
 	
+	public void setSeed(Long seed) {
+		this.seed = seed;
+	}
+	public void setLevel(Level level) {
+		this.level = level;
+	}
+	
 	public void initialize() {
-		random.setSeed(seed);
+		objectList = new GameObjectContainer();
+		random = new Random(seed);
 		player.initialize(0, level.getRoadWidth() / 2);
+		GameObjectGenerator.reset();
 		GameObjectGenerator.generateGameObjects(this, level);
+		testingFlag = level == Level.TEST;
 		
 		numCycles = 0;
 		
 		elapsedTime = 0;
+		exit = false;
 	}
 	
 	public void update() {
@@ -156,7 +160,7 @@ public class Game {
 			symbolToPrint = player.toString();
 		else if(obj != null)
 			symbolToPrint = obj.toString();
-		else if(getRoadWidth() == x)
+		else if(getRoadLength() == x)
 			symbolToPrint = GOAL_SYMBOL;
 		else
 			symbolToPrint = "";
