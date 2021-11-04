@@ -1,10 +1,6 @@
 package es.ucm.tp1.control.commands;
 
-import java.util.Arrays;
-
-import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.view.GamePrinter;
 
 public abstract class Command {
 
@@ -13,7 +9,7 @@ public abstract class Command {
 	protected static final String INCORRECT_NUMBER_OF_ARGS_MSG = "Incorrect number of arguments";
 
 	/* @formatter:off */
-	private static final Command[] AVAILABLE_COMMANDS = {
+	protected static final Command[] AVAILABLE_COMMANDS = {
 		new HelpCommand(),
 		new InfoCommand(),
 		new UpdateCommand(),
@@ -38,17 +34,6 @@ public abstract class Command {
 		}
 		else
 			return AVAILABLE_COMMANDS[i];
-	}
-	
-	protected static String availableCommandsToString() {
-		StringBuilder buffer = new StringBuilder();
-		
-		for (Command command : AVAILABLE_COMMANDS) {
-			buffer.append(command.details + ": " + command.help);
-			buffer.append(GamePrinter.newLine);
-		}
-		
-		return buffer.toString();
 	}
 
 	private final String name;
@@ -82,5 +67,9 @@ public abstract class Command {
 			}
 		}
 		return null;
+	}
+	
+	protected String getHelp(){
+		return details + ": " + help;
 	}
 }

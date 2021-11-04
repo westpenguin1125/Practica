@@ -1,7 +1,6 @@
 package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
-
 import es.ucm.tp1.view.GamePrinter;
 
 public class InfoCommand extends Command {

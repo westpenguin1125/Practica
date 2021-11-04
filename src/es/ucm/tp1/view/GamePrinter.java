@@ -39,12 +39,10 @@ public class GamePrinter {
 	
 	public static String newLine; 
 
-	protected Game game;
+	private Game game;
 
 	public GamePrinter(Game game) {
 		this.game = game;
-
-		
 		newLine =  System.getProperty("line.separator");
 	}
 	
@@ -59,13 +57,11 @@ public class GamePrinter {
 		info.append("Distance: " + game.getRemainingDistance() + newLine);
 		info.append("Coins: " + game.getPlayerCoins() + newLine);
 		info.append("Cycle: " + game.getNumCycles() + newLine);
-		//TODO Mostrar total de monedas y obstaculos
 		info.append("Total obstacles: " + Obstacle.getNumObstacles() + newLine);
-		info.append("Total coins: " + Coin.getNumCoins() + newLine);
+		info.append("Total coins: " + Coin.getNumCoins());
 		
 		if (!game.getTestingFlag()) {
 			info.append(newLine);
-			
 			info.append("Elapsed Time: " + elapsedTimeWithFormat() + " s");
 		}
 		
@@ -75,14 +71,13 @@ public class GamePrinter {
 	public static String getObjectInfo() {
 		StringBuilder buffer = new StringBuilder();
 		
-			buffer.append(Player.PLAYER_INFO + newLine);
-			buffer.append(Coin.COIN_INFO + newLine);
-			buffer.append(Obstacle.OBSTACLE_INFO+ newLine);
+		buffer.append(Player.PLAYER_INFO + newLine);
+		buffer.append(Coin.COIN_INFO + newLine);
+		buffer.append(Obstacle.OBSTACLE_INFO + newLine);
 		
 		return buffer.toString();
 	}
 	
-
 	private void setRoad() {
 		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
 

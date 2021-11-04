@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GameObjectContainer {
 
-	ArrayList<GameObject> objectList;
+	private ArrayList<GameObject> objectList;
 	
 	public GameObjectContainer() {
 		objectList = new ArrayList<>();
@@ -40,6 +40,4 @@ public class GameObjectContainer {
 		
 		objectList = aux;
 	}
-	
-
 }

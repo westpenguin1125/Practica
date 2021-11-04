@@ -21,5 +21,4 @@ public class TestCommand extends Command{
 		game.toggleTest();
 		return false;
 	}
-
 }

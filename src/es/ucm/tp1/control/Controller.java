@@ -1,6 +1,5 @@
 package es.ucm.tp1.control;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 import es.ucm.tp1.control.commands.Command;
@@ -10,26 +9,17 @@ import es.ucm.tp1.view.GamePrinter;
 public class Controller {
 
 	private static final String PROMPT = "Command > ";
-
-	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
-
-
-	//TODO comando test "[t]est: enables test mode",	
-
 	
 	private Game game;
 
 	private Scanner scanner;
 	
 	private GamePrinter printer;
-
-	private boolean endGame;
 	
 	public Controller(Game game, Scanner scanner) {
 		this.game = game;
 		this.scanner = scanner;
 		this.printer = new GamePrinter(game);
-		endGame = false;
 	}
 	
 	private String getUserInput() {

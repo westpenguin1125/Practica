@@ -7,20 +7,19 @@ public class Coin extends GameObject{
 	final private String COIN_SYMBOL = "¢";
 	final public static String COIN_INFO = "[Coin] gives one coin to the player";
 	private static int numCoins;
-	
-	
-	public Coin( Game game, int x, int y) {
-		super(game, x, y);
-		symbol = COIN_SYMBOL;
+
+
+	public static void reset() {
+		numCoins = 0;	
 	}
 	
 	public static int getNumCoins() {
 		return numCoins;
 	}
-
-	@Override
-	public boolean doCollision() {
-		return false;
+	
+	public Coin( Game game, int x, int y) {
+		super(game, x, y);
+		symbol = COIN_SYMBOL;
 	}
 
 	@Override
@@ -29,10 +28,6 @@ public class Coin extends GameObject{
 		kill();
 		
 		return false;
-	}
-
-	@Override
-	public void update() {
 	}
 	
 	@Override
@@ -45,10 +40,12 @@ public class Coin extends GameObject{
 		numCoins--;
 	}
 
-	public static void reset() {
-	numCoins = 0;
-		
+	@Override
+	public boolean doCollision() {
+		return false;
 	}
-	
-	
+
+	@Override
+	public void update() {
+	}
 }

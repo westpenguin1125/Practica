@@ -8,11 +8,11 @@ public abstract class GameObject implements Collider {
 	protected Game game;
 
 	protected int x, y;
+	
+	protected boolean alive;
 
 	protected String symbol;
 	protected String objectInfo;
-	protected boolean alive;
-
 	
 	public GameObject(Game game, int x, int y) {
 		this.x = x;
@@ -31,10 +31,6 @@ public abstract class GameObject implements Collider {
 		alive = false;
 	}
 
-	protected String getSymbol() {
-		return symbol;
-	}
-
 	public boolean isInPosition(int x, int y) {
 		return this.x == x && this.y == y;
 	}
@@ -50,6 +46,10 @@ public abstract class GameObject implements Collider {
 	public boolean isAlive() {
 		return alive;
 	}
+
+	protected String getSymbol() {
+		return symbol;
+	}
 	
 	public String getObjectInfo() {
 		return objectInfo;
@@ -57,11 +57,9 @@ public abstract class GameObject implements Collider {
 
 	@Override
 	public String toString() {
-		if (isAlive()) {
+		if (isAlive()) 
 			return getSymbol();
-		}
 
 		return "";
 	}
-
 }

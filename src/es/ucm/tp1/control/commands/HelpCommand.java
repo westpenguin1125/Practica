@@ -1,7 +1,7 @@
 package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.utils.StringUtils;
+import es.ucm.tp1.view.GamePrinter;
 
 public class HelpCommand extends Command {
 
@@ -19,8 +19,14 @@ public class HelpCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		System.out.println("Available commands:");
-		System.out.println(availableCommandsToString());
+		
+		StringBuilder buffer = new StringBuilder();
+		
+		buffer.append("Available commands:" + GamePrinter.newLine);
+		for (Command command : AVAILABLE_COMMANDS) 
+			buffer.append(command.getHelp() + GamePrinter.newLine);
+		
+		System.out.println(buffer.toString());
 
 		return false;
 	}

@@ -1,16 +1,15 @@
 package es.ucm.tp1.logic;
 
 import java.util.Random;
-
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
-import es.ucm.tp1.logic.GameObjectGenerator;
 
 
 public class Game {
 	
 	private final String GOAL_SYMBOL = "¦";
+	
 	private GameObjectContainer objectList;
 	
 	private long seed;
@@ -18,15 +17,15 @@ public class Game {
 	
 	private Player player;
 	
-	private Random random;
-	
-	private boolean testingFlag;
 	private int numCycles;
 	
 	private long startTime;
 	private long elapsedTime;
-	
+
+	private boolean testingFlag;
 	private boolean exit;
+
+	private Random random;
 	
 	public Game(long seed, Level level) {
   
@@ -37,6 +36,24 @@ public class Game {
 		initialize();
 	}
 	
+	public void initialize() {
+		
+		random = new Random(seed);
+		
+		objectList = new GameObjectContainer();
+		
+		GameObjectGenerator.generateGameObjects(this);
+		
+		player.initialize(0, level.getRoadWidth() / 2);
+		
+		numCycles = 0;
+		
+		elapsedTime = 0;
+
+		testingFlag = level == Level.TEST;
+		exit = false;
+	}
+	
 	private double getRandomNumber() {
 		return random.nextDouble();
 	}
@@ -45,32 +62,9 @@ public class Game {
 		return (int) (getRandomNumber() * getRoadWidth());
 	}
 	
-
 	public void tryToAddObject(GameObject obj, double frequency) {
-		if (getRandomNumber() < frequency && gameObjectIn(obj.getX(), obj.getY()) == null) {
+		if (getRandomNumber() < frequency && gameObjectIn(obj.getX(), obj.getY()) == null) 
 			objectList.addObject(obj);
-		}
-	}
-	
-	public void setSeed(Long seed) {
-		this.seed = seed;
-	}
-	public void setLevel(Level level) {
-		this.level = level;
-	}
-	
-	public void initialize() {
-		objectList = new GameObjectContainer();
-		random = new Random(seed);
-		player.initialize(0, level.getRoadWidth() / 2);
-		GameObjectGenerator.reset();
-		GameObjectGenerator.generateGameObjects(this, level);
-		testingFlag = level == Level.TEST;
-		
-		numCycles = 0;
-		
-		elapsedTime = 0;
-		exit = false;
 	}
 	
 	public void update() {
@@ -82,6 +76,18 @@ public class Game {
 		
 		elapsedTime = System.currentTimeMillis() - startTime;
 	}
+
+	public void removeDeadObjects() {
+		objectList.removeDeadObjects();
+	}
+	
+	public void setSeed(Long seed) {
+		this.seed = seed;
+	}
+	
+	public void setLevel(Level level) {
+		this.level = level;
+	}
 	
 	public void PlayerMoveUP() {
 		player.moveUp();
@@ -89,10 +95,6 @@ public class Game {
 	
 	public void PlayerMoveDown() {
 		player.moveDown();
-	}
-
-	public void removeDeadObjects() {
-		objectList.removeDeadObjects();
 	}
 	
 	public void toggleTest() {
@@ -111,16 +113,12 @@ public class Game {
 		return objectList.gameObjectIn(x, y);
 	}
 	
-	public long getElapsedTime() {
-		return elapsedTime;
+	public int getRemainingDistance() {
+		return getRoadLength() - player.getX();
 	}
 	
-	public boolean getTestingFlag() {
-		return testingFlag;
-	}
-	
-	public int getNumCycles() {
-		return numCycles;
+	public boolean win() {
+		return player.getX() > getRoadLength();
 	}
 	
 	public int getVisibility() {
@@ -135,9 +133,14 @@ public class Game {
 		return level.getRoadWidth();
 	}
 	
-	public int getRemainingDistance() {
-		return getRoadLength() - player.getX();
+	public double coinFrequency() {
+		return level.coinFrequency();
 	}
+	
+	public double obstacleFrequency() {
+		return level.obstacleFrequency();
+	}
+	
 	public int getPlayerCoins() {
 		return player.getNumCoins();
 	}
@@ -146,8 +149,16 @@ public class Game {
 		return player.isAlive();
 	}
 	
-	public boolean win() {
-		return player.getX() > getRoadLength();
+	public int getNumCycles() {
+		return numCycles;
+	}
+	
+	public long getElapsedTime() {
+		return elapsedTime;
+	}
+	
+	public boolean getTestingFlag() {
+		return testingFlag;
 	}
 	
 	public String positionToString(int x, int y) {
@@ -167,5 +178,4 @@ public class Game {
 		
 		return symbolToPrint;
 	}
-
 }

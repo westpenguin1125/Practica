@@ -22,5 +22,4 @@ public class MoveUpCommand extends Command{
 		game.update();
 		return true;
 	}
-
 }
