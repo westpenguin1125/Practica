@@ -48,8 +48,6 @@ public class Controller {
 		String[] parameters;
 		boolean refreshDisplay = true;
 		
-		game.initialize();
-		
 		while (!game.isFinished()) {
 			
 			if(refreshDisplay)

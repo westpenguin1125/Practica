@@ -5,7 +5,7 @@ import es.ucm.tp1.logic.Game;
 public class Obstacle extends GameObject{
 
 	
-	private static int numObstacles;
+	private static int numObstacles = 0;
 
 	public static void reset() {
 		numObstacles = 0;

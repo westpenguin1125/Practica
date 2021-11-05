@@ -19,6 +19,6 @@ public class TestCommand extends Command{
 	@Override
 	public boolean execute(Game game) {
 		game.toggleTest();
-		return false;
+		return true;
 	}
 }

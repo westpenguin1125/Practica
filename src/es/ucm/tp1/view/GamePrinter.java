@@ -2,7 +2,6 @@ package es.ucm.tp1.view;
 
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.Coin;
-import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Obstacle;
 import es.ucm.tp1.logic.gameobjects.Player;
 import es.ucm.tp1.utils.*;
