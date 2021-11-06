@@ -48,11 +48,9 @@ public class Controller {
 		String[] parameters;
 		boolean refreshDisplay = true;
 		
+		printGame();
+		
 		while (!game.isFinished()) {
-			
-			if(refreshDisplay)
-				printGame();
-			refreshDisplay = false;
 			
 			parameters = getUserInput().toLowerCase().trim().split(" ");
 			command = Command.getCommand(parameters);
@@ -61,8 +59,12 @@ public class Controller {
 				refreshDisplay = command.execute(game);
 				game.removeDeadObjects();
 			}
+			
+			if(refreshDisplay)
+				printGame();
+			refreshDisplay = false;
 		}
-		printGame();
+		
 		printEndMessage();
 	}
 }

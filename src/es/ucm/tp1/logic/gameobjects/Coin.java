@@ -4,7 +4,7 @@ import es.ucm.tp1.logic.Game;
 
 public class Coin extends GameObject{
 	
-	final public static String COIN_INFO = "[Coin] gives one coin to the player";
+	final public static String COIN_INFO = "[Coin] gives 1 coin to the player";
 	
 	private static int numCoins = 0;
 

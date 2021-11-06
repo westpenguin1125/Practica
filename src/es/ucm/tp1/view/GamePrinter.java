@@ -72,7 +72,7 @@ public class GamePrinter {
 		
 		buffer.append(Player.PLAYER_INFO + newLine);
 		buffer.append(Coin.COIN_INFO + newLine);
-		buffer.append(Obstacle.OBSTACLE_INFO + newLine);
+		buffer.append(Obstacle.OBSTACLE_INFO);
 		
 		return buffer.toString();
 	}

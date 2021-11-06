@@ -26,7 +26,7 @@ public class HelpCommand extends Command {
 		for (Command command : AVAILABLE_COMMANDS) 
 			buffer.append(command.getHelp() + GamePrinter.newLine);
 		
-		System.out.println(buffer.toString());
+		System.out.print(buffer.toString());
 
 		return false;
 	}
