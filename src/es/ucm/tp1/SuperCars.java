@@ -28,6 +28,7 @@ public class SuperCars {
 	}
 
 	public static void main(String[] args) {
+		
 		if (args.length < 1 || args.length > 2) {
 			usage();
 		} else {

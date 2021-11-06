@@ -1,5 +1,7 @@
 package es.ucm.tp1.view;
 
+import java.util.Locale;
+
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.Coin;
 import es.ucm.tp1.logic.gameobjects.Obstacle;
@@ -42,11 +44,13 @@ public class GamePrinter {
 
 	public GamePrinter(Game game) {
 		this.game = game;
+		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
+		setRoad();
 		newLine =  System.getProperty("line.separator");
 	}
 	
 	private String elapsedTimeWithFormat() {
-		return String.format("%.02f", ((float)game.getElapsedTime() / 1000));
+		return String.format(Locale.FRANCE, "%.02f", ((float)game.getElapsedTime() / 1000));
 	}
 	
 	private String getInfo() {
@@ -78,8 +82,6 @@ public class GamePrinter {
 	}
 	
 	private void setRoad() {
-		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
-
 		String roadBorder = ROAD_BORDER_PATTERN + StringUtils.repeat(ROAD_BORDER_PATTERN, (CELL_SIZE + 1) *  game.getVisibility());
 		indentedRoadBorder = String.format("%n%s%s%n", margin, roadBorder);
 
