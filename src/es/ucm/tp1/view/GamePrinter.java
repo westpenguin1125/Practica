@@ -39,6 +39,16 @@ public class GamePrinter {
 	private static final String GAME_OVER_MSG = "[GAME OVER] "; 
 	
 	public static String newLine; 
+	
+	public static String getObjectInfo() {
+		StringBuilder buffer = new StringBuilder();
+		
+		buffer.append(Player.PLAYER_INFO + newLine);
+		buffer.append(Coin.COIN_INFO + newLine);
+		buffer.append(Obstacle.OBSTACLE_INFO);
+		
+		return buffer.toString();
+	}
 
 	private Game game;
 
@@ -69,16 +79,6 @@ public class GamePrinter {
 		}
 		
 		return info.toString();
-	}
-	
-	public static String getObjectInfo() {
-		StringBuilder buffer = new StringBuilder();
-		
-		buffer.append(Player.PLAYER_INFO + newLine);
-		buffer.append(Coin.COIN_INFO + newLine);
-		buffer.append(Obstacle.OBSTACLE_INFO);
-		
-		return buffer.toString();
 	}
 	
 	private void setRoad() {

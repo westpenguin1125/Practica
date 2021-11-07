@@ -14,8 +14,8 @@ public class ResetCommand extends Command {
 
 	private static final String HELP = "reset game";
 
-	private Long newSeed;
 	private Level newLevel;
+	private Long newSeed;
 
 	public ResetCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
@@ -27,8 +27,8 @@ public class ResetCommand extends Command {
 	protected Command parse(String[] words) {
 		if(words.length == 3) {
 			if(matchCommandName(words[0])) {
-				newSeed = Long.parseLong(words[2]);
 				newLevel = Level.valueOfIgnoreCase(words[1]);
+				newSeed = Long.parseLong(words[2]);
 				
 				return this;
 			}

@@ -72,7 +72,7 @@ public class Player extends GameObject{
 	
 	@Override
 	public String toString() {
-			return getSymbol();
+		return getSymbol();
 	}
 
 	@Override

@@ -8,7 +8,6 @@ public class Coin extends GameObject{
 	
 	private static int numCoins = 0;
 
-
 	public static void reset() {
 		numCoins = 0;	
 	}
