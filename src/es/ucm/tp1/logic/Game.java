@@ -28,15 +28,14 @@ public class Game {
 	private Random random;
 	
 	public Game(long seed, Level level) {
-  
-		this.seed = seed;
-		this.level = level;
 		
 		player = new Player(this, 0, level.getRoadWidth() / 2 );
-		initialize();
+		initialize(seed, level);
 	}
 	
-	public void initialize() {
+	public void initialize(Long seed, Level level) {
+		this.seed = seed;
+		this.level = level;
 		
 		random = new Random(seed);
 		
@@ -52,6 +51,10 @@ public class Game {
 
 		testingFlag = level == Level.TEST;
 		exit = false;
+	}
+	
+	public void initialize() {
+		initialize(seed, level);
 	}
 	
 	private double getRandomNumber() {
@@ -83,10 +86,6 @@ public class Game {
 	
 	public void setSeed(Long seed) {
 		this.seed = seed;
-	}
-	
-	public void setLevel(Level level) {
-		this.level = level;
 	}
 	
 	public void PlayerMoveUP() {

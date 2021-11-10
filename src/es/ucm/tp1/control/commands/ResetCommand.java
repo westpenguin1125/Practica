@@ -42,13 +42,12 @@ public class ResetCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 		
-		if (newSeed != null && newLevel != null) {
-			game.setSeed(newSeed);
-			game.setLevel(newLevel);
-		}
-		
 		GameObjectGenerator.reset();
-		game.initialize();
+		
+		if (newSeed != null && newLevel != null)
+			game.initialize(newSeed, newLevel);
+		else
+			game.initialize();
 		
 		return true;
 	}
