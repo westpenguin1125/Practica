@@ -8,6 +8,8 @@ public class Player extends GameObject{
 
 	private final String PLAYER_SYMBOL_ALIVE = ">";
 	private final String PLAYER_SYMBOL_DEAD= "@";
+	private final int STARTING_LIFES = 1;
+	private final int STARTING_COINS = 5;
 	
 	private int numCoins;
 	private int numLifes;
@@ -21,12 +23,16 @@ public class Player extends GameObject{
 		this.x = x;
 		this.y = y;
 		
-		numCoins = 5;
-		numLifes = 1;
+		numCoins = STARTING_COINS;
+		numLifes = STARTING_LIFES;
+	}
+	
+	public void increaseCoins(int coinsToIncrease) {
+		numCoins += coinsToIncrease;
 	}
 	
 	public void increaseCoins() {
-		numCoins++;
+		increaseCoins(1);
 	}
 
 	public void decreaseLife() {
@@ -51,8 +57,6 @@ public class Player extends GameObject{
 	public void update() {
 		x++;
 		doCollision();
-		if(numLifes == 0)
-			kill();
 	}
 	
 	@Override
@@ -63,6 +67,11 @@ public class Player extends GameObject{
 			return other.receiveCollision(this);
 		
 		return false;
+	}
+	
+	@Override
+	public boolean isAlive() {
+		return numLifes > 0;
 	}
 	
 	@Override

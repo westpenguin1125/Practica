@@ -16,19 +16,26 @@ public class Coin extends GameObject{
 		return numCoins;
 	}
 	
+	private boolean alive;
+	
 	final private String COIN_SYMBOL = "¢";
 	
 	public Coin( Game game, int x, int y) {
 		super(game, x, y);
 		symbol = COIN_SYMBOL;
+		alive = true;
 	}
 
 	@Override
 	public boolean receiveCollision(Player player) {
 		player.increaseCoins();
-		kill();
-		
+		alive = false;
 		return false;
+	}
+	
+	@Override
+	public boolean isAlive(){
+		return alive;
 	}
 	
 	@Override

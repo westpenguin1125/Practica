@@ -41,6 +41,7 @@ public class Game {
 		
 		objectList = new GameObjectContainer();
 		
+		GameObjectGenerator.reset();
 		GameObjectGenerator.generateGameObjects(this);
 		
 		player.initialize(0, level.getRoadWidth() / 2);
@@ -66,12 +67,12 @@ public class Game {
 	}
 	
 	public void tryToAddObject(GameObject obj, double frequency) {
-		if (getRandomNumber() < frequency && gameObjectIn(obj.getX(), obj.getY()) == null) 
+		if (getRandomNumber() < frequency && isEmpty(obj.getX(), obj.getY())) 
 			objectList.addObject(obj);
 	}
 	
 	public void update() {
-		player.update();
+		player.update(); //TODO revisar al disparar wey
 		numCycles++;
 		
 		if(numCycles == 1) 
@@ -106,6 +107,10 @@ public class Game {
 	
 	public boolean isFinished() {
 		return !playerIsAlive() || win() || exit;
+	}
+	
+	public boolean isEmpty(int x, int y) {
+		return gameObjectIn(x, y) == null;
 	}
 	
 	public GameObject gameObjectIn(int x, int y) {
