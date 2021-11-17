@@ -2,10 +2,18 @@ package es.ucm.tp1.logic.gameobjects;
 
 import es.ucm.tp1.logic.Game;
 
-public class Coin extends GameObject{
-	
+public class Coin extends Coins{
+	public Coin(Game game, int x, int y) {
+		super(game, x, y);
+		symbol = COIN_SYMBOL;
+		coinsGiven = COINS_GIVEN;
+	}
+
 	final public static String COIN_INFO = "[Coin] gives 1 coin to the player";
+	final private String COIN_SYMBOL = "¢";
 	
+	final private static int COINS_GIVEN = 1;
+
 	private static int numCoins = 0;
 
 	public static void reset() {
@@ -14,28 +22,6 @@ public class Coin extends GameObject{
 	
 	public static int getNumCoins() {
 		return numCoins;
-	}
-	
-	private boolean alive;
-	
-	final private String COIN_SYMBOL = "¢";
-	
-	public Coin( Game game, int x, int y) {
-		super(game, x, y);
-		symbol = COIN_SYMBOL;
-		alive = true;
-	}
-
-	@Override
-	public boolean receiveCollision(Player player) {
-		player.increaseCoins();
-		alive = false;
-		return false;
-	}
-	
-	@Override
-	public boolean isAlive(){
-		return alive;
 	}
 	
 	@Override
@@ -47,13 +33,5 @@ public class Coin extends GameObject{
 	public void onDelete() {
 		numCoins--;
 	}
-
-	@Override
-	public boolean doCollision() {
-		return false;
-	}
-
-	@Override
-	public void update() {
-	}
+	
 }

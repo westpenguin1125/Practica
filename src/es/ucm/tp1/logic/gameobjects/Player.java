@@ -30,10 +30,6 @@ public class Player extends GameObject{
 	public void increaseCoins(int coinsToIncrease) {
 		numCoins += coinsToIncrease;
 	}
-	
-	public void increaseCoins() {
-		increaseCoins(1);
-	}
 
 	public void decreaseLife() {
 		numLifes--;
@@ -51,6 +47,10 @@ public class Player extends GameObject{
 	
 	public int getNumCoins() {
 		return numCoins;
+	}
+	
+	public void jump() {
+		x += 3;
 	}
 
 	@Override

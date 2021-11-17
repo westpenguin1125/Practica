@@ -1,8 +1,9 @@
 package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
+//import es.ucm.tp1.logic.InstantAction;
 
-public class ShootCommand extends Command{
+public class ShootCommand extends Command {
 
 	private static final String NAME = "shoot";
 
@@ -20,8 +21,9 @@ public class ShootCommand extends Command{
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO pa la próxima vez
-		return false;
+		// TODO Instant Action como funciona????
+		return true;
 	}
+
 
 }
