@@ -1,6 +1,7 @@
 package es.ucm.tp1.logic;
 
 import java.util.Random;
+
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
@@ -73,9 +74,13 @@ public class Game {
 		if (getRandomNumber() < frequency && isEmpty(obj.getX(), obj.getY()))
 			objectList.addObject(obj);
 	}
+	
+	public void forceAddObject(GameObject obj) {
+		objectList.forceAddObject(obj);
+	}
 
 	public void update() {
-		player.moveForward(); // TODO revisar al disparar wey
+		player.moveForward();
 		numCycles++;
 
 		if (numCycles == 1)
@@ -94,6 +99,10 @@ public class Game {
 
 	public void playerMoveDown() {
 		player.moveDown();
+	}
+	
+	public void rewardPlayer(int reward) {
+		player.increaseCoins(reward);
 	}
 
 	public void toggleTest() {
@@ -125,7 +134,7 @@ public class Game {
 	}
 	
 	public int lastColumnVisible() {
-		return getPlayerX() + getVisibility();
+		return getPlayerX() + getVisibility() - 1;
 	}
 
 	public boolean win() {

@@ -9,6 +9,14 @@ public class GameObjectContainer {
 	public GameObjectContainer() {
 		objectList = new ArrayList<>();
 	}
+	
+	private void delObjectsInCol(int x) {
+		ArrayList<GameObject> aux = new ArrayList<>();
+		for(GameObject obj : objectList)
+			if(obj.getX() != x)
+				aux.add(obj);
+		objectList = aux;
+	}
 
 	public GameObject gameObjectIn(int x, int y) {
 		
@@ -22,6 +30,11 @@ public class GameObjectContainer {
 	public void addObject(GameObject obj) {
 		objectList.add(obj);
 		obj.onEnter();
+	}
+	
+	public void forceAddObject(GameObject obj) {
+		delObjectsInCol(obj.getX());
+		addObject(obj);
 	}
 
 	public void removeDeadObjects() {
