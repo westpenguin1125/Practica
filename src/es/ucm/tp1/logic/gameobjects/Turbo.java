@@ -22,29 +22,29 @@ public class Turbo extends GameObject{
 
 	@Override
 	public boolean receiveCollision(Player player) {
-	player.jump();
-	alive = false;
+		player.jump();
+		alive = false;
 		return true;
 	}
 
 	@Override
-	public void onEnter() {
-		
+	public void onEnter() {		
 	}
 
 	@Override
-	public void update() {
-		
+	public void update() {		
 	}
 
 	@Override
 	public void onDelete() {
-		
 	}
 
 	@Override
 	public boolean isAlive() {
+		return alive;
+	}
+	
+	public boolean receiveShoot() {
 		return false;
 	}
-
 }

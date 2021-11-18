@@ -35,14 +35,31 @@ public class Player extends GameObject{
 		numLifes--;
 	}
 	
+	//TODO En las 3 siguientes funciones se repite mucho código
+	
 	public void moveDown() {
-		if (y < game.getRoadWidth() - 1)
-			y++;	
+		doCollision();
+		if(isAlive()) {
+			if (y < game.getRoadWidth() - 1) 
+				y++;	
+			update();
+		}
+		
 	}
 	
 	public void moveUp() {
-		if (y > 0)
-			y--;
+		doCollision();
+		if(isAlive()) {
+			if (y > 0)
+				y--;
+			update();
+		}
+	}
+
+	public void moveForward() {
+		doCollision();
+		if(isAlive())
+			update();
 	}
 	
 	public int getNumCoins() {
@@ -54,7 +71,7 @@ public class Player extends GameObject{
 	}
 
 	@Override
-	public void update() {
+	public void update() {	
 		x++;
 		doCollision();
 	}
@@ -95,5 +112,9 @@ public class Player extends GameObject{
 
 	@Override
 	public void onDelete() {
+	}
+	
+	public boolean receiveShoot() {
+		return false;
 	}
 }

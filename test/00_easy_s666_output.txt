@@ -42,7 +42,7 @@ Available commands:
 [s]hoot: shoot bullet
 [g]renade <x> <y>: add a grenade in position x, y
 [w]ave: do wave
-Cheat [0]: Clears the road
+Clear [0]: Clears the road
 Cheat [1..5]: Removes all elements of last visible column, and adds an Advanced Object
 Command > 
 [DEBUG] Executing: H
@@ -58,7 +58,7 @@ Available commands:
 [s]hoot: shoot bullet
 [g]renade <x> <y>: add a grenade in position x, y
 [w]ave: do wave
-Cheat [0]: Clears the road
+Clear [0]: Clears the road
 Cheat [1..5]: Removes all elements of last visible column, and adds an Advanced Object
 Command > 
 [DEBUG] Executing: I
@@ -86,7 +86,7 @@ Available commands:
 [s]hoot: shoot bullet
 [g]renade <x> <y>: add a grenade in position x, y
 [w]ave: do wave
-Cheat [0]: Clears the road
+Clear [0]: Clears the road
 Cheat [1..5]: Removes all elements of last visible column, and adds an Advanced Object
 Command > 
 [DEBUG] Executing: InFo

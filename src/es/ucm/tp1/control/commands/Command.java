@@ -18,6 +18,9 @@ public abstract class Command {
 		new ExitCommand(),
 		new ResetCommand(),
 		new TestCommand(),
+		new ShootCommand(),
+		new ClearCommand(),
+		new CheatCommand(),
 	};
 	/* @formatter:on */
 	

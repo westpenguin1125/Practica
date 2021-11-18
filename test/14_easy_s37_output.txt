@@ -55,7 +55,7 @@ Command >
 [DEBUG] Executing: g 4 1
 Distance: 29
 Coins: 2
-Cycle: 1
+Cycle: 2
 Total obstacles: 11
 Total coins: 13
   ═════════════════════════════════════════════════════════════════
@@ -70,7 +70,7 @@ Command >
 [DEBUG] Executing: 
 Distance: 28
 Coins: 2
-Cycle: 2
+Cycle: 3
 Total obstacles: 11
 Total coins: 13
   ═════════════════════════════════════════════════════════════════
@@ -85,7 +85,7 @@ Command >
 [DEBUG] Executing: 
 Distance: 27
 Coins: 2
-Cycle: 3
+Cycle: 4
 Total obstacles: 11
 Total coins: 13
   ═════════════════════════════════════════════════════════════════
@@ -100,7 +100,7 @@ Command >
 [DEBUG] Executing: 
 Distance: 26
 Coins: 2
-Cycle: 4
+Cycle: 5
 Total obstacles: 11
 Total coins: 13
   ═════════════════════════════════════════════════════════════════
@@ -131,11 +131,11 @@ Supercoin is present
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (4 , 2)
+Thunder hit position: (5 , 2) -> ░
 Distance: 99
 Coins: 5
 Cycle: 1
-Total obstacles: 58
+Total obstacles: 57
 Total coins: 23
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -143,16 +143,16 @@ Supercoin is present
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >                                                       ¢    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                              ¢               ░       ░            
+                              ¢                       ░            
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (0 , 2)
+Thunder hit position: (1 , 2)
 Distance: 98
 Coins: 5
 Cycle: 2
-Total obstacles: 58
+Total obstacles: 57
 Total coins: 23
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -160,16 +160,16 @@ Supercoin is present
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >                                               ¢            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                      ¢               ░       ░                    
+                      ¢                       ░                    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (4 , 2) -> Obstacle hit
+Thunder hit position: (5 , 2)
 Distance: 97
 Coins: 5
 Cycle: 3
-Total obstacles: 58
+Total obstacles: 57
 Total coins: 23
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -177,12 +177,12 @@ Supercoin is present
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >                                       ¢                    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-              ¢               ░                               ░    
+              ¢                       ░                       ░    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (6 , 2) -> Obstacle hit
+Thunder hit position: (7 , 2)
 Distance: 96
 Coins: 5
 Cycle: 4
@@ -190,16 +190,16 @@ Total obstacles: 57
 Total coins: 23
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
-                                              ░                    
+                                             ░ ←                   
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >                               ¢                            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-      ¢               ░                                            
+      ¢                       ░                       ░            
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (1 , 2) -> Obstacle hit
+Thunder hit position: (2 , 2) -> ░
 Distance: 95
 Coins: 5
 Cycle: 5
@@ -211,16 +211,16 @@ Supercoin is present
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >                       ¢                              >>>   
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                                                                   
+                                              ░                    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (6 , 1)
+Thunder hit position: (7 , 1)
 Distance: 94
 Coins: 5
 Cycle: 6
-Total obstacles: 55
+Total obstacles: 56
 Total coins: 23
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -228,12 +228,12 @@ Supercoin is present
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >               ¢                              >>>           
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                                                              ░    
+                                      ░                       ░    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (6 , 0)
+Thunder hit position: (7 , 0) -> ░
 Distance: 93
 Coins: 5
 Cycle: 7
@@ -241,33 +241,33 @@ Total obstacles: 55
 Total coins: 23
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
-                      ░                       ¢               ░    
+                      ░                       ¢                    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >       ¢                              >>>                   
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                                                      ░            
+                              ░                       ░            
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (5 , 2) -> Obstacle hit
+Thunder hit position: (6 , 2)
 Distance: 92
 Coins: 6
 Cycle: 8
 Total obstacles: 55
-Total coins: 23
+Total coins: 22
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
-              ░                       ¢               ░            
+              ░                       ¢                            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >                              >>>                      ¢    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                                                              ←    
+                      ░                       ░               ←    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (0 , 2)
+Thunder hit position: (1 , 2) -> ░
 Distance: 91
 Coins: 6
 Cycle: 9
@@ -275,76 +275,77 @@ Total obstacles: 54
 Total coins: 22
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
-      ░                       ¢               ░               ░    
+      ░                       ¢                               ░    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >                      >>>                      ¢            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                                              ←                    
+                                      ░       ←                    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: g 2 2
+Thunder hit position: (2 , 2)
 Distance: 91
-Coins: 3
-Cycle: 9
-Total obstacles: 54
-Total coins: 22
-Supercoin is present
-  ═════════════════════════════════════════════════════════════════
-      ░                       ¢               ░               ░    
-   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-      >                      >>>                      ¢            
-   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                     ð[3]                     ←                    
-  ═════════════════════════════════════════════════════════════════
-
-Command > 
-[DEBUG] Executing: 
-Thunder hit position: (1 , 2)
-Distance: 90
 Coins: 3
 Cycle: 10
 Total obstacles: 54
 Total coins: 22
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
-                      ¢               ░               ░       ░    
+      ░                       ¢                              ░ ←   
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-      >              >>>                      ¢                    
+      >                      >>>                      ¢            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-             ð[2]             ←                                    
+                     ð[3]            ░ ←                           
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (0 , 1)
-Distance: 89
+Thunder hit position: (1 , 1)
+Distance: 90
 Coins: 3
 Cycle: 11
 Total obstacles: 54
 Total coins: 22
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
-              ¢               ░       ←       ░       ░            
+                      ¢                       ←       ░       ░    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-      >      >>>                      ¢                            
+      >              >>>                      ¢                    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-     ð[1]     ←                                                    
+             ð[2]     ←       ░                                    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (4 , 0) -> Obstacle hit
-Distance: 85
+Thunder hit position: (5 , 0) -> ░
+Distance: 89
 Coins: 3
 Cycle: 12
-Total obstacles: 54
+Total obstacles: 53
 Total coins: 22
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
-                      ░                       ☺                    
+              ¢               ←                       ░            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-      >                                                            
+      >      >>>                      ¢                            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+    ← ð[1]            ░                                            
+  ═════════════════════════════════════════════════════════════════
+
+Command > 
+[DEBUG] Executing: 
+Thunder hit position: (6 , 0)
+Distance: 85
+Coins: 3
+Cycle: 13
+Total obstacles: 53
+Total coins: 22
+Supercoin is present
+  ═════════════════════════════════════════════════════════════════
+                      ░                                            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+     > ¢                                      ☺                    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
                                                       $            
   ═════════════════════════════════════════════════════════════════
@@ -354,59 +355,59 @@ Command >
 Thunder hit position: (5 , 0)
 Distance: 84
 Coins: 4
-Cycle: 13
-Total obstacles: 53
-Total coins: 22
+Cycle: 14
+Total obstacles: 52
+Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
               ░                                               ░    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-      >                               ☺                            
+      >                                                            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                                              $                    
+                                      ☺       $                    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (4 , 0)
+Thunder hit position: (6 , 1)
 Distance: 83
 Coins: 4
-Cycle: 14
-Total obstacles: 53
+Cycle: 15
+Total obstacles: 52
 Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
       ░                                               ░            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-      >                                                       ░    
+      >                       ☺                               ░    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                              ☺       $                            
+                                      $                       ←    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (5 , 1)
+Thunder hit position: (2 , 0) -> ☺
 Distance: 82
 Coins: 4
-Cycle: 15
-Total obstacles: 53
+Cycle: 16
+Total obstacles: 51
 Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
                                               ░                    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-      >               ☺                               ░            
+      >                                               ░            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                              $                       ←            
+                              $               ←                    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (1 , 0) -> Obstacle hit
+Thunder hit position: (6 , 2)
 Distance: 81
 Coins: 4
-Cycle: 16
-Total obstacles: 53
+Cycle: 17
+Total obstacles: 51
 Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -414,16 +415,16 @@ Supercoin is present
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >                                       ░                    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-                      $               ←                            
+                      $       ←                                    
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (5 , 2)
+Thunder hit position: (0 , 1)
 Distance: 80
 Coins: 4
-Cycle: 17
-Total obstacles: 52
+Cycle: 18
+Total obstacles: 51
 Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -431,16 +432,16 @@ Supercoin is present
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
       >                               ░                            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-              $       ←                                            
+             $ ←                                                   
   ═════════════════════════════════════════════════════════════════
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (0 , 1)
+Thunder hit position: (7 , 1)
 Distance: 79
 Coins: 4
-Cycle: 18
-Total obstacles: 52
+Cycle: 19
+Total obstacles: 51
 Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -453,10 +454,11 @@ Supercoin is present
 
 Command > 
 [DEBUG] Executing: g 5 0
+Thunder hit position: (2 , 2)
 Distance: 79
 Coins: 1
-Cycle: 18
-Total obstacles: 52
+Cycle: 20
+Total obstacles: 51
 Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -469,11 +471,11 @@ Supercoin is present
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (6 , 1)
+Thunder hit position: (0 , 0)
 Distance: 78
 Coins: 1
-Cycle: 19
-Total obstacles: 52
+Cycle: 21
+Total obstacles: 51
 Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -486,11 +488,11 @@ Supercoin is present
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (1 , 2)
+Thunder hit position: (2 , 2)
 Distance: 77
 Coins: 1
-Cycle: 20
-Total obstacles: 52
+Cycle: 22
+Total obstacles: 51
 Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
@@ -503,17 +505,17 @@ Supercoin is present
 
 Command > 
 [DEBUG] Executing: 
-Thunder hit position: (0 , 0) -> Obstacle hit
+Thunder hit position: (4 , 2)
 Distance: 76
 Coins: 1
-Cycle: 21
-Total obstacles: 52
+Cycle: 23
+Total obstacles: 51
 Total coins: 21
 Supercoin is present
   ═════════════════════════════════════════════════════════════════
                                       ░               ░            
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
-      @                                       ░               ☺    
+     @ ░                                      ░               ☺    
    ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
                                       ¢               █       █    
   ═════════════════════════════════════════════════════════════════

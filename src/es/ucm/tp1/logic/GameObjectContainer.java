@@ -11,15 +11,12 @@ public class GameObjectContainer {
 	}
 
 	public GameObject gameObjectIn(int x, int y) {
-		int i = 0;
 		
-		while(i < objectList.size() && !objectList.get(i).isInPosition(x, y)) 
-			i++;
-			
-		if(i == objectList.size())
-			return null;
-		else
-			return objectList.get(i);
+		for(GameObject obj : objectList)
+			if(obj.isInPosition(x, y))
+				return obj;
+		
+		return null;
 	}
 	
 	public void addObject(GameObject obj) {
@@ -39,5 +36,14 @@ public class GameObjectContainer {
 		}
 		
 		objectList = aux;
+	}
+	
+	public String positionToString(int x, int y) {
+		StringBuilder buffer = new StringBuilder();
+		for(GameObject obj : objectList) {
+			if(obj.isInPosition(x, y))
+				buffer.append(obj.toString() + " ");
+		}
+		return buffer.toString();
 	}
 }

@@ -7,18 +7,18 @@ public class SuperCoin extends Coins{
 	final public static String SUPERCOIN_INFO = "[SUPERCOIN] gives 1000 coins";
 	final private String SUPERCOIN_SYMBOL = "$";
 	
-	final static int COINS_GIVEN = 5;
+	final static int COINS_GIVEN = 1000;
 	
 	private static boolean isPresent = false;
+	
+	public static boolean isPresent() {
+		return isPresent;
+	}
 	
 	public SuperCoin(Game game, int x, int y) {
 		super(game, x, y);
 		symbol = SUPERCOIN_SYMBOL;
 		coinsGiven = COINS_GIVEN;
-	}
-	
-	public static boolean isPresent() {
-		return isPresent;
 	}
 
 	@Override
@@ -30,5 +30,4 @@ public class SuperCoin extends Coins{
 	public void onDelete() {
 		isPresent = false;
 	}
-
 }

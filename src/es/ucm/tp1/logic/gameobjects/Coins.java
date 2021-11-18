@@ -3,11 +3,9 @@ package es.ucm.tp1.logic.gameobjects;
 import es.ucm.tp1.logic.Game;
 
 public abstract class Coins extends GameObject{
-
 	
 	private boolean alive;
 	protected int coinsGiven;
-	
 	
 	public Coins( Game game, int x, int y) {
 		super(game, x, y);
@@ -25,8 +23,6 @@ public abstract class Coins extends GameObject{
 	public boolean isAlive(){
 		return alive;
 	}
-	
-
 
 	@Override
 	public boolean doCollision() {
@@ -35,5 +31,10 @@ public abstract class Coins extends GameObject{
 
 	@Override
 	public void update() {
+	}
+	
+	@Override
+	public boolean  receiveShoot() {
+		return false;
 	}
 }
