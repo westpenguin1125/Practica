@@ -1,6 +1,7 @@
 package es.ucm.tp1.logic.gameobjects;
 
 import es.ucm.tp1.logic.Game;
+import es.ucm.tp1.control.Direction;
 
 public class Player extends GameObject{
 	
@@ -35,31 +36,20 @@ public class Player extends GameObject{
 		numLifes--;
 	}
 	
-	//TODO En las 3 siguientes funciones se repite mucho código
-	
-	public void moveDown() {
+	public void move(Direction dir) {
 		doCollision();
 		if(isAlive()) {
-			if (y < game.getRoadWidth() - 1) 
-				y++;	
-			update();
-		}
-		
-	}
-	
-	public void moveUp() {
-		doCollision();
-		if(isAlive()) {
-			if (y > 0)
+			switch(dir) {
+			case Up:
 				y--;
-			update();
+				break;
+			case Down:
+				y++;
+				break;
+			}
+			x++;
 		}
-	}
-
-	public void moveForward() {
 		doCollision();
-		if(isAlive())
-			update();
 	}
 	
 	public int getNumCoins() {

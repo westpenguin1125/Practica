@@ -2,6 +2,7 @@ package es.ucm.tp1.logic;
 
 import java.util.Random;
 
+import es.ucm.tp1.control.Direction;
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
@@ -80,7 +81,6 @@ public class Game {
 	}
 
 	public void update() {
-		player.moveForward();
 		numCycles++;
 
 		if (numCycles == 1)
@@ -92,13 +92,10 @@ public class Game {
 	public void removeDeadObjects() {
 		objectList.removeDeadObjects();
 	}
-
-	public void playerMoveUP() {
-		player.moveUp();
-	}
-
-	public void playerMoveDown() {
-		player.moveDown();
+	
+	public void movePlayer(Direction dir) {
+		player.move(dir);
+		update();
 	}
 	
 	public void rewardPlayer(int reward) {
