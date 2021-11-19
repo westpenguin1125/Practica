@@ -61,9 +61,7 @@ public class Player extends GameObject{
 	}
 
 	@Override
-	public void update() {	
-		x++;
-		doCollision();
+	public void update() {
 	}
 	
 	@Override
