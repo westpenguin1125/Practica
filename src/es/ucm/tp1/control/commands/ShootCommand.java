@@ -2,8 +2,7 @@ package es.ucm.tp1.control.commands;
 
 
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.logic.InstantAction;
-import es.ucm.tp1.logic.ShootAction;
+import es.ucm.tp1.logic.instantactions.ShootAction;
 
 public class ShootCommand extends Command {
 

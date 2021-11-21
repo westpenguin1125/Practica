@@ -6,6 +6,7 @@ import es.ucm.tp1.control.Direction;
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
+import es.ucm.tp1.logic.instantactions.InstantAction;
 
 public class Game {
 
