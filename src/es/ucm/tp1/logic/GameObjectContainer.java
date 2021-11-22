@@ -12,9 +12,14 @@ public class GameObjectContainer {
 	
 	private void delObjectsInCol(int x) {
 		ArrayList<GameObject> aux = new ArrayList<>();
-		for(GameObject obj : objectList)
-			if(obj.getX() != x)
+		
+		for(GameObject obj : objectList) {
+			if(obj.getX() == x)
+				obj.onDelete();
+			else
 				aux.add(obj);
+		}
+		
 		objectList = aux;
 	}
 
@@ -41,11 +46,10 @@ public class GameObjectContainer {
 		ArrayList<GameObject> aux = new ArrayList<>();
 		
 		for(GameObject obj : objectList) {
-			if(!obj.isAlive()) {
-				obj.onDelete();
-				continue;
-			}
-			aux.add(obj); 
+			if(obj.isAlive())
+				aux.add(obj);
+			else
+				obj.onDelete();	
 		}
 		
 		objectList = aux;

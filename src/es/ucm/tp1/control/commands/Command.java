@@ -21,6 +21,7 @@ public abstract class Command {
 		new ShootCommand(),
 		new ClearCommand(),
 		new CheatCommand(),
+		new WaveCommand(),
 	};
 	/* @formatter:on */
 	

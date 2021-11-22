@@ -1,7 +1,6 @@
 package es.ucm.tp1.logic.gameobjects;
 
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.control.Direction;
 
 public class Player extends GameObject{
 	
@@ -20,6 +19,16 @@ public class Player extends GameObject{
 		initialize(x, y);
 	}
 	
+	private void move(int dx, int dy) {
+		doCollision();
+		if(isAlive()) {
+			x += dx;
+			y += dy;
+		}
+		doCollision();
+		game.update();
+	}
+	
 	public void initialize(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -28,28 +37,30 @@ public class Player extends GameObject{
 		numLifes = STARTING_LIFES;
 	}
 	
+	public void moveDown() {
+		if(getY() < game.getRoadWidth() - 1)
+			move(1, 1);
+		else 
+			moveForward();
+	}
+	
+	public void moveUp() {
+		if(0 < getY())
+			move(1, -1);
+		else 
+			moveForward();
+	}
+	
+	public void moveForward() {
+		move(1, 0);
+	}
+	
 	public void increaseCoins(int coinsToIncrease) {
 		numCoins += coinsToIncrease;
 	}
 
 	public void decreaseLife() {
 		numLifes--;
-	}
-	
-	public void move(Direction dir) {
-		doCollision();
-		if(isAlive()) {
-			switch(dir) {
-			case Up:
-				y--;
-				break;
-			case Down:
-				y++;
-				break;
-			}
-			x++;
-		}
-		doCollision();
 	}
 	
 	public int getNumCoins() {

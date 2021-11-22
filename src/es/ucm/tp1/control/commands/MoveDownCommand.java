@@ -1,7 +1,6 @@
 package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.control.Direction;
 
 public class MoveDownCommand extends Command {
 	
@@ -19,7 +18,7 @@ public class MoveDownCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		game.movePlayer(Direction.Down);
+		game.movePlayerDown();
 		return true;
 	}
 }

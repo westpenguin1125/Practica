@@ -2,7 +2,6 @@ package es.ucm.tp1.logic;
 
 import java.util.Random;
 
-import es.ucm.tp1.control.Direction;
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
@@ -35,6 +34,10 @@ public class Game {
 		initialize(seed, level);
 	}
 
+	private double getRandomNumber() {
+		return random.nextDouble();
+	}
+
 	public void initialize(Long seed, Level level) {
 		this.seed = seed;
 		this.level = level;
@@ -64,10 +67,6 @@ public class Game {
 		objectList = new GameObjectContainer();
 	}
 
-	private double getRandomNumber() {
-		return random.nextDouble();
-	}
-
 	public int getRandomLane() {
 		return (int) (getRandomNumber() * getRoadWidth());
 	}
@@ -83,20 +82,25 @@ public class Game {
 
 	public void update() {
 		numCycles++;
-
+		
+		objectList.removeDeadObjects();
+		
 		if (numCycles == 1)
 			startTime = System.currentTimeMillis();
 
 		elapsedTime = System.currentTimeMillis() - startTime;
 	}
-
-	public void removeDeadObjects() {
-		objectList.removeDeadObjects();
+	
+	public void movePlayerUp() {
+		player.moveUp();
 	}
 	
-	public void movePlayer(Direction dir) {
-		player.move(dir);
-		update();
+	public void movePlayerDown() {
+		player.moveDown();
+	}
+	
+	public void movePlayerForward() {
+		player.moveForward();
 	}
 	
 	public void rewardPlayer(int reward) {
@@ -113,6 +117,7 @@ public class Game {
 	
 	public void execute(InstantAction action) {
 		action.execute(this);
+		update();
 	}
 
 	public boolean isFinished() {
