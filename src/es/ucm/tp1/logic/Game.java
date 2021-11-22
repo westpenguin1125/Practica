@@ -5,6 +5,7 @@ import java.util.Random;
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
+import es.ucm.tp1.logic.instantactions.InstantAction;
 
 public class Game {
 
@@ -31,6 +32,10 @@ public class Game {
 
 		player = new Player(this, 0, level.getRoadWidth() / 2);
 		initialize(seed, level);
+	}
+
+	private double getRandomNumber() {
+		return random.nextDouble();
 	}
 
 	public void initialize(Long seed, Level level) {
@@ -62,10 +67,6 @@ public class Game {
 		objectList = new GameObjectContainer();
 	}
 
-	private double getRandomNumber() {
-		return random.nextDouble();
-	}
-
 	public int getRandomLane() {
 		return (int) (getRandomNumber() * getRoadWidth());
 	}
@@ -80,25 +81,26 @@ public class Game {
 	}
 
 	public void update() {
-		player.moveForward();
 		numCycles++;
-
+		
+		objectList.removeDeadObjects();
+		
 		if (numCycles == 1)
 			startTime = System.currentTimeMillis();
 
 		elapsedTime = System.currentTimeMillis() - startTime;
 	}
-
-	public void removeDeadObjects() {
-		objectList.removeDeadObjects();
-	}
-
-	public void playerMoveUP() {
+	
+	public void movePlayerUp() {
 		player.moveUp();
 	}
-
-	public void playerMoveDown() {
+	
+	public void movePlayerDown() {
 		player.moveDown();
+	}
+	
+	public void movePlayerForward() {
+		player.moveForward();
 	}
 	
 	public void rewardPlayer(int reward) {
@@ -115,6 +117,7 @@ public class Game {
 	
 	public void execute(InstantAction action) {
 		action.execute(this);
+		update();
 	}
 
 	public boolean isFinished() {

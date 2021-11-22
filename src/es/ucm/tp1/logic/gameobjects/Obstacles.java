@@ -35,7 +35,7 @@ public abstract class Obstacles extends GameObject {
 	
 	@Override
 	public boolean isAlive() {
-	return numLifes > 0;
+		return numLifes > 0;
 	}
 
 	@Override

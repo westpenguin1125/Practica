@@ -1,5 +1,6 @@
-package es.ucm.tp1.logic;
+package es.ucm.tp1.logic.instantactions;
 
+import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 
 public class ShootAction implements InstantAction{
@@ -11,9 +12,8 @@ public class ShootAction implements InstantAction{
 		
 		while(i < game.getRoadLength() && !found) {
 			GameObject obj = game.gameObjectIn(i, game.getPlayerY());
-			if (obj != null) {
+			if (obj != null)
 				found = obj.receiveShoot();
-			}
 			i++;
 		}
 	}
