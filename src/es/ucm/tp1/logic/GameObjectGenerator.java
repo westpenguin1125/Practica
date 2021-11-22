@@ -1,7 +1,7 @@
 package es.ucm.tp1.logic;
 
 import es.ucm.tp1.logic.gameobjects.*;
-
+import es.ucm.tp1.control.Level;
 
 public class GameObjectGenerator {
 
@@ -32,17 +32,28 @@ public class GameObjectGenerator {
 	}
 
 	
-	public static void generateGameObjects(Game game) {
-
+	public static void generateGameObjects(Game game, Level level) {
+		
 		for (int x = game.getVisibility() / 2; x < game.getRoadLength(); x++) {
-			game.tryToAddObject(new Obstacle(game, x, game.getRandomLane()), game.obstacleFrequency());
-			game.tryToAddObject(new Coin(game, x, game.getRandomLane()), game.coinFrequency());
+			game.tryToAddObject(new Obstacle(game, x, game.getRandomLane()), level.obstacleFrequency());
+			game.tryToAddObject(new Coin(game, x, game.getRandomLane()), level.coinFrequency());
+			if(level.hasAdvancedObjects()) {
+				game.tryToAddObject(new Wall(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
+				game.tryToAddObject(new Turbo(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
+				if (!SuperCoin.isPresent()) {
+					game.tryToAddObject(new SuperCoin(game, x, game.getRandomLane()), level . advancedObjectsFrequency());
+				}
+				game.tryToAddObject(new Truck(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
+				//game.tryToAddObject(new Pedestrian(game, x, 0), level.advancedObjectsFrequency());
+			}
 		}
 	}
 
 	public static void reset() {
+
 		Coin.reset();
-		Obstacle.reset();
+		SuperCoin.reset();
+		Obstacles.reset();
 	}
 
 	public static void generateRuntimeObjects(Game game) {

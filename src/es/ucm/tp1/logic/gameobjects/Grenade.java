@@ -61,7 +61,4 @@ public class Grenade extends GameObject{
 	protected String getSymbol() {
 		return symbol + String.format("[%d]", countDown);
 	}
-
-	
-	
 }

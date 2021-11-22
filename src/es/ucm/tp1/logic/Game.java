@@ -1,7 +1,6 @@
 package es.ucm.tp1.logic;
 
 import java.util.Random;
-
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
@@ -46,8 +45,7 @@ public class Game {
 
 		emptyObjectList();
 
-		GameObjectGenerator.reset();
-		GameObjectGenerator.generateGameObjects(this);
+		GameObjectGenerator.generateGameObjects(this, level);
 
 		player.initialize(0, level.getRoadWidth() / 2);
 
@@ -64,6 +62,7 @@ public class Game {
 	}
 	
 	public void emptyObjectList() {
+		GameObjectGenerator.reset();
 		objectList = new GameObjectContainer();
 	}
 
@@ -160,14 +159,6 @@ public class Game {
 
 	public int getRoadWidth() {
 		return level.getRoadWidth();
-	}
-
-	public double coinFrequency() {
-		return level.coinFrequency();
-	}
-
-	public double obstacleFrequency() {
-		return level.obstacleFrequency();
 	}
 
 	public int getPlayerX() {

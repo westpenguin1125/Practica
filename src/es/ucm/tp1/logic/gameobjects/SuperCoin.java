@@ -11,6 +11,10 @@ public class SuperCoin extends Coins{
 	
 	private static boolean isPresent = false;
 	
+	public static void reset() {
+		isPresent = false;
+	}
+	
 	public static boolean isPresent() {
 		return isPresent;
 	}
