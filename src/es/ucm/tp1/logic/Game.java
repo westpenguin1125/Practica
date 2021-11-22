@@ -83,12 +83,18 @@ public class Game {
 	public void update() {
 		numCycles++;
 		
-		objectList.removeDeadObjects();
+		//TODO ASK Qué debería pasar cuando está el player frente al truck, de eso depende el orden de estas instrucciones
+		objectList.updateList();
+		player.doCollision();
 		
 		if (numCycles == 1)
 			startTime = System.currentTimeMillis();
 
 		elapsedTime = System.currentTimeMillis() - startTime;
+	}
+	
+	public boolean buy(int cost) {
+		return player.buy(cost);
 	}
 	
 	public void movePlayerUp() {

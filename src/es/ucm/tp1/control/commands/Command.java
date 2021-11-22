@@ -22,6 +22,7 @@ public abstract class Command {
 		new ClearCommand(),
 		new CheatCommand(),
 		new WaveCommand(),
+		new GrenadeCommand(),		
 	};
 	/* @formatter:on */
 	

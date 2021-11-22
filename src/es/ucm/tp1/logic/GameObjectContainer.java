@@ -63,4 +63,12 @@ public class GameObjectContainer {
 		}
 		return buffer.toString();
 	}
+	
+	public void updateList() {
+		removeDeadObjects();
+		for (GameObject obj : objectList) {
+			obj.update();	
+		}
+	}
+	
 }

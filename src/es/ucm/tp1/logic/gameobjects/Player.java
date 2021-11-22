@@ -25,7 +25,6 @@ public class Player extends GameObject{
 			x += dx;
 			y += dy;
 		}
-		doCollision();
 		game.update();
 	}
 	
@@ -58,6 +57,9 @@ public class Player extends GameObject{
 	public void increaseCoins(int coinsToIncrease) {
 		numCoins += coinsToIncrease;
 	}
+	public void decreaseCoins(int coinsToDecrease) {
+		numCoins -= coinsToDecrease;
+	}
 
 	public void decreaseLife() {
 		numLifes--;
@@ -65,6 +67,15 @@ public class Player extends GameObject{
 	
 	public int getNumCoins() {
 		return numCoins;
+	}
+	public boolean buy(int cost) {
+		if (numCoins >= cost) {
+			decreaseCoins(cost);
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public void jump() {

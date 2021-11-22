@@ -1,9 +1,11 @@
 package es.ucm.tp1.control.commands;
 
+import es.ucm.tp1.control.Buyable;
 import es.ucm.tp1.logic.Game;
+import es.ucm.tp1.logic.instantactions.ShootAction;
 import es.ucm.tp1.logic.instantactions.WaveAction;
 
-public class WaveCommand extends Command{
+public class WaveCommand extends Command implements Buyable{
 
 	private static final String NAME = "wave";
 
@@ -13,7 +15,9 @@ public class WaveCommand extends Command{
 
 	private static final String HELP = "do wave";
 	
-	//TODO lo relacionado al costen monedas de ejecutar este comando
+	private static final int COST = 5;
+
+	
 	
 	public WaveCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
@@ -21,7 +25,15 @@ public class WaveCommand extends Command{
 
 	@Override
 	public boolean execute(Game game) {
-		game.execute(new WaveAction());
-		return true;
+		if (buy(game)) {
+			game.execute(new WaveAction());
+			return true;
+		}
+			return false;
+	}
+
+	@Override
+	public int cost() {
+		return COST;
 	}
 }

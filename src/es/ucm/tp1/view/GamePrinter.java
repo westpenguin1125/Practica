@@ -4,9 +4,11 @@ import java.util.Locale;
 
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.Coin;
+import es.ucm.tp1.logic.gameobjects.Grenade;
 import es.ucm.tp1.logic.gameobjects.Obstacle;
 import es.ucm.tp1.logic.gameobjects.Player;
 import es.ucm.tp1.logic.gameobjects.SuperCoin;
+import es.ucm.tp1.logic.gameobjects.Truck;
 import es.ucm.tp1.logic.gameobjects.Turbo;
 import es.ucm.tp1.logic.gameobjects.Wall;
 import es.ucm.tp1.utils.*;
@@ -51,7 +53,10 @@ public class GamePrinter {
 		buffer.append(Obstacle.OBSTACLE_INFO + newLine);
 		buffer.append(Wall.WALL_INFO + newLine);		
 		buffer.append(SuperCoin.SUPERCOIN_INFO + newLine);
-		buffer.append(Turbo.TURBO_INFO);
+		buffer.append(Turbo.TURBO_INFO + newLine);
+		buffer.append(Grenade.GRENADE_INFO + newLine);
+		buffer.append(Truck.TRUCK_INFO);
+
 		
 		
 		return buffer.toString();
