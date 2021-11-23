@@ -27,6 +27,8 @@ public class CheatCommand extends Command{
 	
 	@Override
 	protected Command parse(String[] words) {
+		if(words.length > 1)
+			return null;
 		try {
 			id = Integer.parseInt(words[0]);
 			if(id < GameObjectGenerator.MIN_ID || id > GameObjectGenerator.MAX_ID)

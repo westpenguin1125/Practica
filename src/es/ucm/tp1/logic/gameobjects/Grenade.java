@@ -1,6 +1,5 @@
 package es.ucm.tp1.logic.gameobjects;
 
-import es.ucm.tp1.control.Buyable;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.instantactions.ExplodeAction;
 
@@ -9,7 +8,6 @@ public class Grenade extends GameObject{
 	
 	final public static String GRENADE_INFO = "[GRENADE] Explodes in 3 cycles, harming everyone around";
 	private static final String GRENADE_SYMBOL = "ð";
-	//TODO El countDown se resta una vez antes de enseñarlo :(
 	private final static int CYCLES_TO_EXPLODE = 4;
 	
 	private int countDown;
@@ -44,7 +42,7 @@ public class Grenade extends GameObject{
 	public void update() {
 		countDown--;
 		if(countDown == 0) {
-			game.execute(new ExplodeAction(this));
+			game.execute(new ExplodeAction(getX(), getY()));
 		}
 	}
 

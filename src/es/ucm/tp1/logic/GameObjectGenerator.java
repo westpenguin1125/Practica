@@ -51,7 +51,7 @@ public class GameObjectGenerator {
 
 	public static void reset() {
 
-		Coin.reset();
+			Coin.reset();
 		SuperCoin.reset();
 		Obstacles.reset();
 	}

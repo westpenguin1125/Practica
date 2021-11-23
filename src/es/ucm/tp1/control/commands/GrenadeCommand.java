@@ -12,7 +12,7 @@ public class GrenadeCommand extends Command  implements Buyable{
 
 	private static final String SHORTCUT = "g";
 
-	private static final String HELP = " add a grenade in position x, y";
+	private static final String HELP = "add a grenade in position x, y";
 	
 	private final static int COST = 3;
 	
@@ -27,10 +27,13 @@ public class GrenadeCommand extends Command  implements Buyable{
 	protected Command parse(String[] words) {
 		if (words.length == 3 && matchCommandName(words[0])) {
 			
-			xInput = Integer.parseInt(words[1]);
-			yInput = Integer.parseInt(words[2]);
-			
-			//TODO ASK si tiene que revisar si está en los límites
+			try {
+				xInput = Integer.parseInt(words[1]);
+				yInput = Integer.parseInt(words[2]);
+			}
+			catch(NumberFormatException e) {
+				return null;
+			}
 			return this;
 		}
 		else {
@@ -40,6 +43,8 @@ public class GrenadeCommand extends Command  implements Buyable{
 	
 	@Override
 	public boolean execute(Game game) {
+		
+		//TODO ASK si tiene que revisar si está en los límites
 		if (buy(game)) {
 //			if(!game.inRange(xInput + game.getPlayerX(), yInput)) {
 //				//mensaje
