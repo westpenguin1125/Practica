@@ -1,6 +1,7 @@
 package es.ucm.tp1.logic;
 
 import es.ucm.tp1.logic.gameobjects.*;
+import es.ucm.tp1.logic.instantactions.ThunderAction;
 import es.ucm.tp1.control.Level;
 
 public class GameObjectGenerator {
@@ -44,7 +45,7 @@ public class GameObjectGenerator {
 					game.tryToAddObject(new SuperCoin(game, x, game.getRandomLane()), level . advancedObjectsFrequency());
 				}
 				game.tryToAddObject(new Truck(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
-				//game.tryToAddObject(new Pedestrian(game, x, 0), level.advancedObjectsFrequency());
+				game.tryToAddObject(new Pedestrian(game, x, 0), level.advancedObjectsFrequency());
 			}
 		}
 	}
@@ -56,7 +57,9 @@ public class GameObjectGenerator {
 		Obstacles.reset();
 	}
 
-	public static void generateRuntimeObjects(Game game) {
-		
+	public static void generateRuntimeObjects(Game game, Level level) {
+		if (level.hasAdvancedObjects()) {
+			game.execute(new ThunderAction());
+		}
 	}
 }

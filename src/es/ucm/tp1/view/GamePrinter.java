@@ -3,14 +3,7 @@ package es.ucm.tp1.view;
 import java.util.Locale;
 
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.logic.gameobjects.Coin;
-import es.ucm.tp1.logic.gameobjects.Grenade;
-import es.ucm.tp1.logic.gameobjects.Obstacle;
-import es.ucm.tp1.logic.gameobjects.Player;
-import es.ucm.tp1.logic.gameobjects.SuperCoin;
-import es.ucm.tp1.logic.gameobjects.Truck;
-import es.ucm.tp1.logic.gameobjects.Turbo;
-import es.ucm.tp1.logic.gameobjects.Wall;
+import es.ucm.tp1.logic.gameobjects.*;
 import es.ucm.tp1.utils.*;
 
 
@@ -147,5 +140,12 @@ public class GamePrinter {
 			s += DO_EXIT_MSG;
 		
 		return s;
+	}
+
+	public static void showThunder(int x, int y, GameObject obj, boolean hit) {
+		System.out.print(String.format("Thunder hit position: (%d, %d)", x, y));
+		if(obj != null && hit)
+			System.out.print(" -> " + obj.toString());
+		System.out.print(newLine);
 	}
 }

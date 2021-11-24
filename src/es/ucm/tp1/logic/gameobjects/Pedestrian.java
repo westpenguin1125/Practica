@@ -14,12 +14,26 @@ public class Pedestrian extends Obstacles{
 		super(game, x, y);
 		symbol = PEDESTRIAN_SYMBOL;
 		numLifes = PEDESTRIAN_RESISTANCE;
-		//TODO COMO se empieza moviendo el pedestrian movingUp = true;
+		movingUp = true;
+	}
+	
+	@Override
+	public boolean receiveShoot() {
+		game.punishPlayer();
+		return super.receiveShoot();
 	}
 
 	@Override
 	public void update() {
+		if(y == 0)
+			movingUp = false;
+		else if(y == game.getRoadWidth() - 1)
+			movingUp = true;
 		
+		if(movingUp)
+			y--;
+		else
+			y++;
 	}
 	
 	@Override

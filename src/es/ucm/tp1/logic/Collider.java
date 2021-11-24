@@ -12,4 +12,6 @@ public interface Collider {
 	boolean receiveWave();
 	
 	boolean receiveExplosion();
+	
+	boolean receiveThunder();
 }

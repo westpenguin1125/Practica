@@ -45,22 +45,21 @@ public class GrenadeCommand extends Command  implements Buyable{
 	public boolean execute(Game game) {
 		
 		//TODO ASK si tiene que revisar si está en los límites
-		if (buy(game)) {
-//			if(!game.inRange(xInput + game.getPlayerX(), yInput)) {
-//				//mensaje
-//				return false;
-//			}
-//			else 
-			//TODO ASK if not horrible
-			if(!game.isEmpty(xInput + game.getPlayerX(), yInput)) {
-				return false;
-			}
-			else {
-				game.tryToAddObject(new Grenade(game, xInput + game.getPlayerX(), yInput), 1);
-				game.update();
-				return true;
-			}
+		if(!game.inVisibility(xInput, yInput) ||
+			!game.isEmpty(xInput + game.getPlayerX(), yInput)) {
+			
+			System.out.println("Invalid position.");
+			System.out.println("[ERROR]: Failed to add grenade\n");
+			
+			return false;
 		}
+		else if (buy(game)) {
+			
+			game.tryToAddObject(new Grenade(game, xInput + game.getPlayerX(), yInput), 1);
+			game.update();
+			return true;
+		}
+		else
 			return false;
 	}
 	

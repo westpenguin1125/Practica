@@ -5,6 +5,7 @@ import es.ucm.tp1.logic.gameobjects.GameObject;
 
 public class ExplodeAction implements InstantAction {
 	
+	final private static int RANGE_OF_EXPLOSION = 1;
 	private int grenadeX;
 	private int grenadeY;
 	
@@ -15,8 +16,8 @@ public class ExplodeAction implements InstantAction {
 
 	@Override
 	public void execute(Game game) {
-		for (int i = -1; i <= 1; i++) {
-			for (int j = -1; j <= 1; j++) {
+		for (int i = -RANGE_OF_EXPLOSION; i <= RANGE_OF_EXPLOSION; i++) {
+			for (int j = -RANGE_OF_EXPLOSION; j <= RANGE_OF_EXPLOSION; j++) {
 				GameObject obj = game.gameObjectIn(i + grenadeX, j + grenadeY);
 				if (obj != null && !(i == 0 && j == 0)) 
 					obj.receiveExplosion();

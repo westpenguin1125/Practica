@@ -25,7 +25,7 @@ public class Player extends GameObject{
 			x += dx;
 			y += dy;
 		}
-		game.update();
+		doCollision();
 	}
 	
 	public void initialize(int x, int y) {
@@ -57,8 +57,13 @@ public class Player extends GameObject{
 	public void increaseCoins(int coinsToIncrease) {
 		numCoins += coinsToIncrease;
 	}
+	
 	public void decreaseCoins(int coinsToDecrease) {
 		numCoins -= coinsToDecrease;
+	}
+
+	public void punish() {
+		numCoins = 0;
 	}
 
 	public void decreaseLife() {

@@ -27,6 +27,7 @@ public class WaveCommand extends Command implements Buyable{
 	public boolean execute(Game game) {
 		if (buy(game)) {
 			game.execute(new WaveAction());
+			game.update();
 			return true;
 		}
 			return false;

@@ -66,7 +66,6 @@ public class GameObjectContainer {
 	}
 	
 	public void updateList() {
-		removeDeadObjects();
 		for (GameObject obj : objectList) {
 			obj.update();	
 		}

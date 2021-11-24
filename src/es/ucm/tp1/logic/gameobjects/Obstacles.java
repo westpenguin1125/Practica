@@ -57,8 +57,15 @@ public abstract class Obstacles extends GameObject {
 		return SYMBOLS_BY_RESISTANCE[numLifes - 1];
 	}
 	
+	@Override
 	public boolean receiveShoot() {
 		numLifes--;
+		return true;
+	}
+	
+	@Override
+	public boolean receiveThunder() {
+		numLifes = 0;
 		return true;
 	}
 }

@@ -64,4 +64,9 @@ public abstract class GameObject implements Collider {
 	public boolean receiveExplosion() {
 		return receiveShoot();
 	}
+	
+	@Override
+	public boolean receiveThunder() {
+		return false;
+	}
 }

@@ -52,8 +52,7 @@ public class Game {
 		numCycles = 0;
 
 		elapsedTime = 0;
-
-		testingFlag = level == Level.TEST;
+		
 		exit = false;
 	}
 
@@ -70,6 +69,10 @@ public class Game {
 		return (int) (getRandomNumber() * getRoadWidth());
 	}
 
+	public int getRandomVisibility() {
+		return (int) (getRandomNumber() * getVisibility());
+	}
+	
 	public void tryToAddObject(GameObject obj, double frequency) {
 		if (getRandomNumber() < frequency && isEmpty(obj.getX(), obj.getY()))
 			objectList.addObject(obj);
@@ -80,16 +83,18 @@ public class Game {
 	}
 
 	public void update() {
-		numCycles++;
 		
 		//TODO ASK Qué debería pasar cuando está el player frente al truck, de eso depende el orden de estas instrucciones
 		objectList.updateList();
-		player.doCollision();
+		GameObjectGenerator.generateRuntimeObjects(this, level);
+		numCycles++;		
 		
 		if (numCycles == 1)
 			startTime = System.currentTimeMillis();
 
 		elapsedTime = System.currentTimeMillis() - startTime;
+		
+		objectList.removeDeadObjects();
 	}
 	
 	public boolean buy(int cost) {
@@ -122,7 +127,15 @@ public class Game {
 	
 	public void execute(InstantAction action) {
 		action.execute(this);
-		update();
+	}
+
+	public void punishPlayer() {
+		player.punish();
+	}
+	
+	public boolean inVisibility(int x, int y) {
+		return 0 <= x && x < getVisibility() &&
+				0 <= y && y < getRoadWidth();
 	}
 
 	public boolean isFinished() {
