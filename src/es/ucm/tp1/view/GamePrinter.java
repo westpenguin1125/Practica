@@ -141,11 +141,4 @@ public class GamePrinter {
 		
 		return s;
 	}
-
-	public static void showThunder(int x, int y, GameObject obj, boolean hit) {
-		System.out.print(String.format("Thunder hit position: (%d, %d)", x, y));
-		if(obj != null && hit)
-			System.out.print(" -> " + obj.toString());
-		System.out.print(newLine);
-	}
 }

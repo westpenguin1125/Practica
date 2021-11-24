@@ -41,13 +41,11 @@ public class Grenade extends GameObject{
 	@Override
 	public void update() {
 		countDown--;
-		if(countDown == 0) {
-			game.execute(new ExplodeAction(getX(), getY()));
-		}
 	}
 
 	@Override
 	public void onDelete() {
+		game.execute(new ExplodeAction(getX(), getY()));
 	}
 
 	@Override
