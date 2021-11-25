@@ -9,6 +9,9 @@ import es.ucm.tp1.logic.instantactions.InstantAction;
 public class Game {
 
 	private final String GOAL_SYMBOL = "¦";
+	
+	//TODO ASK if okay porque lo hemos cambiado de SuperCars a Game
+
 
 	private GameObjectContainer objectList;
 
@@ -42,8 +45,10 @@ public class Game {
 		this.level = level;
 
 		random = new Random(seed);
-
-		emptyObjectList();
+		
+		
+		objectList = new GameObjectContainer();
+		GameObjectGenerator.reset();
 
 		GameObjectGenerator.generateGameObjects(this, level);
 
@@ -62,7 +67,7 @@ public class Game {
 	
 	public void emptyObjectList() {
 		GameObjectGenerator.reset();
-		objectList = new GameObjectContainer();
+		objectList.empty();
 	}
 
 	public int getRandomLane() {

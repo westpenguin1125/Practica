@@ -19,10 +19,10 @@ public abstract class Command {
 		new ResetCommand(),
 		new TestCommand(),
 		new ShootCommand(),
+		new GrenadeCommand(),		
+		new WaveCommand(),
 		new ClearCommand(),
 		new CheatCommand(),
-		new WaveCommand(),
-		new GrenadeCommand(),		
 	};
 	/* @formatter:on */
 	
@@ -65,7 +65,7 @@ public abstract class Command {
 	protected Command parse(String[] words) {
 		if (matchCommandName(words[0])) {
 			if (words.length != 1) {
-				System.out.format("[ERROR]: Command %s: %s%n%n", name, INCORRECT_NUMBER_OF_ARGS_MSG);
+				System.out.format("[ERROR]: Command %s: %s%n%n", shortcut, INCORRECT_NUMBER_OF_ARGS_MSG);
 				return null;
 			} else {
 				return this;

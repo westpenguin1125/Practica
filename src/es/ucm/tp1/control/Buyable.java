@@ -6,6 +6,11 @@ public interface Buyable {
 	public int cost();
 	
 	public default boolean buy(Game game) {
-		return game.buy(cost());
+		if (game.buy(cost())) {
+			return true;
+		} else {
+			System.out.println("Not enough coins");
+			return false;
+		}
 	};
 }

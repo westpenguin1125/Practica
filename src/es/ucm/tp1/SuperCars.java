@@ -14,11 +14,11 @@ public class SuperCars {
 
 	private static final String WELCOME_MSG = String.format("Super cars %s\n\n", VERSION);
 
-	private static final String LEVEL_INFO_MSG = "Level must be one of: " + Level.all(", ");
+	public static final String LEVEL_INFO_MSG = "Level must be one of: " + Level.all(", ");
 
 	private static final String SEED_IS_NUMBER_MSNG = "the seed must be a number";
 
-	private static final String SEED_INFO_MSG = "Random generator initialized with seed: ";
+	public static final String SEED_INFO_MSG = "Random generator initialized with seed: ";
 
 	
 	private static void usage() {
@@ -49,6 +49,7 @@ public class SuperCars {
 
 					System.out.println("Level: " + level.name());
 					System.out.println(SEED_INFO_MSG + seed);
+
 
 					Game game = new Game(seed, level); 
 					if( Level.TEST.equals(level))

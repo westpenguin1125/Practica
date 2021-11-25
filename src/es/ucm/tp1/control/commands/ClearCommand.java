@@ -6,7 +6,7 @@ public class ClearCommand extends Command{
 
 	private static final String NAME = "Clear";
 
-	private static final String DETAILS = "[0]";
+	private static final String DETAILS = "Clear [0]";
 
 	private static final String SHORTCUT = "0";
 

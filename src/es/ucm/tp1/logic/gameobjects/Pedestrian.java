@@ -4,7 +4,7 @@ import es.ucm.tp1.logic.Game;
 
 public class Pedestrian extends Obstacles{
 
-	final public static String TRUCK_INFO = "[PEDESTRIAN] person crossing the road up and down";
+	final public static String PEDESTRIAN_INFO = "[PEDESTRIAN] person crossing the road up and down";
 	final private String PEDESTRIAN_SYMBOL = "☺";
 	final private int PEDESTRIAN_RESISTANCE = 1;
 	

@@ -48,7 +48,8 @@ public class GamePrinter {
 		buffer.append(Wall.WALL_INFO + newLine);		
 		buffer.append(Turbo.TURBO_INFO + newLine);
 		buffer.append(SuperCoin.SUPERCOIN_INFO + newLine);
-		buffer.append(Truck.TRUCK_INFO);
+		buffer.append(Truck.TRUCK_INFO + newLine);
+		buffer.append(Pedestrian.PEDESTRIAN_INFO);
 
 		
 		

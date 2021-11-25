@@ -4,7 +4,7 @@ import es.ucm.tp1.logic.Game;
 
 public class Turbo extends GameObject{
 	
-	final public static String TURBO_INFO = "[TURBO] pushes the car 3 columns";
+	final public static String TURBO_INFO = "[TURBO] pushes the car: 3 columns";
 	final private String TURBO_SYMBOL = ">>>";
 	
 	protected boolean alive;

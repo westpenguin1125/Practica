@@ -70,5 +70,13 @@ public class GameObjectContainer {
 			obj.update();	
 		}
 	}
+
+	public void empty() {
+		
+		for (GameObject obj : objectList) {
+			obj.onDelete();
+		}
+		objectList = new ArrayList<>();
+	}
 	
 }

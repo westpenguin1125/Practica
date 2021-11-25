@@ -65,7 +65,7 @@ public abstract class Obstacles extends GameObject {
 	
 	@Override
 	public boolean receiveThunder() {
-		System.out.print("-> " + getSymbol());
+		System.out.print(" -> " + getSymbol());
 		numLifes = 0;
 		return true;
 	}

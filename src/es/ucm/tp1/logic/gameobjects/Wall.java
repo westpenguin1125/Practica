@@ -14,12 +14,11 @@ public class Wall extends Obstacles{
 		super(game, x, y);
 		numLifes = WALL_RESISTANCE;
 	}
+
 	
 	@Override
-	public boolean receiveShoot() {
-		super.receiveShoot();
-		if(!isAlive())
-			game.rewardPlayer(COINS_GIVEN_AT_DEATH);
-		return true;
+	public void onDelete() {
+		game.rewardPlayer(COINS_GIVEN_AT_DEATH);
+		super.onDelete();
 	}
 }

@@ -28,7 +28,8 @@ public class ShootCommand extends Command implements Buyable{
 			game.update();
 			return true;
 		}
-			return false;
+		System.out.println("[ERROR]: Failed to shoot\n");
+		return false;
 	}
 
 	@Override
