@@ -66,16 +66,14 @@ public class GameObjectContainer {
 	}
 	
 	public void updateList() {
-		for (GameObject obj : objectList) {
+		for (GameObject obj : objectList) 
 			obj.update();	
-		}
 	}
 
 	public void empty() {
 		
-		for (GameObject obj : objectList) {
+		for (GameObject obj : objectList) 
 			obj.onDelete();
-		}
 		objectList = new ArrayList<>();
 	}
 	

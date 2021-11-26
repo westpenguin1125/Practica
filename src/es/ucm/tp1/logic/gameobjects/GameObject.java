@@ -55,6 +55,11 @@ public abstract class GameObject implements Collider {
 	}
 	
 	@Override
+	public boolean doCollision() {
+		return false;
+	}
+	
+	@Override
 	public boolean receiveWave(){
 		x += 1;
 		return true;

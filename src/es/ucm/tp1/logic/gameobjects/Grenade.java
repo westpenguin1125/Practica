@@ -20,11 +20,6 @@ public class Grenade extends GameObject{
 	}
 
 	@Override
-	public boolean doCollision() {
-		return false;
-	}
-
-	@Override
 	public boolean receiveCollision(Player player) {
 		return false;
 	}

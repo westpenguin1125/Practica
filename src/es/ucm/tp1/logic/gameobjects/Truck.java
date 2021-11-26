@@ -8,8 +8,6 @@ public class Truck extends Obstacles{
 	final private String TRUCK_SYMBOL = "←";
 	final private int TRUCK_RESISTANCE = 1;
 	
-
-	
 	public Truck(Game game, int x, int y) {
 		super(game, x, y);
 		symbol = TRUCK_SYMBOL;

@@ -78,11 +78,11 @@ public class GamePrinter {
 		info.append("Cycle: " + game.getNumCycles() + newLine);
 		info.append("Total obstacles: " + Obstacle.getNumObstacles() + newLine);
 		info.append("Total coins: " + Coin.getNumCoins());
+		
 		if (SuperCoin.isPresent()) {
 			info.append(newLine);
 			info.append("Supercoin is present");
 		}
-		
 		if (!game.getTestingFlag()) {
 			info.append(newLine);
 			info.append("Elapsed Time: " + elapsedTimeWithFormat() + " s");

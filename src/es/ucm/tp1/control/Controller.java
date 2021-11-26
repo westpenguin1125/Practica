@@ -52,7 +52,7 @@ public class Controller {
 		
 		while (!game.isFinished()) {
 			
-			parameters = getUserInput().toLowerCase().trim().split(" ");
+			parameters = getUserInput().trim().split(" ");
 			command = Command.getCommand(parameters);
 			
 			if(command != null)

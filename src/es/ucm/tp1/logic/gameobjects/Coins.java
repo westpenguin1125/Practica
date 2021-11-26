@@ -25,11 +25,6 @@ public abstract class Coins extends GameObject{
 	}
 
 	@Override
-	public boolean doCollision() {
-		return false;
-	}
-
-	@Override
 	public void update() {
 	}
 	
