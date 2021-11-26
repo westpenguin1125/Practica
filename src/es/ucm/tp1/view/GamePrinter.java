@@ -27,6 +27,7 @@ public class GamePrinter {
 
 	private String margin;
 
+	
 
 	private static final String CRASH_MSG = String.format("Player crashed!%n");
 

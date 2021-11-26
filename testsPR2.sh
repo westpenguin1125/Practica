@@ -41,3 +41,11 @@ java -Dfile.encoding=UTF-8 -cp ./bin es.ucm.tp1.SuperCars easy 37 < ./test/14_ea
 diff -u test/14_easy_s37_output.txt output/14_easy_s37_output.txt > output/14_easy_s37_diffs.txt
 java -Dfile.encoding=UTF-8 -cp ./bin es.ucm.tp1.SuperCars easy 37 < ./test/15_easy_s37.txt > output/15_easy_s37_output.txt
 diff -u test/15_easy_s37_output.txt output/15_easy_s37_output.txt > output/15_easy_s37_diffs.txt
+
+
+java -Dfile.encoding=UTF-8 -cp ./bin es.ucm.tp1.SuperCars easy 37 < ./test/16_easy_s37.txt > output/16_easy_s37_output.txt
+diff -u test/16_easy_s37_output.txt output/16_easy_s37_output.txt > output/16_easy_s37_diffs.txt
+java -Dfile.encoding=UTF-8 -cp ./bin es.ucm.tp1.SuperCars easy 37 < ./test/17_easy_s37.txt > output/17_easy_s37_output.txt
+diff -u test/17_easy_s37_output.txt output/17_easy_s37_output.txt > output/17_easy_s37_diffs.txt
+java -Dfile.encoding=UTF-8 -cp ./bin es.ucm.tp1.SuperCars easy 37 < ./test/18_easy_s37.txt > output/18_easy_s37_output.txt
+diff -u test/18_easy_s37_output.txt output/18_easy_s37_output.txt > output/18_easy_s37_diffs.txt

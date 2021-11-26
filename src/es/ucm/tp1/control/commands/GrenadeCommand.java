@@ -55,7 +55,7 @@ public class GrenadeCommand extends Command  implements Buyable{
 		}
 		else if (buy(game)) {
 			
-			game.tryToAddObject(new Grenade(game, xInput + game.getPlayerX(), yInput), 1);
+			game.tryToAddObject(new Grenade(game, xInput + game.getPlayerX(), yInput));
 			game.update();
 			return true;
 		}

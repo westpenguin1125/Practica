@@ -66,7 +66,7 @@ public class Game {
 	}
 	
 	public void emptyObjectList() {
-		GameObjectGenerator.reset();
+		//GameObjectGenerator.reset();
 		objectList.empty();
 	}
 
@@ -80,6 +80,10 @@ public class Game {
 	
 	public void tryToAddObject(GameObject obj, double frequency) {
 		if (getRandomNumber() < frequency && isEmpty(obj.getX(), obj.getY()))
+			objectList.addObject(obj);
+	}
+	public void tryToAddObject(GameObject obj) {
+		if (isEmpty(obj.getX(), obj.getY()))
 			objectList.addObject(obj);
 	}
 	

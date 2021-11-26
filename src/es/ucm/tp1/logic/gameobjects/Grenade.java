@@ -50,6 +50,10 @@ public class Grenade extends GameObject{
 
 	@Override
 	protected String getSymbol() {
-		return symbol + String.format("[%d]", countDown);
+		StringBuilder aux = new StringBuilder();
+		aux.append(symbol);
+		aux.append(String.format("[%d]", countDown));
+
+		return aux.toString();
 	}
 }

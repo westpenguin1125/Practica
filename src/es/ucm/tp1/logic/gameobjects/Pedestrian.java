@@ -22,6 +22,14 @@ public class Pedestrian extends Obstacles{
 		game.punishPlayer();
 		return super.receiveShoot();
 	}
+	
+	@Override
+	public boolean receiveCollision(Player player) {
+		super.receiveCollision(player);
+		numLifes--;
+		return false;
+	}
+
 
 	@Override
 	public void update() {
