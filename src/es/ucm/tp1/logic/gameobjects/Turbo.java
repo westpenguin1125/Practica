@@ -16,11 +16,6 @@ public class Turbo extends GameObject{
 	}
 
 	@Override
-	public boolean doCollision() {
-		return false;
-	}
-
-	@Override
 	public boolean receiveCollision(Player player) {
 		player.jump();
 		alive = false;
