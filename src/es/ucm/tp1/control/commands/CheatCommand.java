@@ -24,7 +24,6 @@ public class CheatCommand extends Command{
 		return true;
 	}
 	
-	
 	@Override
 	protected Command parse(String[] words) {
 		if(words.length > 1)

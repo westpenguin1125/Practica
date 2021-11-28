@@ -18,8 +18,6 @@ public class WaveCommand extends Command implements Buyable{
 	private static final String HELP = "do wave";
 	
 	private static final int COST = 5;
-
-	
 	
 	public WaveCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);

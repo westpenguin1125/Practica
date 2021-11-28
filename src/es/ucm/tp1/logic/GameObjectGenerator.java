@@ -8,7 +8,6 @@ public class GameObjectGenerator {
 
 	public static final int MAX_ID = 5;
 	public static final int MIN_ID = 1;
-	
 
 	public static void forceAdvanceObject(Game game, int id, int x) {
 		GameObject o = null;
@@ -31,7 +30,6 @@ public class GameObjectGenerator {
 		}
 		game.forceAddObject(o);
 	}
-
 	
 	public static void generateGameObjects(Game game, Level level) {
 		
