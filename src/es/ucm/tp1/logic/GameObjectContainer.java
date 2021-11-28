@@ -10,19 +10,6 @@ public class GameObjectContainer {
 	public GameObjectContainer() {
 		objectList = new ArrayList<>();
 	}
-	
-	private void delObjectsInCol(int x) {
-		ArrayList<GameObject> aux = new ArrayList<>();
-		
-		for(GameObject obj : objectList) {
-			if(obj.getX() == x)
-				obj.onDelete();
-			else
-				aux.add(obj);
-		}
-		
-		objectList = aux;
-	}
 
 	public GameObject gameObjectIn(int x, int y) {
 		
@@ -56,13 +43,17 @@ public class GameObjectContainer {
 		objectList = aux;
 	}
 	
-	public String positionToString(int x, int y) {
-		StringBuilder buffer = new StringBuilder();
+	private void delObjectsInCol(int x) {
+		ArrayList<GameObject> aux = new ArrayList<>();
+		
 		for(GameObject obj : objectList) {
-			if(obj.isInPosition(x, y))
-				buffer.append(obj.toString() + " ");
+			if(obj.getX() == x)
+				obj.onDelete();
+			else
+				aux.add(obj);
 		}
-		return buffer.toString();
+		
+		objectList = aux;
 	}
 	
 	public void updateList() {
@@ -77,4 +68,12 @@ public class GameObjectContainer {
 		objectList = new ArrayList<>();
 	}
 	
+	public String positionToString(int x, int y) {
+		StringBuilder buffer = new StringBuilder();
+		for(GameObject obj : objectList) {
+			if(obj.isInPosition(x, y))
+				buffer.append(obj.toString() + " ");
+		}
+		return buffer.toString();
+	}
 }

@@ -14,11 +14,10 @@ public class Wall extends Obstacles{
 		super(game, x, y);
 		numLifes = WALL_RESISTANCE;
 	}
-
 	
 	@Override
 	public void onDelete() {
-		game.rewardPlayer(COINS_GIVEN_AT_DEATH);
 		super.onDelete();
+		game.rewardPlayer(COINS_GIVEN_AT_DEATH);
 	}
 }

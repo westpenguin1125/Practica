@@ -27,8 +27,6 @@ public class GamePrinter {
 
 	private String margin;
 
-	
-
 	private static final String CRASH_MSG = String.format("Player crashed!%n");
 
 	private static final String WIN_MSG = String.format("Player wins!%n");
@@ -51,8 +49,6 @@ public class GamePrinter {
 		buffer.append(SuperCoin.SUPERCOIN_INFO + newLine);
 		buffer.append(Truck.TRUCK_INFO + newLine);
 		buffer.append(Pedestrian.PEDESTRIAN_INFO);
-
-		
 		
 		return buffer.toString();
 	}
@@ -121,7 +117,7 @@ public class GamePrinter {
 				str.append(StringUtils.centre(game.positionToString(x, y), CELL_SIZE))
 						.append(verticalDelimiter);
 			}
-			if (y <  game.getRoadWidth() - 1) {
+			if (y < game.getRoadWidth() - 1) {
 				str.append(this.indentedLlanesSeparator);
 			}
 		}

@@ -2,11 +2,13 @@ package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.control.Buyable;
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.logic.instantactions.ShootAction;
 import es.ucm.tp1.logic.instantactions.WaveAction;
+import es.ucm.tp1.view.GamePrinter;
 
 public class WaveCommand extends Command implements Buyable{
 
+	private static final String ERROR_WAVE_MSG = "Failed to wave";
+	
 	private static final String NAME = "wave";
 
 	private static final String DETAILS = "[w]ave";
@@ -30,7 +32,10 @@ public class WaveCommand extends Command implements Buyable{
 			game.update();
 			return true;
 		}
+		else {
+			System.out.println(ERROR_PROMPT + ERROR_WAVE_MSG + GamePrinter.newLine);
 			return false;
+		}
 	}
 
 	@Override

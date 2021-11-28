@@ -2,7 +2,6 @@ package es.ucm.tp1.logic.instantactions;
 
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.GameObject;
-import es.ucm.tp1.view.GamePrinter;
 
 public class ThunderAction implements InstantAction {
 

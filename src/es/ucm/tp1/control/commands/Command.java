@@ -7,6 +7,8 @@ public abstract class Command {
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
 
 	protected static final String INCORRECT_NUMBER_OF_ARGS_MSG = "Incorrect number of arguments";
+	
+	protected static final String ERROR_PROMPT = "[Error]: ";
 
 	/* @formatter:off */
 	protected static final Command[] AVAILABLE_COMMANDS = {

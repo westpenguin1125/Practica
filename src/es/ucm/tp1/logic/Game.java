@@ -10,9 +10,6 @@ public class Game {
 
 	private final String GOAL_SYMBOL = "¦";
 	
-	//TODO ASK if okay porque lo hemos cambiado de SuperCars a Game
-
-
 	private GameObjectContainer objectList;
 
 	private long seed;
@@ -46,7 +43,6 @@ public class Game {
 
 		random = new Random(seed);
 		
-		
 		objectList = new GameObjectContainer();
 		GameObjectGenerator.reset();
 
@@ -66,7 +62,6 @@ public class Game {
 	}
 	
 	public void emptyObjectList() {
-		//GameObjectGenerator.reset();
 		objectList.empty();
 	}
 
@@ -82,9 +77,8 @@ public class Game {
 		if (getRandomNumber() < frequency && isEmpty(obj.getX(), obj.getY()))
 			objectList.addObject(obj);
 	}
-	public void tryToAddObject(GameObject obj) {
-		if (isEmpty(obj.getX(), obj.getY()))
-			objectList.addObject(obj);
+	public void addObject(GameObject obj) {
+		objectList.addObject(obj);
 	}
 	
 	public void forceAddObject(GameObject obj) {
@@ -93,7 +87,6 @@ public class Game {
 
 	public void update() {
 		
-		//TODO ASK Qué debería pasar cuando está el player frente al truck, de eso depende el orden de estas instrucciones
 		objectList.updateList();
 		GameObjectGenerator.generateRuntimeObjects(this, level);
 		numCycles++;		
@@ -224,6 +217,6 @@ public class Game {
 		if(getRoadLength() == x)
 			symbolToPrint += GOAL_SYMBOL;
 
-		return symbolToPrint;
+		return symbolToPrint.trim();
 	}
 }

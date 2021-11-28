@@ -19,6 +19,14 @@ public class Player extends GameObject{
 		initialize(x, y);
 	}
 	
+	public void initialize(int x, int y) {
+		this.x = x;
+		this.y = y;
+		
+		numCoins = STARTING_COINS;
+		numLifes = STARTING_LIFES;
+	}
+	
 	private void move(int dx, int dy) {
 		doCollision();
 		if(isAlive()) {
@@ -26,14 +34,6 @@ public class Player extends GameObject{
 			y += dy;
 		}
 		doCollision();
-	}
-	
-	public void initialize(int x, int y) {
-		this.x = x;
-		this.y = y;
-		
-		numCoins = STARTING_COINS;
-		numLifes = STARTING_LIFES;
 	}
 	
 	public void moveDown() {
@@ -54,6 +54,24 @@ public class Player extends GameObject{
 		move(1, 0);
 	}
 	
+	public boolean buy(int cost) {
+		if (numCoins >= cost) {
+			decreaseCoins(cost);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public void decreaseLife() {
+		numLifes--;
+	}
+	
+	public void jump() {
+		x += 3;
+	}
+	
 	public void increaseCoins(int coinsToIncrease) {
 		numCoins += coinsToIncrease;
 	}
@@ -65,30 +83,9 @@ public class Player extends GameObject{
 	public void punish() {
 		numCoins = 0;
 	}
-
-	public void decreaseLife() {
-		numLifes--;
-	}
 	
 	public int getNumCoins() {
 		return numCoins;
-	}
-	public boolean buy(int cost) {
-		if (numCoins >= cost) {
-			decreaseCoins(cost);
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	public void jump() {
-		x += 3;
-	}
-
-	@Override
-	public void update() {
 	}
 	
 	@Override
@@ -117,7 +114,15 @@ public class Player extends GameObject{
 	}
 
 	@Override
+	public void update() {
+	}
+
+	@Override
 	public boolean receiveCollision(Player player) {
+		return false;
+	}
+	
+	public boolean receiveShoot() {
 		return false;
 	}
 
@@ -127,9 +132,5 @@ public class Player extends GameObject{
 
 	@Override
 	public void onDelete() {
-	}
-	
-	public boolean receiveShoot() {
-		return false;
 	}
 }

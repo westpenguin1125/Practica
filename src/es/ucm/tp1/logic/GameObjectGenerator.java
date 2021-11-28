@@ -50,15 +50,15 @@ public class GameObjectGenerator {
 		}
 	}
 
-	public static void reset() {
-		Coin.reset();
-		SuperCoin.reset();
-		Obstacles.reset();
-	}
-
 	public static void generateRuntimeObjects(Game game, Level level) {
 		if (level.hasAdvancedObjects()) {
 			game.execute(new ThunderAction());
 		}
+	}
+
+	public static void reset() {
+		Coin.reset();
+		SuperCoin.reset();
+		Obstacles.reset();
 	}
 }

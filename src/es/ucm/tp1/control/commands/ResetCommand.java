@@ -50,7 +50,6 @@ public class ResetCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 		
-		
 		if (newSeed != null && newLevel != null) {
 			game.initialize(newSeed, newLevel);
 			System.out.println("Level: " + newLevel.name());

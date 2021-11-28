@@ -13,15 +13,14 @@ public class Truck extends Obstacles{
 		symbol = TRUCK_SYMBOL;
 		numLifes = TRUCK_RESISTANCE;
 	}
-
-	@Override
-	protected String getSymbol() {
-		return symbol; //TODO ASK if okay to do this override
-	}
 	
 	@Override
 	public void update() {
 		x--;
 	}
-	
+
+	@Override
+	protected String getSymbol() {
+		return symbol;
+	}
 }

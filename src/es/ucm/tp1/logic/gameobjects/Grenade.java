@@ -20,6 +20,26 @@ public class Grenade extends GameObject{
 	}
 
 	@Override
+	public void update() {
+		countDown--;
+	}
+
+	@Override
+	public boolean isAlive() {
+		return countDown > 0;
+	}
+
+	@Override
+	protected String getSymbol() {
+		return symbol + String.format("[%d]", countDown);
+	}
+
+	@Override
+	public void onDelete() {
+		game.execute(new ExplodeAction(getX(), getY()));
+	}
+
+	@Override
 	public boolean receiveCollision(Player player) {
 		return false;
 	}
@@ -31,29 +51,5 @@ public class Grenade extends GameObject{
 
 	@Override
 	public void onEnter() {
-	}
-
-	@Override
-	public void update() {
-		countDown--;
-	}
-
-	@Override
-	public void onDelete() {
-		game.execute(new ExplodeAction(getX(), getY()));
-	}
-
-	@Override
-	public boolean isAlive() {
-		return countDown > 0;
-	}
-
-	@Override
-	protected String getSymbol() {
-		StringBuilder aux = new StringBuilder();
-		aux.append(symbol);
-		aux.append(String.format("[%d]", countDown));
-
-		return aux.toString();
 	}
 }

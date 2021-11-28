@@ -29,8 +29,7 @@ public class Pedestrian extends Obstacles{
 		numLifes--;
 		return false;
 	}
-
-
+	
 	@Override
 	public void update() {
 		if(y == 0)

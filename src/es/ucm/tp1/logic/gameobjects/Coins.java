@@ -23,13 +23,13 @@ public abstract class Coins extends GameObject{
 	public boolean isAlive(){
 		return alive;
 	}
-
-	@Override
-	public void update() {
-	}
 	
 	@Override
 	public boolean  receiveShoot() {
 		return false;
+	}
+
+	@Override
+	public void update() {
 	}
 }

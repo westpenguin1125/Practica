@@ -4,9 +4,12 @@ package es.ucm.tp1.control.commands;
 import es.ucm.tp1.control.Buyable;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.instantactions.ShootAction;
+import es.ucm.tp1.view.GamePrinter;
 
 public class ShootCommand extends Command implements Buyable{
 
+	private static final String ERROR_SHOOT_MSG = "Failed to shoot";
+	
 	private static final String NAME = "shoot";
 
 	private static final String DETAILS = "[s]hoot";
@@ -28,7 +31,7 @@ public class ShootCommand extends Command implements Buyable{
 			game.update();
 			return true;
 		}
-		System.out.println("[ERROR]: Failed to shoot\n");
+		System.out.println(ERROR_PROMPT + ERROR_SHOOT_MSG + GamePrinter.newLine);
 		return false;
 	}
 

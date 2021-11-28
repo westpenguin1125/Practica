@@ -6,6 +6,7 @@ import es.ucm.tp1.logic.gameobjects.GameObject;
 public class ExplodeAction implements InstantAction {
 	
 	final private static int RANGE_OF_EXPLOSION = 1;
+	
 	private int grenadeX;
 	private int grenadeY;
 	

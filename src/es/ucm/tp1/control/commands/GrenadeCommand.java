@@ -3,8 +3,13 @@ package es.ucm.tp1.control.commands;
 import es.ucm.tp1.control.Buyable;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.Grenade;
+import es.ucm.tp1.view.GamePrinter;
 
 public class GrenadeCommand extends Command  implements Buyable{
+	
+	private static final String ERROR_ADDING_GRENADE_MSG = "Failed to add grenade";
+	
+	private static final String INVALID_POSITION_MSG = "Invalid position.";
 	
 	private static final String NAME = "grenade";
 
@@ -44,23 +49,24 @@ public class GrenadeCommand extends Command  implements Buyable{
 	@Override
 	public boolean execute(Game game) {
 		
-		//TODO ASK si tiene que revisar si está en los límites
 		if(!game.inVisibility(xInput, yInput) ||
 			!game.isEmpty(xInput + game.getPlayerX(), yInput)) {
 			
-			System.out.println("Invalid position.");
-			System.out.println("[ERROR]: Failed to add grenade\n");
+			System.out.println(INVALID_POSITION_MSG);
+			System.out.println(ERROR_PROMPT + ERROR_ADDING_GRENADE_MSG + GamePrinter.newLine);
 			
 			return false;
 		}
 		else if (buy(game)) {
 			
-			game.tryToAddObject(new Grenade(game, xInput + game.getPlayerX(), yInput));
+			game.addObject(new Grenade(game, xInput + game.getPlayerX(), yInput));
 			game.update();
 			return true;
 		}
-		else
+		else {
+			System.out.println(ERROR_PROMPT + ERROR_ADDING_GRENADE_MSG + GamePrinter.newLine);
 			return false;
+		}
 	}
 	
 	@Override

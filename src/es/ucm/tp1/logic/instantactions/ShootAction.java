@@ -10,7 +10,7 @@ public class ShootAction implements InstantAction{
 		int i = game.getPlayerX();
 		boolean found = false;
 		
-		while( ( i < game.getVisibility() + game.getPlayerX() ) && !found) {
+		while( ( i < game.getVisibility() + game.getPlayerX()) && !found) {
 			GameObject obj = game.gameObjectIn(i, game.getPlayerY());
 			if (obj != null)
 				found = obj.receiveShoot();
