@@ -8,7 +8,7 @@ public abstract class Command {
 
 	protected static final String INCORRECT_NUMBER_OF_ARGS_MSG = "Incorrect number of arguments";
 	
-	protected static final String ERROR_PROMPT = "[Error]: ";
+	protected static final String ERROR_PROMPT = "[ERROR]: ";
 
 	/* @formatter:off */
 	protected static final Command[] AVAILABLE_COMMANDS = {
@@ -36,7 +36,7 @@ public abstract class Command {
 			i++;
 		
 		if(i == AVAILABLE_COMMANDS.length) {
-			System.out.format("[ERROR]: %s%n%n", UNKNOWN_COMMAND_MSG);
+			System.out.format(ERROR_PROMPT + "%s%n%n", UNKNOWN_COMMAND_MSG);
 			return null;
 		}
 		else
@@ -67,7 +67,7 @@ public abstract class Command {
 	protected Command parse(String[] words) {
 		if (matchCommandName(words[0])) {
 			if (words.length != 1) {
-				System.out.format("[ERROR]: Command %s: %s%n%n", shortcut, INCORRECT_NUMBER_OF_ARGS_MSG);
+				System.out.format(ERROR_PROMPT + "Command %s: %s%n%n", shortcut, INCORRECT_NUMBER_OF_ARGS_MSG);
 				return null;
 			} else {
 				return this;
