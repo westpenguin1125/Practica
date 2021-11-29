@@ -35,6 +35,12 @@ public abstract class Obstacles extends GameObject {
 	}
 	
 	@Override
+	public boolean receiveExplosion() {
+		numLifes = 0;
+		return true;
+	}
+	
+	@Override
 	public boolean receiveThunder() {
 		System.out.print(" -> " + getSymbol());
 		numLifes = 0;
