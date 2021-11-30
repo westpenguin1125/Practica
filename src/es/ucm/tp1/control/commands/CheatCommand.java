@@ -20,6 +20,7 @@ public class CheatCommand extends Command{
 
 	@Override
 	public boolean execute(Game game) {
+		game.delCol(game.lastColumnVisible());
 		GameObjectGenerator.forceAdvanceObject(game, id, game.lastColumnVisible());
 		return true;
 	}

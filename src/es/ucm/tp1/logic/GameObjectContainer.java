@@ -26,7 +26,6 @@ public class GameObjectContainer {
 	}
 	
 	public void forceAddObject(GameObject obj) {
-		delObjectsInCol(obj.getX());
 		addObject(obj);
 	}
 
@@ -43,7 +42,7 @@ public class GameObjectContainer {
 		objectList = aux;
 	}
 	
-	private void delObjectsInCol(int x) {
+	public void delObjectsInCol(int x) {
 		ArrayList<GameObject> aux = new ArrayList<>();
 		
 		for(GameObject obj : objectList) {

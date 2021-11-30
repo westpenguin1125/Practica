@@ -81,6 +81,10 @@ public class Game {
 		objectList.addObject(obj);
 	}
 	
+	public void delCol(int x) {
+		objectList.delObjectsInCol(x);
+	}
+	
 	public void forceAddObject(GameObject obj) {
 		objectList.forceAddObject(obj);
 	}
