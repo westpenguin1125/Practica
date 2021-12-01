@@ -1,0 +1,26 @@
+t
+
+r HELP
+r HELP 34
+r EASY 100
+q
+
+
+
+
+
+
+
+
+
+
+
+a
+
+
+a
+q
+
+q
+r HARD 23
+e

@@ -52,13 +52,11 @@ public class Controller {
 		
 		while (!game.isFinished()) {
 			
-			parameters = getUserInput().toLowerCase().trim().split(" ");
+			parameters = getUserInput().trim().split(" ");
 			command = Command.getCommand(parameters);
 			
-			if(command != null) {
+			if(command != null)
 				refreshDisplay = command.execute(game);
-				game.removeDeadObjects();
-			}
 			
 			if(refreshDisplay)
 				printGame();

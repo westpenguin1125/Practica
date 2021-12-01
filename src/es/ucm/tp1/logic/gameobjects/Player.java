@@ -8,6 +8,8 @@ public class Player extends GameObject{
 
 	private final String PLAYER_SYMBOL_ALIVE = ">";
 	private final String PLAYER_SYMBOL_DEAD= "@";
+	private final int STARTING_LIFES = 1;
+	private final int STARTING_COINS = 5;
 	
 	private int numCoins;
 	private int numLifes;
@@ -21,38 +23,69 @@ public class Player extends GameObject{
 		this.x = x;
 		this.y = y;
 		
-		numCoins = 5;
-		numLifes = 1;
+		numCoins = STARTING_COINS;
+		numLifes = STARTING_LIFES;
 	}
 	
-	public void increaseCoins() {
-		numCoins++;
+	private void move(int dx, int dy) {
+		doCollision();
+		if(isAlive()) {
+			x += dx;
+			y += dy;
+		}
+		doCollision();
+	}
+	
+	public void moveDown() {
+		if(getY() < game.getRoadWidth() - 1)
+			move(1, 1);
+		else 
+			moveForward();
+	}
+	
+	public void moveUp() {
+		if(0 < getY())
+			move(1, -1);
+		else 
+			moveForward();
+	}
+	
+	public void moveForward() {
+		move(1, 0);
+	}
+	
+	public boolean buy(int cost) {
+		if (numCoins >= cost) {
+			decreaseCoins(cost);
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public void decreaseLife() {
 		numLifes--;
 	}
 	
-	public void moveDown() {
-		if (y < game.getRoadWidth() - 1)
-			y++;	
+	public void jump() {
+		x += 3;
 	}
 	
-	public void moveUp() {
-		if (y > 0)
-			y--;
+	public void increaseCoins(int coinsToIncrease) {
+		numCoins += coinsToIncrease;
+	}
+	
+	public void decreaseCoins(int coinsToDecrease) {
+		numCoins -= coinsToDecrease;
+	}
+
+	public void punish() {
+		numCoins = 0;
 	}
 	
 	public int getNumCoins() {
 		return numCoins;
-	}
-
-	@Override
-	public void update() {
-		x++;
-		doCollision();
-		if(numLifes == 0)
-			kill();
 	}
 	
 	@Override
@@ -66,6 +99,11 @@ public class Player extends GameObject{
 	}
 	
 	@Override
+	public boolean isAlive() {
+		return numLifes > 0;
+	}
+	
+	@Override
 	protected String getSymbol() {
 		return isAlive() ? PLAYER_SYMBOL_ALIVE : PLAYER_SYMBOL_DEAD;
 	}
@@ -76,7 +114,15 @@ public class Player extends GameObject{
 	}
 
 	@Override
+	public void update() {
+	}
+
+	@Override
 	public boolean receiveCollision(Player player) {
+		return false;
+	}
+	
+	public boolean receiveShoot() {
 		return false;
 	}
 

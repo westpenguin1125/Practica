@@ -6,4 +6,12 @@ public interface Collider {
 	boolean doCollision();
 
 	boolean receiveCollision(Player player);
+	
+	boolean receiveShoot();
+	
+	boolean receiveWave();
+	
+	boolean receiveExplosion();
+	
+	boolean receiveThunder();
 }

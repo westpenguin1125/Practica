@@ -1,0 +1,113 @@
+Super cars 2.0
+
+Level: EASY
+Random generator initialized with seed: 666
+Distance: 30
+Coins: 5
+Cycle: 0
+Total obstacles: 13
+Total coins: 14
+Elapsed Time: 0,00 s
+  ═════════════════════════════════════════════════════════════════
+                                                      ░            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+      >                                                       ¢    
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+                                      ¢       ¢                    
+  ═════════════════════════════════════════════════════════════════
+
+Command > 
+[DEBUG] Executing: i
+Available objects:
+[Car] the racing car
+[Coin] gives 1 coin to the player
+[Obstacle] hits car
+[GRENADE] Explodes in 3 cycles, harming everyone around
+[WALL] hard obstacle
+[TURBO] pushes the car: 3 columns
+[SUPERCOIN] gives 1000 coins
+[TRUCK] moves towards the player
+[PEDESTRIAN] person crossing the road up and down
+Command > 
+[DEBUG] Executing: h
+Available commands:
+[h]elp: show this help
+[i]nfo: prints gameobject info
+[n]one | []: update
+[q]: go up
+[a]: go down
+[e]xit: exit game
+[r]eset [<level> <seed>]: reset game
+[t]est: enables test mode
+[s]hoot: shoot bullet
+[g]renade <x> <y>: add a grenade in position x, y
+[w]ave: do wave
+Clear [0]: Clears the road
+Cheat [1..5]: Removes all elements of last visible column, and adds an Advanced Object
+Command > 
+[DEBUG] Executing: H
+Available commands:
+[h]elp: show this help
+[i]nfo: prints gameobject info
+[n]one | []: update
+[q]: go up
+[a]: go down
+[e]xit: exit game
+[r]eset [<level> <seed>]: reset game
+[t]est: enables test mode
+[s]hoot: shoot bullet
+[g]renade <x> <y>: add a grenade in position x, y
+[w]ave: do wave
+Clear [0]: Clears the road
+Cheat [1..5]: Removes all elements of last visible column, and adds an Advanced Object
+Command > 
+[DEBUG] Executing: I
+Available objects:
+[Car] the racing car
+[Coin] gives 1 coin to the player
+[Obstacle] hits car
+[GRENADE] Explodes in 3 cycles, harming everyone around
+[WALL] hard obstacle
+[TURBO] pushes the car: 3 columns
+[SUPERCOIN] gives 1000 coins
+[TRUCK] moves towards the player
+[PEDESTRIAN] person crossing the road up and down
+Command > 
+[DEBUG] Executing: HeLP
+Available commands:
+[h]elp: show this help
+[i]nfo: prints gameobject info
+[n]one | []: update
+[q]: go up
+[a]: go down
+[e]xit: exit game
+[r]eset [<level> <seed>]: reset game
+[t]est: enables test mode
+[s]hoot: shoot bullet
+[g]renade <x> <y>: add a grenade in position x, y
+[w]ave: do wave
+Clear [0]: Clears the road
+Cheat [1..5]: Removes all elements of last visible column, and adds an Advanced Object
+Command > 
+[DEBUG] Executing: InFo
+Available objects:
+[Car] the racing car
+[Coin] gives 1 coin to the player
+[Obstacle] hits car
+[GRENADE] Explodes in 3 cycles, harming everyone around
+[WALL] hard obstacle
+[TURBO] pushes the car: 3 columns
+[SUPERCOIN] gives 1000 coins
+[TRUCK] moves towards the player
+[PEDESTRIAN] person crossing the road up and down
+Command > 
+[DEBUG] Executing: z
+[ERROR]: Unknown command
+
+Command > 
+[DEBUG] Executing: X
+[ERROR]: Unknown command
+
+Command > 
+[DEBUG] Executing: e
+[GAME OVER] Player leaves the game

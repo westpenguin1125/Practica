@@ -9,8 +9,6 @@ public abstract class GameObject implements Collider {
 
 	protected int x, y;
 	
-	protected boolean alive;
-
 	protected String symbol;
 	protected String objectInfo;
 	
@@ -18,7 +16,6 @@ public abstract class GameObject implements Collider {
 		this.x = x;
 		this.y = y;
 		this.game = game;
-		alive = true;
 	}
 
 	public abstract void onEnter();
@@ -27,10 +24,6 @@ public abstract class GameObject implements Collider {
 
 	public abstract void onDelete();
 	
-	protected void kill() {
-		alive = false;
-	}
-
 	public boolean isInPosition(int x, int y) {
 		return this.x == x && this.y == y;
 	}
@@ -43,9 +36,7 @@ public abstract class GameObject implements Collider {
 		return y;
 	}
 
-	public boolean isAlive() {
-		return alive;
-	}
+	public abstract boolean isAlive();
 
 	protected String getSymbol() {
 		return symbol;
@@ -61,5 +52,26 @@ public abstract class GameObject implements Collider {
 			return getSymbol();
 
 		return "";
+	}
+	
+	@Override
+	public boolean doCollision() {
+		return false;
+	}
+	
+	@Override
+	public boolean receiveWave(){
+		x += 1;
+		return true;
+	}
+	
+	@Override 
+	public boolean receiveExplosion() {
+		return receiveShoot();
+	}
+	
+	@Override
+	public boolean receiveThunder() {
+		return false;
 	}
 }

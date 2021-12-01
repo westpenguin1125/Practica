@@ -3,9 +3,7 @@ package es.ucm.tp1.view;
 import java.util.Locale;
 
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.logic.gameobjects.Coin;
-import es.ucm.tp1.logic.gameobjects.Obstacle;
-import es.ucm.tp1.logic.gameobjects.Player;
+import es.ucm.tp1.logic.gameobjects.*;
 import es.ucm.tp1.utils.*;
 
 
@@ -29,7 +27,6 @@ public class GamePrinter {
 
 	private String margin;
 
-
 	private static final String CRASH_MSG = String.format("Player crashed!%n");
 
 	private static final String WIN_MSG = String.format("Player wins!%n");
@@ -45,7 +42,13 @@ public class GamePrinter {
 		
 		buffer.append(Player.PLAYER_INFO + newLine);
 		buffer.append(Coin.COIN_INFO + newLine);
-		buffer.append(Obstacle.OBSTACLE_INFO);
+		buffer.append(Obstacle.OBSTACLE_INFO + newLine);
+		buffer.append(Grenade.GRENADE_INFO + newLine);
+		buffer.append(Wall.WALL_INFO + newLine);		
+		buffer.append(Turbo.TURBO_INFO + newLine);
+		buffer.append(SuperCoin.SUPERCOIN_INFO + newLine);
+		buffer.append(Truck.TRUCK_INFO + newLine);
+		buffer.append(Pedestrian.PEDESTRIAN_INFO);
 		
 		return buffer.toString();
 	}
@@ -73,6 +76,10 @@ public class GamePrinter {
 		info.append("Total obstacles: " + Obstacle.getNumObstacles() + newLine);
 		info.append("Total coins: " + Coin.getNumCoins());
 		
+		if (SuperCoin.isPresent()) {
+			info.append(newLine);
+			info.append("Supercoin is present");
+		}
 		if (!game.getTestingFlag()) {
 			info.append(newLine);
 			info.append("Elapsed Time: " + elapsedTimeWithFormat() + " s");
@@ -110,7 +117,7 @@ public class GamePrinter {
 				str.append(StringUtils.centre(game.positionToString(x, y), CELL_SIZE))
 						.append(verticalDelimiter);
 			}
-			if (y <  game.getRoadWidth() - 1) {
+			if (y < game.getRoadWidth() - 1) {
 				str.append(this.indentedLlanesSeparator);
 			}
 		}

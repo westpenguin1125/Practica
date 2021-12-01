@@ -18,8 +18,8 @@ public class UpdateCommand extends Command {
 	
 	@Override
 	public boolean execute(Game game) {
+		game.movePlayerForward();
 		game.update();
-		
 		return true;
 	}
 
