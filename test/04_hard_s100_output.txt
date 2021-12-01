@@ -1,7 +1,8 @@
-Super cars 2.0
+Super cars 3.0
 
 Level: HARD
 Random generator initialized with seed: 100
+Creating default record for level 'HARD'
 Distance: 100
 Coins: 5
 Cycle: 0

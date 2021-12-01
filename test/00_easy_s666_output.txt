@@ -1,4 +1,4 @@
-Super cars 2.0
+Super cars 3.0
 
 Level: EASY
 Random generator initialized with seed: 666
@@ -42,6 +42,10 @@ Available commands:
 [s]hoot: shoot bullet
 [g]renade <x> <y>: add a grenade in position x, y
 [w]ave: do wave
+seriali[z]e: Serializes the board.
+sa[v]e <filename>: Save the state of the game to a file.
+[d]ump <filename>: Shows the content of a saved file
+rec[o]rd: show level record
 Clear [0]: Clears the road
 Cheat [1..5]: Removes all elements of last visible column, and adds an Advanced Object
 Command > 
@@ -58,6 +62,10 @@ Available commands:
 [s]hoot: shoot bullet
 [g]renade <x> <y>: add a grenade in position x, y
 [w]ave: do wave
+seriali[z]e: Serializes the board.
+sa[v]e <filename>: Save the state of the game to a file.
+[d]ump <filename>: Shows the content of a saved file
+rec[o]rd: show level record
 Clear [0]: Clears the road
 Cheat [1..5]: Removes all elements of last visible column, and adds an Advanced Object
 Command > 
@@ -86,6 +94,10 @@ Available commands:
 [s]hoot: shoot bullet
 [g]renade <x> <y>: add a grenade in position x, y
 [w]ave: do wave
+seriali[z]e: Serializes the board.
+sa[v]e <filename>: Save the state of the game to a file.
+[d]ump <filename>: Shows the content of a saved file
+rec[o]rd: show level record
 Clear [0]: Clears the road
 Cheat [1..5]: Removes all elements of last visible column, and adds an Advanced Object
 Command > 
@@ -102,7 +114,40 @@ Available objects:
 [PEDESTRIAN] person crossing the road up and down
 Command > 
 [DEBUG] Executing: z
-[ERROR]: Unknown command
+---- ROAD FIGHTER SERIALIZED ----
+Level: EASY
+Cycles: 0
+Coins: 5
+EllapsedTime: 0
+Game Objects: 
+> (0, 1)
+¢ (4, 2)
+¢ (5, 2)
+░ (6, 0)
+¢ (7, 1)
+░ (8, 2)
+░ (9, 1)
+░ (10, 1)
+¢ (10, 2)
+¢ (12, 2)
+░ (14, 0)
+░ (15, 1)
+¢ (16, 0)
+░ (16, 1)
+░ (17, 0)
+¢ (17, 1)
+¢ (18, 1)
+░ (19, 1)
+░ (20, 2)
+░ (22, 1)
+¢ (22, 2)
+¢ (23, 2)
+¢ (24, 1)
+░ (25, 1)
+░ (26, 1)
+¢ (27, 1)
+¢ (28, 0)
+¢ (29, 0)
 
 Command > 
 [DEBUG] Executing: X

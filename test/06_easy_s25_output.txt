@@ -1,4 +1,4 @@
-Super cars 2.0
+Super cars 3.0
 
 Level: EASY
 Random generator initialized with seed: 25

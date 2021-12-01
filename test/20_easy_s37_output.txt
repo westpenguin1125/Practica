@@ -1,0 +1,150 @@
+Super cars 3.0
+
+Level: EASY
+Random generator initialized with seed: 37
+Distance: 30
+Coins: 5
+Cycle: 0
+Total obstacles: 11
+Total coins: 13
+Elapsed Time: 0,00 s
+  ═════════════════════════════════════════════════════════════════
+                                              ░                    
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+      >                                                            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+                                      ¢       ¢       ¢            
+  ═════════════════════════════════════════════════════════════════
+
+Command > 
+[DEBUG] Executing: r advanced 100
+Level: ADVANCED
+Random generator initialized with seed: 100
+Distance: 100
+Coins: 5
+Cycle: 0
+Total obstacles: 46
+Total coins: 25
+Supercoin is present
+Elapsed Time: 0,00 s
+  ═════════════════════════════════════════════════════════════════
+                                                      ←            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+      >                                               ¢            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+                                      ░                       ░    
+  ═════════════════════════════════════════════════════════════════
+
+Command > 
+[DEBUG] Executing: o
+ADVANCED record is 10,40 s
+Command > 
+[DEBUG] Executing: w
+Thunder hit position: (7 , 0)
+Distance: 100
+Coins: 0
+Cycle: 1
+Total obstacles: 46
+Total coins: 25
+Supercoin is present
+Elapsed Time: 0,00 s
+  ═════════════════════════════════════════════════════════════════
+                                                      ←            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+      >                                                       ¢    
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+                                              ░                    
+  ═════════════════════════════════════════════════════════════════
+
+Command > 
+[DEBUG] Executing: s
+Not enough coins
+[ERROR]: Failed to shoot
+
+Command > 
+[DEBUG] Executing: s
+Not enough coins
+[ERROR]: Failed to shoot
+
+Command > 
+[DEBUG] Executing: s
+Not enough coins
+[ERROR]: Failed to shoot
+
+Command > 
+[DEBUG] Executing: g
+[ERROR]: Incorrect number of arguments for grenade command: [g]renade <x> <y>
+
+Command > 
+[DEBUG] Executing: g 9 9
+Invalid position.
+[ERROR]: Failed to add grenade
+
+Command > 
+[DEBUG] Executing: s
+Not enough coins
+[ERROR]: Failed to shoot
+
+Command > 
+[DEBUG] Executing: s
+Not enough coins
+[ERROR]: Failed to shoot
+
+Command > 
+[DEBUG] Executing: r bla bla
+[ERROR]: Command r: Level must be one of: TEST, EASY, HARD, ADVANCED
+
+Command > 
+[DEBUG] Executing: r
+Distance: 100
+Coins: 5
+Cycle: 0
+Total obstacles: 46
+Total coins: 25
+Supercoin is present
+Elapsed Time: 0,00 s
+  ═════════════════════════════════════════════════════════════════
+                                                      ←            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+      >                                               ¢            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+                                      ░                       ░    
+  ═════════════════════════════════════════════════════════════════
+
+Command > 
+[DEBUG] Executing: r test bla
+[ERROR]: Command r: the seed is not a proper long number
+
+Command > 
+[DEBUG] Executing: t bla
+[ERROR]: Command toggle test: Incorrect number of arguments
+
+Command > 
+[DEBUG] Executing: hh
+[ERROR]: Unknown command
+
+Command > 
+[DEBUG] Executing: q 2
+[ERROR]: Command up: Incorrect number of arguments
+
+Command > 
+[DEBUG] Executing: 
+Thunder hit position: (7 , 0)
+Distance: 99
+Coins: 5
+Cycle: 1
+Total obstacles: 46
+Total coins: 25
+Supercoin is present
+Elapsed Time: 0,00 s
+  ═════════════════════════════════════════════════════════════════
+                                      ←                            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+      >                                       ¢                    
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+                              ░                       ░            
+  ═════════════════════════════════════════════════════════════════
+
+Command > 
+[DEBUG] Executing: e
+[GAME OVER] Player leaves the game

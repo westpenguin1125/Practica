@@ -1,0 +1,18 @@
+r advanced 100
+o
+w
+s
+s
+s
+g
+g 9 9
+s
+s
+r bla bla
+r
+r test bla
+t bla
+hh
+q 2
+
+e

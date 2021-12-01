@@ -1,4 +1,4 @@
-Super cars 2.0
+Super cars 3.0
 
 Level: EASY
 Random generator initialized with seed: 37
@@ -50,13 +50,9 @@ Command >
 [DEBUG] Executing: r HELP
 [ERROR]: Command r: Incorrect number of arguments
 
-[ERROR]: Unknown command
-
 Command > 
 [DEBUG] Executing: r HELP 34
 [ERROR]: Command r: Level must be one of: TEST, EASY, HARD, ADVANCED
-
-[ERROR]: Unknown command
 
 Command > 
 [DEBUG] Executing: r EASY 100
@@ -364,6 +360,7 @@ Command >
 [DEBUG] Executing: r HARD 23
 Level: HARD
 Random generator initialized with seed: 23
+Creating default record for level 'HARD'
 Distance: 100
 Coins: 5
 Cycle: 0

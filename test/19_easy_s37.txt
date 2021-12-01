@@ -1,0 +1,19 @@
+r advanced 100
+t
+z
+o
+
+
+
+
+s
+
+
+w
+
+v tmp_0
+d tmp_0
+d tmp_1
+0
+z
+e
