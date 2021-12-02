@@ -1,5 +1,6 @@
 package es.ucm.tp1.logic.gameobjects;
 
+import es.ucm.tp1.control.exceptions.NotEnoughCoinsException;
 import es.ucm.tp1.logic.Game;
 
 public class Player extends GameObject{
@@ -54,14 +55,8 @@ public class Player extends GameObject{
 		move(1, 0);
 	}
 	
-	public boolean buy(int cost) {
-		if (numCoins >= cost) {
-			decreaseCoins(cost);
-			return true;
-		}
-		else {
-			return false;
-		}
+	public void buy(int cost) {
+		decreaseCoins(cost);
 	}
 
 	public void decreaseLife() {

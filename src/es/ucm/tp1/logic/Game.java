@@ -103,8 +103,8 @@ public class Game {
 		objectList.removeDeadObjects();
 	}
 	
-	public boolean buy(int cost) {
-		return player.buy(cost);
+	public void buy(int cost) {
+		player.buy(cost);
 	}
 	
 	public void movePlayerUp() {

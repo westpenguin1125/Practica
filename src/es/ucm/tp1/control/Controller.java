@@ -5,6 +5,8 @@ import java.util.Scanner;
 import es.ucm.tp1.control.commands.Command;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.view.GamePrinter;
+import es.ucm.tp1.control.exceptions.CommandExecuteException;
+import es.ucm.tp1.control.exceptions.GameException;
 
 public class Controller {
 
@@ -53,10 +55,13 @@ public class Controller {
 		while (!game.isFinished()) {
 			
 			parameters = getUserInput().trim().split(" ");
-			command = Command.getCommand(parameters);
-			
-			if(command != null)
+			try {
+				command = Command.getCommand(parameters);
 				refreshDisplay = command.execute(game);
+			} 
+			catch (GameException ex) {
+				System.out.format(ex.getMessage() + " %n %n");
+			}
 			
 			if(refreshDisplay)
 				printGame();

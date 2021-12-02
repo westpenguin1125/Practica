@@ -31,7 +31,7 @@ public class WaveCommand extends Command implements Buyable{
 			return true;
 		}
 		else {
-			System.out.println(ERROR_PROMPT + ERROR_WAVE_MSG + GamePrinter.newLine);
+			System.out.format("%s %s\n\n", ERROR_PROMPT, ERROR_WAVE_MSG);
 			return false;
 		}
 	}

@@ -53,7 +53,7 @@ public class GrenadeCommand extends Command  implements Buyable{
 			!game.isEmpty(xInput + game.getPlayerX(), yInput)) {
 			
 			System.out.println(INVALID_POSITION_MSG);
-			System.out.println(ERROR_PROMPT + ERROR_ADDING_GRENADE_MSG + GamePrinter.newLine);
+			System.out.format("%s %s\n\n", ERROR_PROMPT, ERROR_ADDING_GRENADE_MSG);
 			
 			return false;
 		}

@@ -31,7 +31,7 @@ public class ShootCommand extends Command implements Buyable{
 			game.update();
 			return true;
 		}
-		System.out.println(ERROR_PROMPT + ERROR_SHOOT_MSG + GamePrinter.newLine);
+		System.out.format("%s %s\n\n", ERROR_PROMPT, ERROR_SHOOT_MSG);
 		return false;
 	}
 
