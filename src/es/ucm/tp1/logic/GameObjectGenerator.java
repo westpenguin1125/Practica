@@ -28,6 +28,7 @@ public class GameObjectGenerator {
 		o = new Pedestrian(game, x, 0);
 		break;
 		}
+		game.delCol(x);
 		game.forceAddObject(o);
 	}
 	
