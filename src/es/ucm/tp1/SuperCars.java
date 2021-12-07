@@ -16,12 +16,12 @@ public class SuperCars {
 
 	public static final String LEVEL_INFO_MSG = "Level must be one of: " + Level.all(", ");
 
-	private static final String SEED_IS_NUMBER_MSNG = "the seed must be a number";
+	public static final String SEED_IS_NUMBER_MSNG = "the seed must be a number";
 
 	public static final String SEED_INFO_MSG = "Random generator initialized with seed: ";
 
 	
-	private static void usage() {
+	public static void usage() {
 		System.out.println(USAGE_MSG);
 		System.out.println("\t<level>: " + Level.all(", "));
 		System.out.println("\t<seed>: " + SEED_IS_NUMBER_MSNG);

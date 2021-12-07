@@ -1,5 +1,6 @@
 package es.ucm.tp1.logic.gameobjects;
 
+import es.ucm.tp1.control.exceptions.InvalidPositionException;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.instantactions.ExplodeAction;
 
@@ -11,7 +12,7 @@ public class Grenade extends GameObject{
 	
 	private int countDown;
 	
-	public Grenade(Game game, int x, int y) {
+	public Grenade(Game game, int x, int y)  {
 		super(game, x, y);
 		countDown = CYCLES_TO_EXPLODE;
 		symbol = GRENADE_SYMBOL;

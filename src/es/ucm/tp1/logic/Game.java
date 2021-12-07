@@ -2,6 +2,7 @@ package es.ucm.tp1.logic;
 
 import java.util.Random;
 import es.ucm.tp1.control.Level;
+import es.ucm.tp1.control.exceptions.InvalidPositionException;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
 import es.ucm.tp1.logic.instantactions.InstantAction;
@@ -77,7 +78,11 @@ public class Game {
 		if (getRandomNumber() < frequency && isEmpty(obj.getX(), obj.getY()))
 			objectList.addObject(obj);
 	}
-	public void addObject(GameObject obj) {
+	public void addObject(GameObject obj) throws InvalidPositionException {
+		if (!inVisibility(obj.getX(), obj.getY()) ||
+				!isEmpty(obj.getX() , obj.getY())) {
+			throw new InvalidPositionException("Invalid position."); 
+		}
 		objectList.addObject(obj);
 	}
 	
@@ -140,7 +145,7 @@ public class Game {
 	}
 	
 	public boolean inVisibility(int x, int y) {
-		return 0 <= x && x < getVisibility() &&
+		return 0 <= x && x < getVisibility() + getPlayerX() &&
 				0 <= y && y < getRoadWidth();
 	}
 

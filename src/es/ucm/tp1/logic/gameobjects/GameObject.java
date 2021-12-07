@@ -2,6 +2,7 @@ package es.ucm.tp1.logic.gameobjects;
 
 import es.ucm.tp1.logic.Collider;
 import es.ucm.tp1.logic.Game;
+import es.ucm.tp1.control.exceptions.InvalidPositionException;
 
 public abstract class GameObject implements Collider {
 
@@ -12,7 +13,7 @@ public abstract class GameObject implements Collider {
 	protected String symbol;
 	protected String objectInfo;
 	
-	public GameObject(Game game, int x, int y) {
+	public GameObject(Game game, int x, int y){
 		this.x = x;
 		this.y = y;
 		this.game = game;

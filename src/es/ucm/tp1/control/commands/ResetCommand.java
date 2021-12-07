@@ -4,6 +4,7 @@ import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.GameObjectGenerator;
 import es.ucm.tp1.SuperCars;
 import es.ucm.tp1.control.Level;
+import es.ucm.tp1.control.exceptions.CommandParseException;
 
 public class ResetCommand extends Command {
 
@@ -26,11 +27,16 @@ public class ResetCommand extends Command {
 	}
 
 	@Override
-	protected Command parse(String[] words) {
+	protected Command parse(String[] words) throws CommandParseException {
 		if(words.length == 3) {
 			if(matchCommandName(words[0])) {
-				newLevel = Level.valueOfIgnoreCase(words[1]);
-				newSeed = Long.parseLong(words[2]);
+				try {
+					newLevel = Level.valueOfIgnoreCase(words[1]);
+					newSeed = Long.parseLong(words[2]);
+				} catch (NumberFormatException nfe) {
+					System.out.println(SuperCars.SEED_IS_NUMBER_MSNG);
+					SuperCars.usage();
+				}
 				
 				if (newLevel != null) {
 					return this;

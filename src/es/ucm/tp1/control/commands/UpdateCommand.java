@@ -1,5 +1,6 @@
 package es.ucm.tp1.control.commands;
 
+import es.ucm.tp1.control.exceptions.CommandParseException;
 import es.ucm.tp1.logic.Game;
 
 public class UpdateCommand extends Command {
@@ -24,7 +25,7 @@ public class UpdateCommand extends Command {
 	}
 
 	@Override
-	protected Command parse(String[] commandWords) {
+	protected Command parse(String[] commandWords) throws CommandParseException {
 		if ("".equalsIgnoreCase(commandWords[0])) {
 			commandWords[0] = SHORTCUT;
 		}

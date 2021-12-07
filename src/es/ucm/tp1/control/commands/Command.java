@@ -32,9 +32,13 @@ public abstract class Command {
 	public static Command getCommand(String[] commandWords) {
 		int i = 0;
 		
-		while(i < AVAILABLE_COMMANDS.length && 
-			  null == AVAILABLE_COMMANDS[i].parse(commandWords))
-			i++;
+		try {
+			while(i < AVAILABLE_COMMANDS.length && 
+				  null == AVAILABLE_COMMANDS[i].parse(commandWords))
+				i++;
+		} catch (CommandParseException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		if(i == AVAILABLE_COMMANDS.length) {
 			System.out.format("%s %s%n%n", ERROR_PROMPT, UNKNOWN_COMMAND_MSG);
@@ -68,8 +72,7 @@ public abstract class Command {
 	protected Command parse(String[] words) throws CommandParseException{
 		if (matchCommandName(words[0])) {
 			if (words.length != 1) {
-				System.out.format("%s Command %s: %s%n%n", ERROR_PROMPT, shortcut, INCORRECT_NUMBER_OF_ARGS_MSG);
-				return null;
+				throw new  CommandParseException(String.format("%s Command %s: %s%n%n", ERROR_PROMPT, shortcut, INCORRECT_NUMBER_OF_ARGS_MSG));
 			} else {
 				return this;
 			}

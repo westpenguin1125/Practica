@@ -1,6 +1,9 @@
 package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.control.Buyable;
+import es.ucm.tp1.control.exceptions.CommandExecuteException;
+import es.ucm.tp1.control.exceptions.InvalidPositionException;
+import es.ucm.tp1.control.exceptions.NotEnoughCoinsException;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.Grenade;
 import es.ucm.tp1.view.GamePrinter;
@@ -9,7 +12,6 @@ public class GrenadeCommand extends Command  implements Buyable{
 	
 	private static final String ERROR_ADDING_GRENADE_MSG = "Failed to add grenade";
 	
-	private static final String INVALID_POSITION_MSG = "Invalid position.";
 	
 	private static final String NAME = "grenade";
 
@@ -47,26 +49,20 @@ public class GrenadeCommand extends Command  implements Buyable{
 	}
 	
 	@Override
-	public boolean execute(Game game) {
+	public boolean execute(Game game) throws CommandExecuteException{
 		
-		if(!game.inVisibility(xInput, yInput) ||
-			!game.isEmpty(xInput + game.getPlayerX(), yInput)) {
-			
-			System.out.println(INVALID_POSITION_MSG);
-			System.out.format("%s %s\n\n", ERROR_PROMPT, ERROR_ADDING_GRENADE_MSG);
-			
-			return false;
-		}
-		else if (buy(game)) {
-			
+		try {
+			buy(game);
 			game.addObject(new Grenade(game, xInput + game.getPlayerX(), yInput));
 			game.update();
-			return true;
+		} catch (NotEnoughCoinsException e) {
+			System.out.println(e.getMessage());
+			throw new CommandExecuteException(String.format("[ERROR]: %s", ERROR_ADDING_GRENADE_MSG), e);
+		} catch (InvalidPositionException e) {
+			System.out.println(e.getMessage());
+			throw new CommandExecuteException(String.format("[ERROR]: %s", ERROR_ADDING_GRENADE_MSG), e);
 		}
-		else {
-			System.out.println(ERROR_PROMPT + ERROR_ADDING_GRENADE_MSG + GamePrinter.newLine);
-			return false;
-		}
+		return true;
 	}
 	
 	@Override

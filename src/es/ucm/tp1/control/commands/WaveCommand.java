@@ -1,6 +1,8 @@
 package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.control.Buyable;
+import es.ucm.tp1.control.exceptions.CommandExecuteException;
+import es.ucm.tp1.control.exceptions.NotEnoughCoinsException;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.instantactions.WaveAction;
 import es.ucm.tp1.view.GamePrinter;
@@ -24,16 +26,16 @@ public class WaveCommand extends Command implements Buyable{
 	}
 
 	@Override
-	public boolean execute(Game game) {
-		if (buy(game)) {
+	public boolean execute(Game game) throws CommandExecuteException {
+		try {
+			buy(game); 
 			game.execute(new WaveAction());
 			game.update();
-			return true;
+		} catch (NotEnoughCoinsException e) {
+			System.out.println(e.getMessage());
+			throw new CommandExecuteException(String.format("[ERROR]: %s", ERROR_WAVE_MSG), e);
 		}
-		else {
-			System.out.format("%s %s\n\n", ERROR_PROMPT, ERROR_WAVE_MSG);
-			return false;
-		}
+		return true;
 	}
 
 	@Override
