@@ -32,18 +32,15 @@ public class ResetCommand extends Command {
 				try {
 					newLevel = Level.valueOfIgnoreCase(words[1]);
 					newSeed = Long.parseLong(words[2]);
-					//TODO Aqui habria que lanzar CommandParseException?
 				} catch (NumberFormatException nfe) {
-					System.out.println(SuperCars.SEED_IS_NUMBER_MSNG);
-					SuperCars.usage();
+					System.out.println(Command.INCORRECT_FORMAT_OF_ARGS_MSG);
+					throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SuperCars.SEED_IS_NUMBER_MSNG), nfe);
 				}
 				
 				if (newLevel != null) 
 					return this;
-				else {
-					System.out.format("%s Command %s: %s%n%n", ERROR_PROMPT, SHORTCUT, SuperCars.LEVEL_INFO_MSG);
-					return null;
-				}
+				else 
+					throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SuperCars.LEVEL_INFO_MSG));
 			}
 			else
 				return null;

@@ -79,8 +79,6 @@ public class Game {
 			objectList.addObject(obj);
 	}
 	public void addObject(GameObject obj) throws InvalidPositionException {
-		//TODO Asi esta bien esta excepcion?
-		//Hay que lanzar la excepcion cuando la posicion proporcionada no está en la carretera o cuando no está en visibilidad
 		if (!inVisibility(obj.getX(), obj.getY()) ||
 				!isEmpty(obj.getX() , obj.getY())) {
 			throw new InvalidPositionException("Invalid position."); 

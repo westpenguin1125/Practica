@@ -8,6 +8,7 @@ public abstract class Command {
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
 
 	protected static final String INCORRECT_NUMBER_OF_ARGS_MSG = "Incorrect number of arguments";
+	protected static final String INCORRECT_FORMAT_OF_ARGS_MSG = "Wrong format of arguments";
 	
 	protected static final String ERROR_PROMPT = "[ERROR]:";
 
@@ -32,17 +33,21 @@ public abstract class Command {
 	
 	public static Command getCommand(String[] commandWords) throws CommandParseException {
 		int i = 0;
+		//TODO Como lo hacemos?
+//		try {
+//			while(i < AVAILABLE_COMMANDS.length && 
+//				  null == AVAILABLE_COMMANDS[i].parse(commandWords))
+//				i++;
+//		} catch (CommandParseException e) {
+//			System.out.println(e.getMessage());
+//		}
 		
-		try {
-			while(i < AVAILABLE_COMMANDS.length && 
+		while(i < AVAILABLE_COMMANDS.length && 
 				  null == AVAILABLE_COMMANDS[i].parse(commandWords))
 				i++;
-		} catch (CommandParseException e) {
-			System.out.println(e.getMessage());
-		}
-		//TODO Esto esta bien?
+		
 		if(i == AVAILABLE_COMMANDS.length) 
-			throw new CommandParseException(String.format("%s %s%n%n", ERROR_PROMPT, UNKNOWN_COMMAND_MSG));
+			throw new CommandParseException(String.format("%s %s", ERROR_PROMPT, UNKNOWN_COMMAND_MSG));
 		else
 			return AVAILABLE_COMMANDS[i];
 	}

@@ -30,7 +30,6 @@ public class CheatCommand extends Command{
 			return null;
 		try {
 			id = Integer.parseInt(words[0]);
-			//TODO aqui habria que lanzar un CommandParseException?
 			if(id < GameObjectGenerator.MIN_ID || id > GameObjectGenerator.MAX_ID)
 				return null;
 		}	
