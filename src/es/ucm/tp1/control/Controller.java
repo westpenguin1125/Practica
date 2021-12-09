@@ -61,6 +61,7 @@ public class Controller {
 			} 
 			catch (GameException ex) {
 				System.out.format(ex.getMessage() + " %n %n");
+				refreshDisplay = false;
 			}
 			
 			if(refreshDisplay)

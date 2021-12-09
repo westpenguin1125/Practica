@@ -79,6 +79,8 @@ public class Game {
 			objectList.addObject(obj);
 	}
 	public void addObject(GameObject obj) throws InvalidPositionException {
+		//TODO Asi esta bien esta excepcion?
+		//Hay que lanzar la excepcion cuando la posicion proporcionada no está en la carretera o cuando no está en visibilidad
 		if (!inVisibility(obj.getX(), obj.getY()) ||
 				!isEmpty(obj.getX() , obj.getY())) {
 			throw new InvalidPositionException("Invalid position."); 
@@ -106,6 +108,19 @@ public class Game {
 		elapsedTime = System.currentTimeMillis() - startTime;
 		
 		objectList.removeDeadObjects();
+	}
+	
+	public String serialize() {
+		StringBuilder buffer = new StringBuilder();
+		
+		buffer.append(player.serialize() + "\n");
+		buffer.append(objectList.serialize(getRoadLength(), getRoadWidth()));
+		
+		return buffer.toString();
+	}
+	
+	public String levelString() {
+		return level.toString();
 	}
 	
 	public void buy(int cost) {
@@ -145,7 +160,7 @@ public class Game {
 	}
 	
 	public boolean inVisibility(int x, int y) {
-		return 0 <= x && x < getVisibility() + getPlayerX() &&
+		return getPlayerX() <= x && x < getVisibility() + getPlayerX() &&
 				0 <= y && y < getRoadWidth();
 	}
 

@@ -2,11 +2,10 @@ package es.ucm.tp1.control.commands;
 
 
 import es.ucm.tp1.control.Buyable;
-import es.ucm.tp1.control.exceptions.CommandExecuteException;
-import es.ucm.tp1.control.exceptions.NotEnoughCoinsException;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.instantactions.ShootAction;
-import es.ucm.tp1.view.GamePrinter;
+import es.ucm.tp1.control.exceptions.CommandExecuteException;
+import es.ucm.tp1.control.exceptions.NotEnoughCoinsException;
 
 public class ShootCommand extends Command implements Buyable{
 
@@ -36,7 +35,7 @@ public class ShootCommand extends Command implements Buyable{
 		}
 		catch (NotEnoughCoinsException e) {
 			System.out.println(e.getMessage());
-			throw new CommandExecuteException(String.format("[ERROR]: %s", ERROR_SHOOT_MSG), e);
+			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_SHOOT_MSG), e);
 		}
 		return true;
 	}

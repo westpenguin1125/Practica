@@ -67,6 +67,17 @@ public class GameObjectContainer {
 		objectList = new ArrayList<>();
 	}
 	
+	public String serialize(int length, int width) {
+		StringBuilder buffer = new StringBuilder();
+		
+		for(int i = 0; i < length; i++)
+			for(int j = 0; j < width; j++)
+				if(gameObjectIn(i, j) != null)
+					buffer.append(gameObjectIn(i, j).serialize() + "\n");
+		
+		return buffer.toString();
+	}
+	
 	public String positionToString(int x, int y) {
 		StringBuilder buffer = new StringBuilder();
 		for(GameObject obj : objectList) {

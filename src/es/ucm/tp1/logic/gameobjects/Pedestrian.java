@@ -14,7 +14,7 @@ public class Pedestrian extends Obstacles{
 		super(game, x, y);
 		symbol = PEDESTRIAN_SYMBOL;
 		numLifes = PEDESTRIAN_RESISTANCE;
-		movingUp = true;
+		movingUp = false;
 	}
 	
 	@Override
@@ -46,5 +46,13 @@ public class Pedestrian extends Obstacles{
 	@Override
 	public String getSymbol() {
 		return symbol;
+	}
+	
+	@Override
+	public String serialize() {
+		if(movingUp)
+			return super.serialize() + "up";
+		else
+			return super.serialize() + "down";
 	}
 }

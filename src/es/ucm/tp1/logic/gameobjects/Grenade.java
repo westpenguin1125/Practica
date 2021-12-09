@@ -37,6 +37,11 @@ public class Grenade extends GameObject{
 	public void onDelete() {
 		game.execute(new ExplodeAction(getX(), getY()));
 	}
+	
+	@Override
+	public String serialize() {
+		return String.format("%s %s", super.serialize(), countDown);
+	}
 
 	@Override
 	public boolean receiveCollision(Player player) {

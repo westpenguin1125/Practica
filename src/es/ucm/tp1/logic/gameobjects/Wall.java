@@ -20,4 +20,9 @@ public class Wall extends Obstacles{
 		super.onDelete();
 		game.rewardPlayer(COINS_GIVEN_AT_DEATH);
 	}
+	
+	@Override
+	public String serialize() {
+		return String.format("%s %s", super.serialize(), numLifes);
+	}
 }

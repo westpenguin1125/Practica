@@ -1,7 +1,6 @@
 package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.logic.GameObjectGenerator;
 import es.ucm.tp1.SuperCars;
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.control.exceptions.CommandParseException;
@@ -33,16 +32,16 @@ public class ResetCommand extends Command {
 				try {
 					newLevel = Level.valueOfIgnoreCase(words[1]);
 					newSeed = Long.parseLong(words[2]);
+					//TODO Aqui habria que lanzar CommandParseException?
 				} catch (NumberFormatException nfe) {
 					System.out.println(SuperCars.SEED_IS_NUMBER_MSNG);
 					SuperCars.usage();
 				}
 				
-				if (newLevel != null) {
+				if (newLevel != null) 
 					return this;
-				}
 				else {
-					System.out.format("[ERROR]: Command %s: %s%n%n", SHORTCUT, SuperCars.LEVEL_INFO_MSG);
+					System.out.format("%s Command %s: %s%n%n", ERROR_PROMPT, SHORTCUT, SuperCars.LEVEL_INFO_MSG);
 					return null;
 				}
 			}

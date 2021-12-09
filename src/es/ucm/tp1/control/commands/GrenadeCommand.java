@@ -37,7 +37,7 @@ public class GrenadeCommand extends Command  implements Buyable{
 			try {
 				xInput = Integer.parseInt(words[1]);
 				yInput = Integer.parseInt(words[2]);
-			}
+			}//TODO Aqui habria que lanzar una CommandParseException?
 			catch(NumberFormatException e) {
 				return null;
 			}
@@ -50,17 +50,32 @@ public class GrenadeCommand extends Command  implements Buyable{
 	
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException{
+		//TODO Estas excepciones hay que recogerlas como el nivel mas bajo o como CommandExecuteException para no repetir codigo?
+		/*
+		 Es decir:
+		 	try {
+			buy(game);
+			game.addObject(new Grenade(game, xInput + game.getPlayerX(), yInput));
+			game.update();
+		} catch (CommandExecuteException e) {
+			System.out.println(e.getMessage());
+			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_ADDING_GRENADE_MSG), e);
+		}
+		 */
 		
+		//Si no hay dinero y se mete una posicion incorrecta primero salta la NotEnoughCoinsException, en el guion salta la InvalidPositionException
 		try {
 			buy(game);
 			game.addObject(new Grenade(game, xInput + game.getPlayerX(), yInput));
 			game.update();
-		} catch (NotEnoughCoinsException e) {
+		}
+		catch (NotEnoughCoinsException e) {
 			System.out.println(e.getMessage());
-			throw new CommandExecuteException(String.format("[ERROR]: %s", ERROR_ADDING_GRENADE_MSG), e);
-		} catch (InvalidPositionException e) {
+			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_ADDING_GRENADE_MSG), e);
+		} 
+		catch (InvalidPositionException e) {
 			System.out.println(e.getMessage());
-			throw new CommandExecuteException(String.format("[ERROR]: %s", ERROR_ADDING_GRENADE_MSG), e);
+			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_ADDING_GRENADE_MSG), e);
 		}
 		return true;
 	}

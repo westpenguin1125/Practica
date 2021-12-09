@@ -33,7 +33,7 @@ public class WaveCommand extends Command implements Buyable{
 			game.update();
 		} catch (NotEnoughCoinsException e) {
 			System.out.println(e.getMessage());
-			throw new CommandExecuteException(String.format("[ERROR]: %s", ERROR_WAVE_MSG), e);
+			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_WAVE_MSG), e);
 		}
 		return true;
 	}

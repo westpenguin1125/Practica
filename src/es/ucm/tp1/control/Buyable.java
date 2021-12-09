@@ -9,12 +9,9 @@ public interface Buyable {
 	
 	default void buy(Game game) throws NotEnoughCoinsException{
 	
-		if (game.getPlayerCoins() < cost()) {
+		if (game.getPlayerCoins() < cost()) 
 			throw new NotEnoughCoinsException("Not enough coins");
-		}
-		else {
+		else 
 			game.buy(cost());
-		}
-		
 	};
 }

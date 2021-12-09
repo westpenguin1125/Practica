@@ -24,12 +24,13 @@ public abstract class Command {
 		new ShootCommand(),
 		new GrenadeCommand(),		
 		new WaveCommand(),
+		new SerializeCommand(),
 		new ClearCommand(),
 		new CheatCommand(),
 	};
 	/* @formatter:on */
 	
-	public static Command getCommand(String[] commandWords) {
+	public static Command getCommand(String[] commandWords) throws CommandParseException {
 		int i = 0;
 		
 		try {
@@ -39,11 +40,9 @@ public abstract class Command {
 		} catch (CommandParseException e) {
 			System.out.println(e.getMessage());
 		}
-		
-		if(i == AVAILABLE_COMMANDS.length) {
-			System.out.format("%s %s%n%n", ERROR_PROMPT, UNKNOWN_COMMAND_MSG);
-			return null;
-		}
+		//TODO Esto esta bien?
+		if(i == AVAILABLE_COMMANDS.length) 
+			throw new CommandParseException(String.format("%s %s%n%n", ERROR_PROMPT, UNKNOWN_COMMAND_MSG));
 		else
 			return AVAILABLE_COMMANDS[i];
 	}
@@ -71,11 +70,10 @@ public abstract class Command {
 	
 	protected Command parse(String[] words) throws CommandParseException{
 		if (matchCommandName(words[0])) {
-			if (words.length != 1) {
+			if (words.length != 1) 
 				throw new  CommandParseException(String.format("%s Command %s: %s%n%n", ERROR_PROMPT, shortcut, INCORRECT_NUMBER_OF_ARGS_MSG));
-			} else {
+			else
 				return this;
-			}
 		}
 		return null;
 	}

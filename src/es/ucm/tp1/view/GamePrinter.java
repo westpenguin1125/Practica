@@ -1,13 +1,11 @@
 package es.ucm.tp1.view;
 
-import java.util.Locale;
-
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.*;
 import es.ucm.tp1.utils.*;
 
 
-public class GamePrinter {
+public class GamePrinter extends View{
 
 	private static final String SPACE = " ";
 
@@ -53,37 +51,26 @@ public class GamePrinter {
 		return buffer.toString();
 	}
 
-	private Game game;
-
 	public GamePrinter(Game game) {
-		this.game = game;
+		super(game);
 		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
 		setRoad();
 		newLine =  System.getProperty("line.separator");
 	}
 	
-	private String elapsedTimeWithFormat() {
-		return String.format(Locale.FRANCE, "%.02f", ((float)game.getElapsedTime() / 1000));
-	}
-	
-	private String getInfo() {
-		
+	protected String getInfo() {
 		StringBuilder info = new StringBuilder();
 		
-		info.append("Distance: " + game.getRemainingDistance() + newLine);
-		info.append("Coins: " + game.getPlayerCoins() + newLine);
-		info.append("Cycle: " + game.getNumCycles() + newLine);
-		info.append("Total obstacles: " + Obstacle.getNumObstacles() + newLine);
-		info.append("Total coins: " + Coin.getNumCoins());
+		info.append("Distance: " + game.getRemainingDistance());
+		info.append("\nCoins: " + game.getPlayerCoins());
+		info.append("\nCycle: " + game.getNumCycles());
+		info.append("\nTotal obstacles: " + Obstacle.getNumObstacles());
+		info.append("\nTotal coins: " + Coin.getNumCoins());
 		
-		if (SuperCoin.isPresent()) {
-			info.append(newLine);
-			info.append("Supercoin is present");
-		}
-		if (!game.getTestingFlag()) {
-			info.append(newLine);
-			info.append("Elapsed Time: " + elapsedTimeWithFormat() + " s");
-		}
+		if (SuperCoin.isPresent())
+			info.append("\nSupercoin is present");
+		if (!game.getTestingFlag()) 
+			info.append("\nElapsed Time: " + elapsedTimeWithFormat() + " s");
 		
 		return info.toString();
 	}

@@ -74,4 +74,9 @@ public enum Level {
 	public boolean hasAdvancedObjects() {
 		return advObjFreq > 0;
 	}
+	
+	@Override
+	public String toString() {
+		return name().toUpperCase();
+	}
 }
