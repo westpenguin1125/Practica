@@ -23,7 +23,7 @@ public class SerializeCommand extends Command {
 		
 		System.out.println(new GameSerializer(game));
 		
-		return true;
+		return false;
 	}
 
 }

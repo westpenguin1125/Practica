@@ -1,11 +1,13 @@
 package es.ucm.tp1.view;
 
+import java.util.Locale;
+
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.*;
 import es.ucm.tp1.utils.*;
 
 
-public class GamePrinter extends View{
+public class GamePrinter {
 
 	private static final String SPACE = " ";
 
@@ -51,11 +53,17 @@ public class GamePrinter extends View{
 		return buffer.toString();
 	}
 
+	private Game game;
+	
 	public GamePrinter(Game game) {
-		super(game);
+		this.game = game;
 		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
 		setRoad();
 		newLine =  System.getProperty("line.separator");
+	}
+	
+	protected String elapsedTimeWithFormat() {
+		return String.format(Locale.FRANCE, "%.02f", ((float)game.getElapsedTime() / 1000));
 	}
 	
 	protected String getInfo() {

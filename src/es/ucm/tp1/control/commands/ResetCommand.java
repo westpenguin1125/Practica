@@ -36,9 +36,9 @@ public class ResetCommand extends Command {
 						return this;
 					}
 					else 
-						throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, NAME, SuperCars.LEVEL_INFO_MSG));
+						throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SuperCars.LEVEL_INFO_MSG));
 				} catch (NumberFormatException nfe) {
-					throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, NAME, SEED_ERROR), nfe);
+					throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SEED_ERROR), nfe);
 				}
 			}
 			else
