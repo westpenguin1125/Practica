@@ -13,6 +13,7 @@ public class GrenadeCommand extends Command  implements Buyable{
 	
 	private static final String ERROR_ADDING_GRENADE_MSG = "Failed to add grenade";
 	
+	private static final String INVALID_POSITION_MSG = "Invalid position.";
 	
 	private static final String NAME = "grenade";
 
@@ -51,20 +52,23 @@ public class GrenadeCommand extends Command  implements Buyable{
 	
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException{
-		try {
-			//TODO revisar la excepcion InvalidPositionException habria que lanzarla desde el este execute
-			buy(game);
-			game.addObject(new Grenade(game, xInput + game.getPlayerX(), yInput));
-			game.update();
+		
+		if (game.isValidEmptyPosition(xInput + game.getPlayerX(), yInput)) {
+			try {
+				buy(game);
+				game.addObject(new Grenade(game, xInput + game.getPlayerX(), yInput));
+				game.update();
+			}
+			catch (NotEnoughCoinsException e) {
+				System.out.println(e.getMessage());
+				throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_ADDING_GRENADE_MSG), e);
+			}
 		}
-		catch (NotEnoughCoinsException e) {
-			System.out.println(e.getMessage());
-			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_ADDING_GRENADE_MSG), e);
-		} 
-		catch (InvalidPositionException e) {
-			System.out.println(e.getMessage());
-			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_ADDING_GRENADE_MSG), e);
+		else {
+			System.out.println(INVALID_POSITION_MSG);
+			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_ADDING_GRENADE_MSG));
 		}
+
 		return true;
 	}
 	

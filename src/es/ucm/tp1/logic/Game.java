@@ -79,11 +79,11 @@ public class Game {
 			objectList.addObject(obj);
 	}
 	public void addObject(GameObject obj) throws InvalidPositionException {
-		if (!inVisibility(obj.getX(), obj.getY()) ||
-				!isEmpty(obj.getX() , obj.getY())) {
-			throw new InvalidPositionException("Invalid position."); 
-		}
 		objectList.addObject(obj);
+	}
+	
+	public boolean isValidEmptyPosition(int x, int y) {
+		return inVisibility(x, y) && isEmpty(x, y);
 	}
 	
 	public void delCol(int x) {
