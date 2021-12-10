@@ -40,7 +40,7 @@ public class GrenadeCommand extends Command  implements Buyable{
 				yInput = Integer.parseInt(words[2]);
 			}
 			catch(NumberFormatException e) {
-				throw new CommandParseException(String.format("%s %s", ERROR_PROMPT, Command.INCORRECT_FORMAT_OF_ARGS_MSG), e);
+				throw new CommandParseException(String.format("%s %s", ERROR_PROMPT, POSITION_ERROR), e);
 			}
 			return this;
 		}
@@ -52,6 +52,7 @@ public class GrenadeCommand extends Command  implements Buyable{
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException{
 		try {
+			//TODO revisar la excepcion InvalidPositionException habria que lanzarla desde el este execute
 			buy(game);
 			game.addObject(new Grenade(game, xInput + game.getPlayerX(), yInput));
 			game.update();

@@ -31,16 +31,15 @@ public class ResetCommand extends Command {
 			if(matchCommandName(words[0])) {
 				try {
 					newLevel = Level.valueOfIgnoreCase(words[1]);
-					newSeed = Long.parseLong(words[2]);
+					if (newLevel != null) {
+						newSeed = Long.parseLong(words[2]);
+						return this;
+					}
+					else 
+						throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, NAME, SuperCars.LEVEL_INFO_MSG));
 				} catch (NumberFormatException nfe) {
-					System.out.println(Command.INCORRECT_FORMAT_OF_ARGS_MSG);
-					throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SuperCars.SEED_IS_NUMBER_MSNG), nfe);
+					throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, NAME, SEED_ERROR), nfe);
 				}
-				
-				if (newLevel != null) 
-					return this;
-				else 
-					throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SuperCars.LEVEL_INFO_MSG));
 			}
 			else
 				return null;
