@@ -16,12 +16,12 @@ public class InfoCommand extends Command {
 	public InfoCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-	
+
 	@Override
 	public boolean execute(Game game) {
 		System.out.println("Available objects:");
 		System.out.println(GamePrinter.getObjectInfo());
-		
+
 		return false;
 	}
 }

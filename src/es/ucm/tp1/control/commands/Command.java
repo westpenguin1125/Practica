@@ -11,7 +11,7 @@ public abstract class Command {
 	protected static final String INCORRECT_FORMAT_OF_ARGS_MSG = "Wrong format of arguments";
 	protected static final String SEED_ERROR = "the seed is not a proper long number";
 	protected static final String POSITION_ERROR = "the position is not a proper long number";
-	
+
 	protected static final String ERROR_PROMPT = "[ERROR]:";
 
 	/* @formatter:off */
@@ -30,12 +30,13 @@ public abstract class Command {
 		new SerializeCommand(),
 		new ClearCommand(),
 		new CheatCommand(),
+		new SaveCommand(),
 	};
 	/* @formatter:on */
-	
+
 	public static Command getCommand(String[] commandWords) throws CommandParseException {
 		int i = 0;
-		//TODO Como lo hacemos?
+		// TODO Como lo hacemos?
 //		try {
 //			while(i < AVAILABLE_COMMANDS.length && 
 //				  null == AVAILABLE_COMMANDS[i].parse(commandWords))
@@ -43,12 +44,11 @@ public abstract class Command {
 //		} catch (CommandParseException e) {
 //			System.out.println(e.getMessage());
 //		}
-		
-		while(i < AVAILABLE_COMMANDS.length && 
-				  null == AVAILABLE_COMMANDS[i].parse(commandWords))
-				i++;
-		
-		if(i == AVAILABLE_COMMANDS.length) 
+
+		while (i < AVAILABLE_COMMANDS.length && null == AVAILABLE_COMMANDS[i].parse(commandWords))
+			i++;
+
+		if (i == AVAILABLE_COMMANDS.length)
 			throw new CommandParseException(String.format("%s %s", ERROR_PROMPT, UNKNOWN_COMMAND_MSG));
 		else
 			return AVAILABLE_COMMANDS[i];
@@ -74,18 +74,19 @@ public abstract class Command {
 	protected boolean matchCommandName(String name) {
 		return shortcut.equalsIgnoreCase(name) || this.name.equalsIgnoreCase(name);
 	}
-	
-	protected Command parse(String[] words) throws CommandParseException{
+
+	protected Command parse(String[] words) throws CommandParseException {
 		if (matchCommandName(words[0])) {
-			if (words.length != 1) 
-				throw new  CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, shortcut, INCORRECT_NUMBER_OF_ARGS_MSG));
+			if (words.length != 1)
+				throw new CommandParseException(
+						String.format("%s Command %s: %s", ERROR_PROMPT, shortcut, INCORRECT_NUMBER_OF_ARGS_MSG));
 			else
 				return this;
 		}
 		return null;
 	}
-	
-	protected String getHelp(){
+
+	protected String getHelp() {
 		return details + ": " + help;
 	}
 }

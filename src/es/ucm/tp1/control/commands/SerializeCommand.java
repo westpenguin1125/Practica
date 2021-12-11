@@ -5,7 +5,7 @@ import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.view.GameSerializer;
 
 public class SerializeCommand extends Command {
-	
+
 	private static final String NAME = "serialize";
 
 	private static final String DETAILS = "seriali[z]e";
@@ -20,9 +20,9 @@ public class SerializeCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException {
-		
+
 		System.out.println(new GameSerializer(game));
-		
+
 		return false;
 	}
 

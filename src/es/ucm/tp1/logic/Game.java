@@ -85,7 +85,7 @@ public class Game {
 	public boolean isValidEmptyPosition(int x, int y) {
 		return inVisibility(x, y) && isEmpty(x, y);
 	}
-	
+
 	public void delCol(int x) {
 		objectList.delObjectsInCol(x);
 	}

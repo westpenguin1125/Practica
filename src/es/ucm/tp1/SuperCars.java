@@ -20,7 +20,6 @@ public class SuperCars {
 
 	public static final String SEED_INFO_MSG = "Random generator initialized with seed: ";
 
-	
 	public static void usage() {
 		System.out.println(USAGE_MSG);
 		System.out.println("\t<level>: " + Level.all(", "));
@@ -28,20 +27,23 @@ public class SuperCars {
 	}
 
 	public static void main(String[] args) {
-		
+
 		if (args.length < 1 || args.length > 2) {
 			usage();
-		} else {
+		}
+		else {
 			Level level = Level.valueOfIgnoreCase(args[0]);
 			if (level == null) {
 				System.out.println(LEVEL_INFO_MSG);
 				usage();
-			} else {
+			}
+			else {
 				Long seed;
 				try {
 					if (args.length == 2) {
 						seed = Long.parseLong(args[1]);
-					} else {
+					}
+					else {
 						seed = System.currentTimeMillis() % 1000;
 					}
 
@@ -50,14 +52,14 @@ public class SuperCars {
 					System.out.println("Level: " + level.name());
 					System.out.println(SEED_INFO_MSG + seed);
 
-
-					Game game = new Game(seed, level); 
-					if( Level.TEST.equals(level))
+					Game game = new Game(seed, level);
+					if (Level.TEST.equals(level))
 						game.toggleTest();
-					
+
 					Controller controller = new Controller(game, new Scanner(System.in));
 					controller.run();
-				} catch (NumberFormatException nfe) {
+				}
+				catch (NumberFormatException nfe) {
 					System.out.println(SEED_IS_NUMBER_MSNG);
 					usage();
 				}

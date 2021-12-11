@@ -14,7 +14,6 @@ public class ResetCommand extends Command {
 	private static final String SHORTCUT = "r";
 
 	private static final String HELP = "reset game";
-	
 
 	private Level newLevel;
 	private Long newSeed;
@@ -27,18 +26,21 @@ public class ResetCommand extends Command {
 
 	@Override
 	protected Command parse(String[] words) throws CommandParseException {
-		if(words.length == 3) {
-			if(matchCommandName(words[0])) {
+		if (words.length == 3) {
+			if (matchCommandName(words[0])) {
 				try {
 					newLevel = Level.valueOfIgnoreCase(words[1]);
 					if (newLevel != null) {
 						newSeed = Long.parseLong(words[2]);
 						return this;
 					}
-					else 
-						throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SuperCars.LEVEL_INFO_MSG));
-				} catch (NumberFormatException nfe) {
-					throw new CommandParseException(String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SEED_ERROR), nfe);
+					else
+						throw new CommandParseException(
+								String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SuperCars.LEVEL_INFO_MSG));
+				}
+				catch (NumberFormatException nfe) {
+					throw new CommandParseException(
+							String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SEED_ERROR), nfe);
 				}
 			}
 			else
@@ -50,7 +52,7 @@ public class ResetCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		
+
 		if (newSeed != null && newLevel != null) {
 			game.initialize(newSeed, newLevel);
 			System.out.println("Level: " + newLevel.name());
@@ -59,7 +61,7 @@ public class ResetCommand extends Command {
 		}
 		else
 			game.initialize();
-		
+
 		return true;
 	}
 }

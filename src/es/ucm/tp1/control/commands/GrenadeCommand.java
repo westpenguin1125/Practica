@@ -9,12 +9,12 @@ import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.Grenade;
 import es.ucm.tp1.view.GamePrinter;
 
-public class GrenadeCommand extends Command  implements Buyable{
-	
+public class GrenadeCommand extends Command implements Buyable {
+
 	private static final String ERROR_ADDING_GRENADE_MSG = "Failed to add grenade";
-	
+
 	private static final String INVALID_POSITION_MSG = "Invalid position.";
-	
+
 	private static final String NAME = "grenade";
 
 	private static final String DETAILS = "[g]renade <x> <y>";
@@ -22,25 +22,25 @@ public class GrenadeCommand extends Command  implements Buyable{
 	private static final String SHORTCUT = "g";
 
 	private static final String HELP = "add a grenade in position x, y";
-	
+
 	private final static int COST = 3;
-	
+
 	private int xInput;
 	private int yInput;
-	
+
 	public GrenadeCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
 
 	@Override
-	protected Command parse(String[] words) throws CommandParseException{
+	protected Command parse(String[] words) throws CommandParseException {
 		if (words.length == 3 && matchCommandName(words[0])) {
-			
+
 			try {
 				xInput = Integer.parseInt(words[1]);
 				yInput = Integer.parseInt(words[2]);
 			}
-			catch(NumberFormatException e) {
+			catch (NumberFormatException e) {
 				throw new CommandParseException(String.format("%s %s", ERROR_PROMPT, POSITION_ERROR), e);
 			}
 			return this;
@@ -49,10 +49,10 @@ public class GrenadeCommand extends Command  implements Buyable{
 			return null;
 		}
 	}
-	
+
 	@Override
-	public boolean execute(Game game) throws CommandExecuteException{
-		
+	public boolean execute(Game game) throws CommandExecuteException {
+
 		if (game.isValidEmptyPosition(xInput + game.getPlayerX(), yInput)) {
 			try {
 				buy(game);
@@ -71,7 +71,7 @@ public class GrenadeCommand extends Command  implements Buyable{
 
 		return true;
 	}
-	
+
 	@Override
 	public int cost() {
 		return COST;
