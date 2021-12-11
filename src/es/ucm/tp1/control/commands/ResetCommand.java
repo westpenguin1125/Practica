@@ -3,7 +3,9 @@ package es.ucm.tp1.control.commands;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.SuperCars;
 import es.ucm.tp1.control.Level;
+import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.control.exceptions.CommandParseException;
+import es.ucm.tp1.control.exceptions.IORecordException;
 
 public class ResetCommand extends Command {
 
@@ -51,7 +53,7 @@ public class ResetCommand extends Command {
 	}
 
 	@Override
-	public boolean execute(Game game) {
+	public boolean execute(Game game) throws CommandExecuteException{
 
 		if (newSeed != null && newLevel != null) {
 			game.initialize(newSeed, newLevel);
@@ -60,7 +62,7 @@ public class ResetCommand extends Command {
 
 		}
 		else
-			game.initialize();
+			game.initialize();	
 
 		return true;
 	}

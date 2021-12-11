@@ -28,15 +28,16 @@ public abstract class Command {
 		new GrenadeCommand(),		
 		new WaveCommand(),
 		new SerializeCommand(),
-		new ClearCommand(),
-		new CheatCommand(),
 		new SaveCommand(),
 		new DumpCommand(),
+		new ShowRecordCommand(),
+		new ClearCommand(),
+		new CheatCommand(),
 	};
 	/* @formatter:on */
 
 	public static Command getCommand(String[] commandWords) throws CommandParseException {
-		int i = 0;
+		int i = 0;	
 
 		while (i < AVAILABLE_COMMANDS.length && null == AVAILABLE_COMMANDS[i].parse(commandWords))
 			i++;

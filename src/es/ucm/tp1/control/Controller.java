@@ -68,6 +68,12 @@ public class Controller {
 				printGame();
 			refreshDisplay = false;
 		}
+		
+		if(game.win()) {
+			if(game.getElapsedTime() < game.showRecord()) {
+				game.setNewRecord(game.getElapsedTime());
+			}
+		}
 
 		printEndMessage();
 	}

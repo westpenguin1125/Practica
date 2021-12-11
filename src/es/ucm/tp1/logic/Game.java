@@ -2,7 +2,8 @@ package es.ucm.tp1.logic;
 
 import java.util.Random;
 import es.ucm.tp1.control.Level;
-import es.ucm.tp1.control.exceptions.InvalidPositionException;
+import es.ucm.tp1.control.exceptions.CommandExecuteException;
+import es.ucm.tp1.control.exceptions.IORecordException;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
 import es.ucm.tp1.logic.instantactions.InstantAction;
@@ -27,8 +28,10 @@ public class Game {
 	private boolean exit;
 
 	private Random random;
+	
+	private Record record;
 
-	public Game(long seed, Level level) {
+	public Game(long seed, Level level){
 
 		player = new Player(this, 0, level.getRoadWidth() / 2);
 		initialize(seed, level);
@@ -38,10 +41,12 @@ public class Game {
 		return random.nextDouble();
 	}
 
-	public void initialize(Long seed, Level level) {
+	public void initialize(Long seed, Level level){
 		this.seed = seed;
 		this.level = level;
-
+		
+		record = new Record(level);
+		
 		random = new Random(seed);
 		
 		objectList = new GameObjectContainer();
@@ -56,9 +61,10 @@ public class Game {
 		elapsedTime = 0;
 		
 		exit = false;
+		
 	}
 
-	public void initialize() {
+	public void initialize(){
 		initialize(seed, level);
 	}
 	
@@ -78,7 +84,7 @@ public class Game {
 		if (getRandomNumber() < frequency && isEmpty(obj.getX(), obj.getY()))
 			objectList.addObject(obj);
 	}
-	public void addObject(GameObject obj) throws InvalidPositionException {
+	public void addObject(GameObject obj) {
 		objectList.addObject(obj);
 	}
 	
@@ -144,7 +150,15 @@ public class Game {
 	public void toggleTest() {
 		testingFlag = true;
 	}
+	
+	public void setNewRecord(double newTime) {
+		record.setNewRecord(newTime);
+	}
 
+	public double showRecord() {
+		return record.showRecord();
+	}
+	
 	public void exitGame() {
 		exit = true;
 	}
