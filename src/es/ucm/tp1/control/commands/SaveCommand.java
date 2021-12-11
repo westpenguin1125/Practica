@@ -11,6 +11,8 @@ import es.ucm.tp1.view.GameSerializer;
 
 public class SaveCommand extends Command {
 
+	private static final String ERROR_SAVING_MSG = "Failed to save";
+	
 	private static final String NAME = "save";
 
 	private static final String DETAILS = "sa[v]e <filename>";
@@ -45,11 +47,10 @@ public class SaveCommand extends Command {
 		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename))) {
 			GameSerializer serializer = new GameSerializer(game);
 			bufferedWriter.append(serializer.toString());
-			System.out.println("Game Saved");
+			System.out.println("Game succesfully saved in " + filename);
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_SAVING_MSG), e);
 		}
 
 		return false;

@@ -51,3 +51,5 @@ java -Dfile.encoding=UTF-8 -cp ./bin es.ucm.tp1.SuperCars easy 37 < ./test/19_ea
 diff -u test/19_easy_s37_output.txt output/19_easy_s37_output.txt > output/19_easy_s37_diffs.txt
 java -Dfile.encoding=UTF-8 -cp ./bin es.ucm.tp1.SuperCars easy 37 < ./test/20_easy_s37.txt > output/20_easy_s37_output.txt
 diff -u test/20_easy_s37_output.txt output/20_easy_s37_output.txt > output/20_easy_s37_diffs.txt
+
+ls -l output

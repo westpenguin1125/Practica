@@ -31,19 +31,12 @@ public abstract class Command {
 		new ClearCommand(),
 		new CheatCommand(),
 		new SaveCommand(),
+		new DumpCommand(),
 	};
 	/* @formatter:on */
 
 	public static Command getCommand(String[] commandWords) throws CommandParseException {
 		int i = 0;
-		// TODO Como lo hacemos?
-//		try {
-//			while(i < AVAILABLE_COMMANDS.length && 
-//				  null == AVAILABLE_COMMANDS[i].parse(commandWords))
-//				i++;
-//		} catch (CommandParseException e) {
-//			System.out.println(e.getMessage());
-//		}
 
 		while (i < AVAILABLE_COMMANDS.length && null == AVAILABLE_COMMANDS[i].parse(commandWords))
 			i++;

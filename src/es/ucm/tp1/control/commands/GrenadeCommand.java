@@ -3,11 +3,9 @@ package es.ucm.tp1.control.commands;
 import es.ucm.tp1.control.Buyable;
 import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.control.exceptions.CommandParseException;
-import es.ucm.tp1.control.exceptions.InvalidPositionException;
 import es.ucm.tp1.control.exceptions.NotEnoughCoinsException;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.gameobjects.Grenade;
-import es.ucm.tp1.view.GamePrinter;
 
 public class GrenadeCommand extends Command implements Buyable {
 
