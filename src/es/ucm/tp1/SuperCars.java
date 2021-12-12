@@ -7,7 +7,7 @@ import es.ucm.tp1.control.Level;
 import es.ucm.tp1.logic.Game;
 
 public class SuperCars {
-	
+
 	private static final String VERSION = "3.0";
 
 	private static final String USAGE_MSG = "Usage: Super cars <level> [<seed>]";

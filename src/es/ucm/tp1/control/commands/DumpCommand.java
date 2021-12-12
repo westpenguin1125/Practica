@@ -10,9 +10,9 @@ import es.ucm.tp1.control.exceptions.CommandParseException;
 import es.ucm.tp1.logic.Game;
 
 public class DumpCommand extends Command {
-	
+
 	private static final String ERROR_DUMPING_MSG = "An error ocurred on reading a file";
-	
+
 	private static final String NAME = "dump";
 
 	private static final String DETAILS = "[d]ump <filename>";
@@ -20,9 +20,9 @@ public class DumpCommand extends Command {
 	private static final String SHORTCUT = "d";
 
 	private static final String HELP = "Shows the content of a saved file";
-	
+
 	private String filename;
-	
+
 	public DumpCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
@@ -40,25 +40,25 @@ public class DumpCommand extends Command {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException {
 		StringBuilder buffer = new StringBuilder();
-		
+
 		filename = filename + ".txt";
-		
+
 		buffer.append(SuperCars.WELCOME_MSG);
-		
+
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))) {
-			
+
 			String line = new String();
 			line = bufferedReader.readLine();
-			
-			while(line != null) {
+
+			while (line != null) {
 				buffer.append(line + "\n");
 				line = bufferedReader.readLine();
 			}
-			
+
 			System.out.print(buffer.toString());
 		}
 		catch (IOException e) {

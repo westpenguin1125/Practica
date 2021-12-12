@@ -8,11 +8,11 @@ public abstract class GameObject implements Collider {
 	protected Game game;
 
 	protected int x, y;
-	
+
 	protected String symbol;
 	protected String objectInfo;
-	
-	public GameObject(Game game, int x, int y){
+
+	public GameObject(Game game, int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.game = game;
@@ -23,7 +23,7 @@ public abstract class GameObject implements Collider {
 	public abstract void update();
 
 	public abstract void onDelete();
-	
+
 	public boolean isInPosition(int x, int y) {
 		return this.x == x && this.y == y;
 	}
@@ -41,39 +41,39 @@ public abstract class GameObject implements Collider {
 	protected String getSymbol() {
 		return symbol;
 	}
-	
+
 	public String getObjectInfo() {
 		return objectInfo;
 	}
-	
+
 	public String serialize() {
 		return String.format("%s (%d, %d)", getSymbol(), x, y);
 	}
 
 	@Override
 	public String toString() {
-		if (isAlive()) 
+		if (isAlive())
 			return getSymbol();
 
 		return "";
 	}
-	
+
 	@Override
 	public boolean doCollision() {
 		return false;
 	}
-	
+
 	@Override
-	public boolean receiveWave(){
+	public boolean receiveWave() {
 		x += 1;
 		return true;
 	}
-	
-	@Override 
+
+	@Override
 	public boolean receiveExplosion() {
 		return receiveShoot();
 	}
-	
+
 	@Override
 	public boolean receiveThunder() {
 		return false;

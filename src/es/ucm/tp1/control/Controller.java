@@ -44,7 +44,7 @@ public class Controller {
 		System.out.println(printer.endMessage());
 	}
 
-	public void run(){
+	public void run() {
 
 		Command command;
 		String[] parameters;
@@ -68,9 +68,9 @@ public class Controller {
 				printGame();
 			refreshDisplay = false;
 		}
-		
-		if(game.win()) {
-			if(game.isNewRecord(game.getElapsedTime())) {
+
+		if (game.win()) {
+			if (game.isNewRecord(game.getElapsedTime())) {
 				try {
 					game.setNewRecord(game.getElapsedTime());
 				}

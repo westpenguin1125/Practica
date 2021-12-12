@@ -2,8 +2,8 @@ package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
 
-public class ShowRecordCommand extends Command{
-	
+public class ShowRecordCommand extends Command {
+
 	private static final String NAME = "Show record";
 
 	private static final String DETAILS = "rec[o]rd";

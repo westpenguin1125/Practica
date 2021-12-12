@@ -34,19 +34,23 @@ public class ResetCommand extends Command {
 					if (newLevel != null) {
 						newSeed = Long.parseLong(words[2]);
 						return this;
-					} else
+					}
+					else
 						throw new CommandParseException(
 								String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SuperCars.LEVEL_INFO_MSG));
-				} catch (NumberFormatException nfe) {
+				}
+				catch (NumberFormatException nfe) {
 					throw new CommandParseException(
 							String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, SEED_ERROR), nfe);
 				}
-			} else if (words.length == 1)
+			}
+			else if (words.length == 1)
 				return super.parse(words);
 			else
 				throw new CommandParseException(
 						String.format("%s Command %s: %s", ERROR_PROMPT, SHORTCUT, INCORRECT_NUMBER_OF_ARGS_MSG));
-		} else
+		}
+		else
 			return null;
 	}
 
@@ -57,7 +61,8 @@ public class ResetCommand extends Command {
 			System.out.println("Level: " + newLevel.name());
 			System.out.println(SuperCars.SEED_INFO_MSG + newSeed);
 			game.initialize(newSeed, newLevel);
-		} else
+		}
+		else
 			game.initialize();
 
 		return true;

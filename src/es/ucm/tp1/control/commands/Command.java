@@ -38,7 +38,7 @@ public abstract class Command {
 	/* @formatter:on */
 
 	public static Command getCommand(String[] commandWords) throws CommandParseException {
-		int i = 0;	
+		int i = 0;
 
 		while (i < AVAILABLE_COMMANDS.length && null == AVAILABLE_COMMANDS[i].parse(commandWords))
 			i++;

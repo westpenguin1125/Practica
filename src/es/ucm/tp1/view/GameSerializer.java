@@ -36,12 +36,12 @@ public class GameSerializer {
 		buffer.append(INITIAL_MSG + "\n");
 		buffer.append(serializeInfo() + "\n");
 		buffer.append("Game Objects: \n");
-		
-		for(int i = 0; i < game.getRoadLength(); i++) {
-			for(int j = 0; j < game.getRoadWidth(); j++) {
+
+		for (int i = 0; i < game.getRoadLength(); i++) {
+			for (int j = 0; j < game.getRoadWidth(); j++) {
 				buffer.append(game.serializeGameObjectsIn(i, j));
 			}
-		}		
+		}
 
 		return buffer.toString();
 	}

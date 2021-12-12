@@ -12,7 +12,7 @@ import es.ucm.tp1.view.GameSerializer;
 public class SaveCommand extends Command {
 
 	private static final String ERROR_SAVING_MSG = "Failed to save";
-	
+
 	private static final String NAME = "save";
 
 	private static final String DETAILS = "sa[v]e <filename>";

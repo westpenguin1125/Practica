@@ -2,13 +2,13 @@ package es.ucm.tp1.logic.gameobjects;
 
 import es.ucm.tp1.logic.Game;
 
-public class Turbo extends GameObject{
-	
+public class Turbo extends GameObject {
+
 	final public static String TURBO_INFO = "[TURBO] pushes the car: 3 columns";
 	final private String TURBO_SYMBOL = ">>>";
-	
+
 	protected boolean alive;
-	
+
 	public Turbo(Game game, int x, int y) {
 		super(game, x, y);
 		symbol = TURBO_SYMBOL;
@@ -23,11 +23,11 @@ public class Turbo extends GameObject{
 	}
 
 	@Override
-	public void onEnter() {		
+	public void onEnter() {
 	}
 
 	@Override
-	public void update() {		
+	public void update() {
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class Turbo extends GameObject{
 	public boolean isAlive() {
 		return alive;
 	}
-	
+
 	public boolean receiveShoot() {
 		return false;
 	}

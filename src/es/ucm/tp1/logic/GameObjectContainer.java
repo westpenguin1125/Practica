@@ -66,15 +66,15 @@ public class GameObjectContainer {
 			obj.onDelete();
 		objectList = new ArrayList<>();
 	}
-	
+
 	public String serializeGameObjectsIn(int x, int y) {
 		StringBuilder buffer = new StringBuilder();
-		
-		for(GameObject obj : objectList) {
-			if(obj.isInPosition(x, y))
+
+		for (GameObject obj : objectList) {
+			if (obj.isInPosition(x, y))
 				buffer.append(obj.serialize() + "\n");
 		}
-		
+
 		return buffer.toString();
 	}
 

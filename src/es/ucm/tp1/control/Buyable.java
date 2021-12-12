@@ -5,12 +5,12 @@ import es.ucm.tp1.logic.Game;
 
 public interface Buyable {
 	public int cost();
-	
-	default void buy(Game game) throws NotEnoughCoinsException{
-	
-		if (game.getPlayerCoins() < cost()) 
+
+	default void buy(Game game) throws NotEnoughCoinsException {
+
+		if (game.getPlayerCoins() < cost())
 			throw new NotEnoughCoinsException("Not enough coins");
-		else 
+		else
 			game.buy(cost());
 	};
 }

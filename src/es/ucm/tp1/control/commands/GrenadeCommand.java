@@ -10,7 +10,7 @@ import es.ucm.tp1.logic.gameobjects.Grenade;
 public class GrenadeCommand extends Command implements Buyable {
 
 	private static final String ERROR_ADDING_GRENADE_MSG = "Failed to add grenade";
-	
+
 	private static final String INVALID_POSITION_MSG = "Invalid position.";
 
 	private static final String NAME = "grenade";
@@ -32,7 +32,7 @@ public class GrenadeCommand extends Command implements Buyable {
 
 	@Override
 	protected Command parse(String[] words) throws CommandParseException {
-		if(matchCommandName(words[0])) {
+		if (matchCommandName(words[0])) {
 			if (words.length == 3) {
 
 				try {
@@ -45,7 +45,8 @@ public class GrenadeCommand extends Command implements Buyable {
 				return this;
 			}
 			else {
-				throw new CommandParseException(String.format("%s %s for grenade command: %s", ERROR_PROMPT, INCORRECT_NUMBER_OF_ARGS_MSG, DETAILS));
+				throw new CommandParseException(String.format("%s %s for grenade command: %s", ERROR_PROMPT,
+						INCORRECT_NUMBER_OF_ARGS_MSG, DETAILS));
 			}
 		}
 		else {
