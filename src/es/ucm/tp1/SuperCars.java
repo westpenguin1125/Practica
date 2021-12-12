@@ -64,9 +64,6 @@ public class SuperCars {
 					System.out.println(SEED_IS_NUMBER_MSNG);
 					usage();
 				}
-				catch(GameException e) {
-					System.out.println("Error");
-				}
 			}
 		}
 	}

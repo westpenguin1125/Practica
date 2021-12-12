@@ -32,7 +32,7 @@ public class Game {
 	
 	private Record record;
 
-	public Game(long seed, Level level)throws CommandExecuteException{
+	public Game(long seed, Level level){
 
 		player = new Player(this, 0, level.getRoadWidth() / 2);
 		initialize(seed, level);
@@ -42,13 +42,20 @@ public class Game {
 		return random.nextDouble();
 	}
 
-	public void initialize(Long seed, Level level) throws IORecordException{
+	public void initialize(Long seed, Level level){
 		this.seed = seed;
 		this.level = level;
 		
 		try {
 			record = new Record(level);
 			
+			exit = false;
+		}
+		catch(IORecordException e) {
+			System.out.println(e.getMessage());
+			exit = true;
+		}
+		finally{
 			random = new Random(seed);
 			
 			objectList = new GameObjectContainer();
@@ -61,16 +68,10 @@ public class Game {
 			numCycles = 0;
 
 			elapsedTime = 0;
-			
-			exit = false;
-		}
-		catch(IORecordException e) {
-			exit = true;
-			throw e;
 		}
 	}
 
-	public void initialize()throws IORecordException{
+	public void initialize(){
 		initialize(seed, level);
 	}
 	
@@ -168,7 +169,7 @@ public class Game {
 		player.punish();
 	}
 	
-	public void setNewRecord(double newTime) {
+	public void setNewRecord(double newTime) throws IORecordException {
 		record.setNewRecord(newTime);
 	}
 
@@ -177,7 +178,7 @@ public class Game {
 	}
 	
 	public double getRecord() {
-		return record.getRecord();
+		return record.getRecordInMilis();
 	}
 	
 	public boolean inVisibility(int x, int y) {

@@ -45,7 +45,7 @@ public class Controller {
 		System.out.println(printer.endMessage());
 	}
 
-	public void run() throws IORecordException{
+	public void run(){
 
 		Command command;
 		String[] parameters;
@@ -60,9 +60,6 @@ public class Controller {
 				command = Command.getCommand(parameters);
 				refreshDisplay = command.execute(game);
 			}
-			catch (IORecordException e){
-				throw e;
-			}
 			catch (GameException ex) {
 				System.out.format(ex.getMessage() + "%n%n");
 				refreshDisplay = false;
@@ -76,7 +73,12 @@ public class Controller {
 		if(game.win()) {
 			
 			if(game.getElapsedTime() < game.getRecord()) {
-				game.setNewRecord(game.getElapsedTime());
+				try {
+					game.setNewRecord(game.getElapsedTime());
+				}
+				catch (IORecordException e) {
+					System.out.println(e.getMessage());
+				}
 			}
 		}
 

@@ -79,7 +79,7 @@ public class ResetCommand extends Command {
 	}
 
 	@Override
-	public boolean execute(Game game) throws IORecordException{
+	public boolean execute(Game game){
 
 		if (newSeed != null && newLevel != null) {
 			game.initialize(newSeed, newLevel);

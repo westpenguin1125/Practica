@@ -45,24 +45,24 @@ public class Record {
 				bestTime = Long.MAX_VALUE;
 				System.out.format("Creating default record for level '%s'\n", level.name().toUpperCase());
 			} else {
-//				try {
-				bestTime = Double.parseDouble(line.split(":")[1]);
-				bestTime /= 1000;
-//				}
-//				catch(NumberFormatException nfe) {
-//					throw new IORecordException("Incorrect format in Record file", nfe);
-//				}
+				try {
+					bestTime = Double.parseDouble(line.split(":")[1]);
+					bestTime /= 1000;
+				}
+				catch(NumberFormatException nfe) {
+					throw new IORecordException("Incorrect format of Record file", nfe);
+				}
 			}
 
 		} catch (IOException e) {
-			throw new IORecordException("", e);
+			throw new IORecordException("File does not exist or cant be read", e);
 		}
 
 		if (!nivelEncontrado) 
 			setNewRecord(bestTime);
 	}
 
-	public void setNewRecord(double newRecord) {
+	public void setNewRecord(double newRecord) throws IORecordException {
 		StringBuilder buffer = new StringBuilder();
 		bestTime = newRecord;
 		
@@ -79,19 +79,18 @@ public class Record {
 				line = bufferedReader.readLine();
 			}
 		} catch (IOException e) {
-
+			throw new IORecordException("File does not exist or cant be read", e);
 		}
-		
 		
 		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(RECORD_FILE))) {
 			bufferedWriter.append(buffer.toString());
 		}
 		catch (IOException e) {
+			throw new IORecordException("File cant be writen on", e);
 		}
 	}
 	
-	public double getRecord() {
-		//Se pasa a milisegundos
+	public double getRecordInMilis() {
 		return bestTime * 1000;
 	}
 	
