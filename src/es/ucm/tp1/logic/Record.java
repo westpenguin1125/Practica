@@ -24,10 +24,10 @@ public class Record {
 	public Record(Level level) throws IORecordException{
 		this.level = level;
 
-		readTime(bestTime);
+		readTime();
 	}
 
-	private void readTime(double time) throws IORecordException{
+	private void readTime() throws IORecordException{
 
 		boolean nivelEncontrado = false;
 
