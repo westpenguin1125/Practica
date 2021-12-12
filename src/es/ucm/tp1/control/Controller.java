@@ -70,8 +70,7 @@ public class Controller {
 		}
 		
 		if(game.win()) {
-			
-			if(game.getElapsedTime() < game.getRecord()) {
+			if(game.isNewRecord(game.getElapsedTime())) {
 				try {
 					game.setNewRecord(game.getElapsedTime());
 				}

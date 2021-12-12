@@ -54,9 +54,9 @@ public class ResetCommand extends Command {
 	public boolean execute(Game game) {
 
 		if (newSeed != null && newLevel != null) {
-			game.initialize(newSeed, newLevel);
 			System.out.println("Level: " + newLevel.name());
 			System.out.println(SuperCars.SEED_INFO_MSG + newSeed);
+			game.initialize(newSeed, newLevel);
 		} else
 			game.initialize();
 

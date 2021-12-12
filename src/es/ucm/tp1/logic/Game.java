@@ -179,6 +179,10 @@ public class Game {
 		return record.getRecordInMilis();
 	}
 	
+	public boolean isNewRecord(double time) {
+		return getRecord() > time;
+	}
+	
 	public boolean inVisibility(int x, int y) {
 		return getPlayerX() <= x && x < getVisibility() + getPlayerX() &&
 				0 <= y && y < getRoadWidth();
