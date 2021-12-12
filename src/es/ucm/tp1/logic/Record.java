@@ -8,13 +8,15 @@ import java.io.IOException;
 import java.util.Locale;
 
 import es.ucm.tp1.control.Level;
-import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.control.exceptions.IORecordException;
-import es.ucm.tp1.view.GameSerializer;
 
 public class Record {
 
 	private static final String RECORD_FILE = "record.txt";
+	
+	private static final String I_FORMAT_ERROR_MSG = String.format("Incorrect format of %s", RECORD_FILE);
+	private static final String I_ACCES_ERROR_MSG = String.format("%s file cant be read or does not exist", RECORD_FILE);
+	private static final String O_ACCES_ERROR_MSG = String.format("%s file cant be writen on", RECORD_FILE);
 
 	Level level;
 	double bestTime;
@@ -50,12 +52,12 @@ public class Record {
 					bestTime /= 1000;
 				}
 				catch(NumberFormatException nfe) {
-					throw new IORecordException("Incorrect format of Record file", nfe);
+					throw new IORecordException(I_FORMAT_ERROR_MSG, nfe);
 				}
 			}
 
 		} catch (IOException e) {
-			throw new IORecordException("File does not exist or cant be read", e);
+			throw new IORecordException(I_ACCES_ERROR_MSG, e);
 		}
 
 		if (!nivelEncontrado) 
@@ -79,14 +81,14 @@ public class Record {
 				line = bufferedReader.readLine();
 			}
 		} catch (IOException e) {
-			throw new IORecordException("File does not exist or cant be read", e);
+			throw new IORecordException(I_ACCES_ERROR_MSG, e);
 		}
 		
 		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(RECORD_FILE))) {
 			bufferedWriter.append(buffer.toString());
 		}
 		catch (IOException e) {
-			throw new IORecordException("File cant be writen on", e);
+			throw new IORecordException(O_ACCES_ERROR_MSG, e);
 		}
 	}
 	

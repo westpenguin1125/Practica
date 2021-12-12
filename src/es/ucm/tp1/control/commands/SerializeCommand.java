@@ -1,6 +1,5 @@
 package es.ucm.tp1.control.commands;
 
-import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.view.GameSerializer;
 
@@ -19,7 +18,7 @@ public class SerializeCommand extends Command {
 	}
 
 	@Override
-	public boolean execute(Game game) throws CommandExecuteException {
+	public boolean execute(Game game) {
 
 		System.out.println(new GameSerializer(game));
 

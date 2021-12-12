@@ -2,12 +2,10 @@ package es.ucm.tp1.logic;
 
 import java.util.Random;
 import es.ucm.tp1.control.Level;
-import es.ucm.tp1.control.exceptions.CommandExecuteException;
-import es.ucm.tp1.control.exceptions.GameException;
-import es.ucm.tp1.control.exceptions.IORecordException;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
 import es.ucm.tp1.logic.instantactions.InstantAction;
+import es.ucm.tp1.control.exceptions.IORecordException;
 
 public class Game {
 

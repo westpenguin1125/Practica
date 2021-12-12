@@ -5,7 +5,6 @@ import java.util.Scanner;
 import es.ucm.tp1.control.commands.Command;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.view.GamePrinter;
-import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.control.exceptions.GameException;
 import es.ucm.tp1.control.exceptions.IORecordException;
 

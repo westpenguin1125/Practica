@@ -1,7 +1,8 @@
 package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.control.exceptions.*;
+import es.ucm.tp1.control.exceptions.CommandParseException;
+import es.ucm.tp1.control.exceptions.CommandExecuteException;
 
 public abstract class Command {
 

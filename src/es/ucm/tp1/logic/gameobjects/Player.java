@@ -1,6 +1,5 @@
 package es.ucm.tp1.logic.gameobjects;
 
-import es.ucm.tp1.control.exceptions.NotEnoughCoinsException;
 import es.ucm.tp1.logic.Game;
 
 public class Player extends GameObject{

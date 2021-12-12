@@ -2,7 +2,6 @@ package es.ucm.tp1.logic.gameobjects;
 
 import es.ucm.tp1.logic.Collider;
 import es.ucm.tp1.logic.Game;
-import es.ucm.tp1.control.exceptions.InvalidPositionException;
 
 public abstract class GameObject implements Collider {
 

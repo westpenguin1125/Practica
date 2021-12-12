@@ -5,7 +5,6 @@ import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.control.exceptions.NotEnoughCoinsException;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.instantactions.WaveAction;
-import es.ucm.tp1.view.GamePrinter;
 
 public class WaveCommand extends Command implements Buyable {
 

@@ -1,6 +1,5 @@
 package es.ucm.tp1.logic.gameobjects;
 
-import es.ucm.tp1.control.exceptions.InvalidPositionException;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.instantactions.ExplodeAction;
 

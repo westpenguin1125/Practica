@@ -3,7 +3,6 @@ package es.ucm.tp1.control;
 import es.ucm.tp1.control.exceptions.NotEnoughCoinsException;
 import es.ucm.tp1.logic.Game;
 
-
 public interface Buyable {
 	public int cost();
 	
