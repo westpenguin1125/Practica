@@ -51,8 +51,8 @@ public class Pedestrian extends Obstacles{
 	@Override
 	public String serialize() {
 		if(movingUp)
-			return super.serialize() + "up";
+			return super.serialize() + " up";
 		else
-			return super.serialize() + "down";
+			return super.serialize() + " down";
 	}
 }

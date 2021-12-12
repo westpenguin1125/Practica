@@ -4,7 +4,7 @@ import es.ucm.tp1.logic.Game;
 
 public class TestCommand extends Command{
 
-	private static final String NAME = "test";
+	private static final String NAME = "toggle test";
 
 	private static final String DETAILS = "[t]est";
 

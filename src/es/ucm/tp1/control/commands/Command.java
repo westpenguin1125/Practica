@@ -73,7 +73,7 @@ public abstract class Command {
 		if (matchCommandName(words[0])) {
 			if (words.length != 1)
 				throw new CommandParseException(
-						String.format("%s Command %s: %s", ERROR_PROMPT, shortcut, INCORRECT_NUMBER_OF_ARGS_MSG));
+						String.format("%s Command %s: %s", ERROR_PROMPT, name, INCORRECT_NUMBER_OF_ARGS_MSG));
 			else
 				return this;
 		}

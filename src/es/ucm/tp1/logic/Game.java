@@ -3,6 +3,7 @@ package es.ucm.tp1.logic;
 import java.util.Random;
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.control.exceptions.CommandExecuteException;
+import es.ucm.tp1.control.exceptions.GameException;
 import es.ucm.tp1.control.exceptions.IORecordException;
 import es.ucm.tp1.logic.gameobjects.GameObject;
 import es.ucm.tp1.logic.gameobjects.Player;
@@ -31,7 +32,7 @@ public class Game {
 	
 	private Record record;
 
-	public Game(long seed, Level level){
+	public Game(long seed, Level level)throws CommandExecuteException{
 
 		player = new Player(this, 0, level.getRoadWidth() / 2);
 		initialize(seed, level);
@@ -41,30 +42,35 @@ public class Game {
 		return random.nextDouble();
 	}
 
-	public void initialize(Long seed, Level level){
+	public void initialize(Long seed, Level level) throws IORecordException{
 		this.seed = seed;
 		this.level = level;
 		
-		record = new Record(level);
-		
-		random = new Random(seed);
-		
-		objectList = new GameObjectContainer();
-		GameObjectGenerator.reset();
+		try {
+			record = new Record(level);
+			
+			random = new Random(seed);
+			
+			objectList = new GameObjectContainer();
+			GameObjectGenerator.reset();
 
-		GameObjectGenerator.generateGameObjects(this, level);
+			GameObjectGenerator.generateGameObjects(this, level);
 
-		player.initialize(0, level.getRoadWidth() / 2);
+			player.initialize(0, level.getRoadWidth() / 2);
 
-		numCycles = 0;
+			numCycles = 0;
 
-		elapsedTime = 0;
-		
-		exit = false;
-		
+			elapsedTime = 0;
+			
+			exit = false;
+		}
+		catch(IORecordException e) {
+			exit = true;
+			throw e;
+		}
 	}
 
-	public void initialize(){
+	public void initialize()throws IORecordException{
 		initialize(seed, level);
 	}
 	
@@ -114,13 +120,12 @@ public class Game {
 		objectList.removeDeadObjects();
 	}
 	
-	public String serialize() {
-		StringBuilder buffer = new StringBuilder();
+	public String serializeGameObjectsIn(int x, int y) {
+		String serialized = new String();
+		if(player.isInPosition(x, y))
+			serialized = player.serialize() + "\n";
 		
-		buffer.append(player.serialize() + "\n");
-		buffer.append(objectList.serialize(getRoadLength(), getRoadWidth()));
-		
-		return buffer.toString();
+		return serialized + objectList.serializeGameObjectsIn(x, y);
 	}
 	
 	public String levelString() {
@@ -151,14 +156,6 @@ public class Game {
 		testingFlag = true;
 	}
 	
-	public void setNewRecord(double newTime) {
-		record.setNewRecord(newTime);
-	}
-
-	public double showRecord() {
-		return record.showRecord();
-	}
-	
 	public void exitGame() {
 		exit = true;
 	}
@@ -169,6 +166,18 @@ public class Game {
 
 	public void punishPlayer() {
 		player.punish();
+	}
+	
+	public void setNewRecord(double newTime) {
+		record.setNewRecord(newTime);
+	}
+
+	public void showRecord() {
+		record.showRecord();
+	}
+	
+	public double getRecord() {
+		return record.getRecord();
 	}
 	
 	public boolean inVisibility(int x, int y) {
@@ -186,6 +195,13 @@ public class Game {
 	
 	public GameObject gameObjectIn(int x, int y) {
 		return objectList.gameObjectIn(x, y);
+	}
+	
+	public GameObject algo(int x, int y) {
+		if(player.isInPosition(x, y))
+			return player;
+		else 
+			return gameObjectIn(x, y);
 	}
 
 	public int getRemainingDistance() {

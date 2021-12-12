@@ -47,7 +47,7 @@ public class SaveCommand extends Command {
 		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename))) {
 			GameSerializer serializer = new GameSerializer(game);
 			bufferedWriter.append(serializer.toString());
-			System.out.println("Game succesfully saved in " + filename);
+			System.out.println("Game successfully saved to file " + filename);
 		}
 		catch (IOException e) {
 			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_SAVING_MSG), e);

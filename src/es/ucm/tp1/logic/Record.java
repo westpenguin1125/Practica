@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Locale;
 
 import es.ucm.tp1.control.Level;
 import es.ucm.tp1.control.exceptions.CommandExecuteException;
@@ -18,13 +19,13 @@ public class Record {
 	Level level;
 	double bestTime;
 
-	public Record(Level level) {
+	public Record(Level level) throws IORecordException{
 		this.level = level;
 
 		readTime(bestTime);
 	}
 
-	private void readTime(double time) {
+	private void readTime(double time) throws IORecordException{
 
 		boolean nivelEncontrado = false;
 
@@ -42,7 +43,7 @@ public class Record {
 
 			if (!nivelEncontrado) {
 				bestTime = Long.MAX_VALUE;
-				String.format("Creating default record for level '%s'", level.name().toUpperCase());
+				System.out.format("Creating default record for level '%s'\n", level.name().toUpperCase());
 			} else {
 //				try {
 				bestTime = Double.parseDouble(line.split(":")[1]);
@@ -54,10 +55,10 @@ public class Record {
 			}
 
 		} catch (IOException e) {
-
+			throw new IORecordException("", e);
 		}
 
-		if (!nivelEncontrado)
+		if (!nivelEncontrado) 
 			setNewRecord(bestTime);
 	}
 
@@ -65,7 +66,7 @@ public class Record {
 		StringBuilder buffer = new StringBuilder();
 		bestTime = newRecord;
 		
-		buffer.append(String.format("%s:%d", level.name().toUpperCase(), bestTime * 1000));
+		buffer.append(String.format("%s:%.00f\n", level.name().toUpperCase(), bestTime));
 		
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(RECORD_FILE))) {
 
@@ -89,7 +90,12 @@ public class Record {
 		}
 	}
 	
-	public double showRecord() {
-		return bestTime;
+	public double getRecord() {
+		//Se pasa a milisegundos
+		return bestTime * 1000;
+	}
+	
+	public void showRecord() {
+		System.out.format(Locale.FRANCE, "%s record is %.02f s\n", level.toString(), bestTime);
 	}
 }

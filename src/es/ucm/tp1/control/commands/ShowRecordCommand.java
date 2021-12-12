@@ -19,7 +19,7 @@ public class ShowRecordCommand extends Command{
 
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException {
-		System.out.println(game.showRecord());
+		game.showRecord();
 		return false;
 	}
 }

@@ -7,6 +7,7 @@ import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.view.GamePrinter;
 import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.control.exceptions.GameException;
+import es.ucm.tp1.control.exceptions.IORecordException;
 
 public class Controller {
 
@@ -44,7 +45,7 @@ public class Controller {
 		System.out.println(printer.endMessage());
 	}
 
-	public void run() {
+	public void run() throws IORecordException{
 
 		Command command;
 		String[] parameters;
@@ -59,6 +60,9 @@ public class Controller {
 				command = Command.getCommand(parameters);
 				refreshDisplay = command.execute(game);
 			}
+			catch (IORecordException e){
+				throw e;
+			}
 			catch (GameException ex) {
 				System.out.format(ex.getMessage() + "%n%n");
 				refreshDisplay = false;
@@ -70,7 +74,8 @@ public class Controller {
 		}
 		
 		if(game.win()) {
-			if(game.getElapsedTime() < game.showRecord()) {
+			
+			if(game.getElapsedTime() < game.getRecord()) {
 				game.setNewRecord(game.getElapsedTime());
 			}
 		}

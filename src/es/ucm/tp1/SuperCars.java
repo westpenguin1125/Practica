@@ -4,15 +4,16 @@ import java.util.Scanner;
 
 import es.ucm.tp1.control.Controller;
 import es.ucm.tp1.control.Level;
+import es.ucm.tp1.control.exceptions.GameException;
 import es.ucm.tp1.logic.Game;
 
 public class SuperCars {
-
+	
 	private static final String VERSION = "3.0";
 
 	private static final String USAGE_MSG = "Usage: Super cars <level> [<seed>]";
 
-	private static final String WELCOME_MSG = String.format("Super cars %s\n\n", VERSION);
+	public static final String WELCOME_MSG = String.format("Super cars %s\n\n", VERSION);
 
 	public static final String LEVEL_INFO_MSG = "Level must be one of: " + Level.all(", ");
 
@@ -62,6 +63,9 @@ public class SuperCars {
 				catch (NumberFormatException nfe) {
 					System.out.println(SEED_IS_NUMBER_MSNG);
 					usage();
+				}
+				catch(GameException e) {
+					System.out.println("Error");
 				}
 			}
 		}

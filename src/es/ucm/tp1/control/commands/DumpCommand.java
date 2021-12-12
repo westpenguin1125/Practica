@@ -4,13 +4,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import es.ucm.tp1.SuperCars;
 import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.control.exceptions.CommandParseException;
 import es.ucm.tp1.logic.Game;
 
 public class DumpCommand extends Command {
 	
-	private static final String ERROR_DUMPING_MSG = "Failed to dump";
+	private static final String ERROR_DUMPING_MSG = "An error ocurred on reading a file";
 	
 	private static final String NAME = "dump";
 
@@ -46,6 +47,8 @@ public class DumpCommand extends Command {
 		
 		filename = filename + ".txt";
 		
+		buffer.append(SuperCars.WELCOME_MSG);
+		
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))) {
 			
 			String line = new String();
@@ -56,10 +59,10 @@ public class DumpCommand extends Command {
 				line = bufferedReader.readLine();
 			}
 			
-			System.out.println(buffer.toString());
+			System.out.print(buffer.toString());
 		}
 		catch (IOException e) {
-			throw new CommandExecuteException(String.format("%s %s", ERROR_PROMPT, ERROR_DUMPING_MSG), e);
+			throw new CommandExecuteException(ERROR_DUMPING_MSG, e);
 		}
 
 		return false;
