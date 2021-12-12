@@ -176,7 +176,7 @@ public class Game {
 	}
 	
 	public double getRecord() {
-		return record.getRecordInMilis();
+		return record.getRecord();
 	}
 	
 	public boolean isNewRecord(double time) {

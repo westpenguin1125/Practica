@@ -49,7 +49,6 @@ public class Record {
 			} else {
 				try {
 					bestTime = Double.parseDouble(line.split(":")[1]);
-					bestTime /= 1000;
 				}
 				catch(NumberFormatException nfe) {
 					throw new IORecordException(I_FORMAT_ERROR_MSG, nfe);
@@ -92,11 +91,11 @@ public class Record {
 		}
 	}
 	
-	public double getRecordInMilis() {
-		return bestTime * 1000;
+	public double getRecord() {
+		return bestTime;
 	}
 	
 	public void showRecord() {
-		System.out.format(Locale.FRANCE, "%s record is %.02f s\n", level.toString(), bestTime);
+		System.out.format(Locale.FRANCE, "%s record is %.02f s\n", level.toString(), bestTime / 1000);
 	}
 }
