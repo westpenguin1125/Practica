@@ -19,13 +19,13 @@ public class HelpCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		
+
 		StringBuilder buffer = new StringBuilder();
-		
+
 		buffer.append("Available commands:" + GamePrinter.newLine);
-		for (Command command : AVAILABLE_COMMANDS) 
+		for (Command command : AVAILABLE_COMMANDS)
 			buffer.append(command.getHelp() + GamePrinter.newLine);
-		
+
 		System.out.print(buffer.toString());
 
 		return false;

@@ -3,9 +3,9 @@ package es.ucm.tp1.logic.gameobjects;
 import es.ucm.tp1.logic.Game;
 
 public abstract class Obstacles extends GameObject {
-	
+
 	private static final String[] SYMBOLS_BY_RESISTANCE = { "░", "▒", "█" };
-	
+
 	private static int numObstacles = 0;
 
 	protected int numLifes;
@@ -17,7 +17,7 @@ public abstract class Obstacles extends GameObject {
 	public static int getNumObstacles() {
 		return numObstacles;
 	}
-	
+
 	public Obstacles(Game game, int x, int y) {
 		super(game, x, y);
 	}
@@ -27,19 +27,19 @@ public abstract class Obstacles extends GameObject {
 		player.decreaseLife();
 		return false;
 	}
-	
+
 	@Override
 	public boolean receiveShoot() {
 		numLifes--;
 		return true;
 	}
-	
+
 	@Override
 	public boolean receiveExplosion() {
 		numLifes = 0;
 		return true;
 	}
-	
+
 	@Override
 	public boolean receiveThunder() {
 		System.out.print(" -> " + getSymbol());
@@ -56,7 +56,7 @@ public abstract class Obstacles extends GameObject {
 	public void onDelete() {
 		numObstacles--;
 	}
-	
+
 	@Override
 	public boolean isAlive() {
 		return numLifes > 0;

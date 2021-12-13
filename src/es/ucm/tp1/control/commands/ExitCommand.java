@@ -2,8 +2,8 @@ package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
 
-public class ExitCommand extends Command{
-	
+public class ExitCommand extends Command {
+
 	private static final String NAME = "exit";
 
 	private static final String DETAILS = "[e]xit";
@@ -11,7 +11,7 @@ public class ExitCommand extends Command{
 	private static final String SHORTCUT = "e";
 
 	private static final String HELP = "exit game";
-	
+
 	public ExitCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
@@ -21,5 +21,5 @@ public class ExitCommand extends Command{
 		game.exitGame();
 		return false;
 	}
-	
+
 }

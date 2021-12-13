@@ -9,10 +9,10 @@ public class ThunderAction implements InstantAction {
 	public void execute(Game game) {
 		int x = game.getRandomVisibility(), y = game.getRandomLane();
 		GameObject obj = game.gameObjectIn(x + game.getPlayerX(), y);
-		
+
 		System.out.print(String.format("Thunder hit position: (%d , %d)", x, y));
-		
-		if(obj != null) 
+
+		if (obj != null)
 			obj.receiveThunder();
 		System.out.println("");
 	}

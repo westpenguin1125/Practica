@@ -2,12 +2,12 @@ package es.ucm.tp1.logic.gameobjects;
 
 import es.ucm.tp1.logic.Game;
 
-public abstract class Coins extends GameObject{
-	
+public abstract class Coins extends GameObject {
+
 	private boolean alive;
 	protected int coinsGiven;
-	
-	public Coins( Game game, int x, int y) {
+
+	public Coins(Game game, int x, int y) {
 		super(game, x, y);
 		alive = true;
 	}
@@ -18,14 +18,14 @@ public abstract class Coins extends GameObject{
 		alive = false;
 		return false;
 	}
-	
+
 	@Override
-	public boolean isAlive(){
+	public boolean isAlive() {
 		return alive;
 	}
-	
+
 	@Override
-	public boolean  receiveShoot() {
+	public boolean receiveShoot() {
 		return false;
 	}
 

@@ -6,71 +6,82 @@ import java.util.ArrayList;
 public class GameObjectContainer {
 
 	private ArrayList<GameObject> objectList;
-	
+
 	public GameObjectContainer() {
 		objectList = new ArrayList<>();
 	}
 
 	public GameObject gameObjectIn(int x, int y) {
-		
-		for(GameObject obj : objectList)
-			if(obj.isInPosition(x, y))
+
+		for (GameObject obj : objectList)
+			if (obj.isInPosition(x, y))
 				return obj;
-		
+
 		return null;
 	}
-	
+
 	public void addObject(GameObject obj) {
 		objectList.add(obj);
 		obj.onEnter();
 	}
-	
+
 	public void forceAddObject(GameObject obj) {
 		addObject(obj);
 	}
 
 	public void removeDeadObjects() {
 		ArrayList<GameObject> aux = new ArrayList<>();
-		
-		for(GameObject obj : objectList) {
-			if(obj.isAlive())
+
+		for (GameObject obj : objectList) {
+			if (obj.isAlive())
 				aux.add(obj);
 			else
-				obj.onDelete();	
+				obj.onDelete();
 		}
-		
+
 		objectList = aux;
 	}
-	
+
 	public void delObjectsInCol(int x) {
 		ArrayList<GameObject> aux = new ArrayList<>();
-		
-		for(GameObject obj : objectList) {
-			if(obj.getX() == x)
+
+		for (GameObject obj : objectList) {
+			if (obj.getX() == x)
 				obj.onDelete();
 			else
 				aux.add(obj);
 		}
-		
+
 		objectList = aux;
 	}
-	
+
 	public void updateList() {
-		for (GameObject obj : objectList) 
-			obj.update();	
+		for (GameObject obj : objectList)
+			obj.update();
 	}
 
 	public void empty() {
-		
-		for (GameObject obj : objectList) 
+
+		for (GameObject obj : objectList)
 			obj.onDelete();
 		objectList = new ArrayList<>();
 	}
-	
+
+	public String serializeGameObjectsIn(int x, int y) {
+		StringBuilder buffer = new StringBuilder();
+
+		for (GameObject obj : objectList) {
+			if (obj.isInPosition(x, y))
+				buffer.append(obj.serialize() + "\n");
+		}
+
+		return buffer.toString();
+	}
+
 	public String positionToString(int x, int y) {
 		StringBuilder buffer = new StringBuilder();
-		for(GameObject obj : objectList) {
-			if(obj.isInPosition(x, y))
+		for (GameObject obj : objectList) {
+			if (obj.isInPosition(x, y))
 				buffer.append(obj.toString() + " ");
 		}
 		return buffer.toString();

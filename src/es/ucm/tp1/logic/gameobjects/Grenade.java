@@ -3,14 +3,14 @@ package es.ucm.tp1.logic.gameobjects;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.instantactions.ExplodeAction;
 
-public class Grenade extends GameObject{
-	
+public class Grenade extends GameObject {
+
 	final public static String GRENADE_INFO = "[GRENADE] Explodes in 3 cycles, harming everyone around";
 	private static final String GRENADE_SYMBOL = "ð";
 	private final static int CYCLES_TO_EXPLODE = 4;
-	
+
 	private int countDown;
-	
+
 	public Grenade(Game game, int x, int y) {
 		super(game, x, y);
 		countDown = CYCLES_TO_EXPLODE;
@@ -35,6 +35,11 @@ public class Grenade extends GameObject{
 	@Override
 	public void onDelete() {
 		game.execute(new ExplodeAction(getX(), getY()));
+	}
+
+	@Override
+	public String serialize() {
+		return String.format("%s %s", super.serialize(), countDown);
 	}
 
 	@Override

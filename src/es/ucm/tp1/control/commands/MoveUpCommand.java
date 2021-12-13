@@ -2,7 +2,7 @@ package es.ucm.tp1.control.commands;
 
 import es.ucm.tp1.logic.Game;
 
-public class MoveUpCommand extends Command{
+public class MoveUpCommand extends Command {
 
 	private static final String NAME = "up";
 
@@ -11,7 +11,7 @@ public class MoveUpCommand extends Command{
 	private static final String SHORTCUT = "q";
 
 	private static final String HELP = "go up";
-	
+
 	public MoveUpCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
