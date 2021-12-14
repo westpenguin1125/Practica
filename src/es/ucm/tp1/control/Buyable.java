@@ -7,7 +7,7 @@ public interface Buyable {
 	public int cost();
 
 	default void buy(Game game) throws NotEnoughCoinsException {
-
+			//TODO: Aquí el profe pone un método en vez de poner así la lógica
 		if (game.getPlayerCoins() < cost())
 			throw new NotEnoughCoinsException("Not enough coins");
 		else

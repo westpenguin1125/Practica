@@ -18,7 +18,7 @@ public class ShowRecordCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		game.showRecord();
+		game.showRecord();//TODO: Tal vez hay que cambiar esto, hacelo aquí directamente
 		return false;
 	}
 }

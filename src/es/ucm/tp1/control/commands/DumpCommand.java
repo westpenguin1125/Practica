@@ -47,7 +47,7 @@ public class DumpCommand extends Command {
 
 		filename = filename + ".txt";
 
-		buffer.append(SuperCars.WELCOME_MSG);
+		buffer.append(SuperCars.WELCOME_MSG); //TODO: Esto se guarda en el fichero, no se crea aquí
 
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))) {
 
