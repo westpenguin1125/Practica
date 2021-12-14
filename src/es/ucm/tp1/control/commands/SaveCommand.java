@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import es.ucm.tp1.SuperCars;
 import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.control.exceptions.CommandParseException;
 import es.ucm.tp1.logic.Game;
@@ -45,8 +46,9 @@ public class SaveCommand extends Command {
 	public boolean execute(Game game) throws CommandExecuteException {
 		filename = filename + ".txt";
 		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename))) {
-			GameSerializer serializer = new GameSerializer(game);
-			bufferedWriter.append(serializer.toString());
+			bufferedWriter.append(SuperCars.WELCOME_MSG);
+			bufferedWriter.append((new GameSerializer(game)).toString());
+			
 			System.out.println("Game successfully saved to file " + filename);
 		}
 		catch (IOException e) {

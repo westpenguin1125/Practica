@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import es.ucm.tp1.SuperCars;
 import es.ucm.tp1.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.control.exceptions.CommandParseException;
 import es.ucm.tp1.logic.Game;
@@ -46,8 +45,6 @@ public class DumpCommand extends Command {
 		StringBuilder buffer = new StringBuilder();
 
 		filename = filename + ".txt";
-
-		buffer.append(SuperCars.WELCOME_MSG); //TODO: Esto se guarda en el fichero, no se crea aquí
 
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))) {
 

@@ -239,6 +239,10 @@ public class Game {
 		return player.getY();
 	}
 
+	public boolean hasCoins(int coins) {
+		return getPlayerCoins() >= coins;
+	}
+	
 	public int getPlayerCoins() {
 		return player.getNumCoins();
 	}

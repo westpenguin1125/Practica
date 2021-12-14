@@ -49,14 +49,12 @@ public class Record {
 				System.out.format("Creating default record for level '%s'\n", level.name().toUpperCase());
 			}
 			else {
-				try {
-					bestTime = Double.parseDouble(line.split(":")[1]);
-				}
-				catch (NumberFormatException nfe) {
-					throw new IORecordException(I_FORMAT_ERROR_MSG, nfe);
-				}
+				bestTime = Double.parseDouble(line.split(":")[1]);
 			}
 
+		}
+		catch (NumberFormatException nfe){
+			throw new IORecordException(I_FORMAT_ERROR_MSG, nfe);
 		}
 		catch (IOException e) {
 			throw new IORecordException(I_ACCES_ERROR_MSG, e);
@@ -70,7 +68,7 @@ public class Record {
 		StringBuilder buffer = new StringBuilder();
 		bestTime = newRecord;
 
-		buffer.append(String.format("%s:%.00f\n", level.name().toUpperCase(), bestTime));
+		buffer.append(String.format("%s:%.00f\n", level, bestTime));
 
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(RECORD_FILE))) {
 
@@ -95,11 +93,11 @@ public class Record {
 		}
 	}
 
-	public double getRecord() {
+	public double getRecordInMilis() {
 		return bestTime;
 	}
 
 	public void showRecord() {
-		System.out.format(Locale.FRANCE, "%s record is %.02f s\n", level.toString(), bestTime / 1000);
+		System.out.format(Locale.FRANCE, "%s record is %.02f s\n", level, bestTime / 1000);
 	}
 }
