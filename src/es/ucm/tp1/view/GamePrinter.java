@@ -47,8 +47,7 @@ public class GamePrinter {
 		buffer.append(Turbo.TURBO_INFO + newLine);
 		buffer.append(SuperCoin.SUPERCOIN_INFO + newLine);
 		buffer.append(Truck.TRUCK_INFO + newLine);
-		buffer.append(Pedestrian.PEDESTRIAN_INFO + newLine);
-		buffer.append(Motorbike.MOTORBIKE_INFO);
+		buffer.append(Pedestrian.PEDESTRIAN_INFO);
 
 		return buffer.toString();
 	}
@@ -75,10 +74,6 @@ public class GamePrinter {
 		info.append("\nTotal obstacles: " + Obstacle.getNumObstacles());
 		info.append("\nTotal coins: " + Coin.getNumCoins());
 
-		if(Motorbike.canPutMoreMotos())
-			info.append("\nTotal motos: " + Motorbike.getNumMotos());
-		else
-			info.append("\nThere is the max number of motos!");
 		if (SuperCoin.isPresent())
 			info.append("\nSupercoin is present");
 		if (!game.getTestingFlag())

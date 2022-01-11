@@ -49,10 +49,6 @@ public abstract class GameObject implements Collider {
 	public String serialize() {
 		return String.format("%s (%d, %d)", getSymbol(), x, y);
 	}
-	
-	public void adviceDeadMoto() {
-		
-	}
 
 	@Override
 	public String toString() {
