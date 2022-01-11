@@ -274,4 +274,8 @@ public class Game {
 
 		return symbolToPrint.trim();
 	}
+
+	public void advice() {
+		objectList.advice();
+	}
 }

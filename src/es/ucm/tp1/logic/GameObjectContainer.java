@@ -86,4 +86,9 @@ public class GameObjectContainer {
 		}
 		return buffer.toString();
 	}
+
+	public void advice() {
+		for(GameObject o : objectList)
+			o.adviceDeadMoto();
+	}
 }

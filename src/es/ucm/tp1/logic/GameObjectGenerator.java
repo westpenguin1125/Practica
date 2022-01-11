@@ -6,7 +6,7 @@ import es.ucm.tp1.control.Level;
 
 public class GameObjectGenerator {
 
-	public static final int MAX_ID = 5;
+	public static final int MAX_ID = 6;
 	public static final int MIN_ID = 1;
 
 	public static void forceAdvanceObject(Game game, int id, int x) {
@@ -27,6 +27,9 @@ public class GameObjectGenerator {
 		case 5:
 			o = new Pedestrian(game, x, 0);
 			break;
+		case 6:
+			o = new Motorbike(game, x, game.getRandomLane());
+			break;
 		}
 		game.delCol(x);
 		game.forceAddObject(o);
@@ -45,6 +48,8 @@ public class GameObjectGenerator {
 				}
 				game.tryToAddObject(new Truck(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
 				game.tryToAddObject(new Pedestrian(game, x, 0), level.advancedObjectsFrequency());
+				if(Motorbike.canPutMoreMotos())
+					game.tryToAddObject(new Motorbike(game, x, game.getRandomLane()), x);
 			}
 		}
 	}
