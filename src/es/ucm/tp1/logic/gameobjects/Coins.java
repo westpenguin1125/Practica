@@ -18,6 +18,13 @@ public abstract class Coins extends GameObject {
 		alive = false;
 		return false;
 	}
+	
+	@Override
+	public boolean receiveCollision(Cisterna cisterna) {
+		cisterna.increaseRange();
+		alive = false;
+		return false;
+	}
 
 	@Override
 	public boolean isAlive() {
