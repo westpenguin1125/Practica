@@ -14,4 +14,8 @@ public interface Collider {
 	boolean receiveExplosion();
 
 	boolean receiveThunder();
+	
+	default boolean receiveSonicBlast() {
+		return false;
+	}
 }

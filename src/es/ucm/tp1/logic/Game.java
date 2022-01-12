@@ -117,6 +117,10 @@ public class Game {
 
 		elapsedTime = System.currentTimeMillis() - startTime;
 
+		removeDeadObjects();
+	}
+	
+	public void removeDeadObjects() {
 		objectList.removeDeadObjects();
 	}
 

@@ -34,6 +34,7 @@ public abstract class Command {
 		new ShowRecordCommand(),
 		new ClearCommand(),
 		new CheatCommand(),
+		new SonicBlastCommand(),
 	};
 	/* @formatter:on */
 
