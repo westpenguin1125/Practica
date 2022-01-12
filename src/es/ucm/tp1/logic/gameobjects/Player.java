@@ -13,10 +13,13 @@ public class Player extends GameObject {
 
 	private int numCoins;
 	private int numLifes;
+	
+	private int driftingCycles;
 
 	public Player(Game game, int x, int y) {
 		super(game, x, y);
 		initialize(x, y);
+		driftingCycles = 0;
 	}
 
 	public void initialize(int x, int y) {
@@ -29,10 +32,12 @@ public class Player extends GameObject {
 
 	private void move(int dx, int dy) {
 		doCollision();
-		if (isAlive()) {
+		if (isAlive() && !drifting()) {
 			x += dx;
 			y += dy;
 		}
+		else if(drifting())
+			moveDrifting();
 		doCollision();
 	}
 
@@ -82,6 +87,39 @@ public class Player extends GameObject {
 		return numCoins;
 	}
 
+	public void drift(int numCycles) {
+		driftingCycles = numCycles;
+	}
+	
+	private int getRandomDir() {
+		double prob = game.getRandomNumber();
+		int dir;
+		
+		if(prob < 0.33)
+			dir = 1;
+		else if(prob < 0.66)
+			dir = 0;
+		else
+			dir = -1;
+		
+		System.out.println("[DEBUG] cars drifting: " + dir);
+		
+		return dir;
+	}
+	
+	private void moveDrifting() {
+		int dir = getRandomDir();
+		if(game.inValidPosition(x, y + dir))
+			y += dir;
+		x += 1;
+		
+		driftingCycles--;
+	}
+	
+	public boolean drifting() {
+		return driftingCycles > 0;
+	}
+	
 	@Override
 	public boolean doCollision() {
 		GameObject other = game.gameObjectIn(x, y);
@@ -109,6 +147,7 @@ public class Player extends GameObject {
 
 	@Override
 	public void update() {
+		driftingCycles--;
 	}
 
 	@Override

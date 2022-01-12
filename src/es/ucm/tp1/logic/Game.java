@@ -36,7 +36,7 @@ public class Game {
 		initialize(seed, level);
 	}
 
-	private double getRandomNumber() {
+	public double getRandomNumber() {
 		return random.nextDouble();
 	}
 
@@ -261,6 +261,10 @@ public class Game {
 
 	public boolean getTestingFlag() {
 		return testingFlag;
+	}
+
+	public boolean inValidPosition(int x, int y) {
+		return (0 <= x && (0 <= y && y < getRoadWidth()));
 	}
 
 	public String positionToString(int x, int y) {

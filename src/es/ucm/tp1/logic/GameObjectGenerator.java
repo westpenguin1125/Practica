@@ -35,7 +35,8 @@ public class GameObjectGenerator {
 	public static void generateGameObjects(Game game, Level level) {
 
 		for (int x = game.getVisibility() / 2; x < game.getRoadLength(); x++) {
-			game.tryToAddObject(new Obstacle(game, x, game.getRandomLane()), level.obstacleFrequency());
+			if(!level.isWinter())
+				game.tryToAddObject(new Obstacle(game, x, game.getRandomLane()), level.obstacleFrequency());
 			game.tryToAddObject(new Coin(game, x, game.getRandomLane()), level.coinFrequency());
 			if (level.hasAdvancedObjects()) {
 				game.tryToAddObject(new Wall(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
@@ -45,6 +46,10 @@ public class GameObjectGenerator {
 				}
 				game.tryToAddObject(new Truck(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
 				game.tryToAddObject(new Pedestrian(game, x, 0), level.advancedObjectsFrequency());
+			}
+			else if(level.isWinter()) {
+				game.tryToAddObject(new Ice(game, x, game.getRandomLane()), level.obstacleFrequency());
+				game.tryToAddObject(new SuperIce(game, x, game.getRandomLane()), level.obstacleFrequency());
 			}
 		}
 	}

@@ -3,7 +3,8 @@ package es.ucm.tp1.control;
 public enum Level {
 
 	TEST(10, 3, 8, 0.5, 0, 0), EASY(30, 3, 8, 0.5, 0.5, 0), HARD(100, 5, 6, 0.7, 0.3, 0),
-	ADVANCED(100, 3, 8, 0.3, 0.3, 0.1);
+	ADVANCED(100, 3, 8, 0.3, 0.3, 0.1),
+	WINTER(100, 5, 8, 0.5, 0.1, 0);
 
 	private int length;
 
@@ -75,6 +76,10 @@ public enum Level {
 
 	public boolean hasAdvancedObjects() {
 		return advObjFreq > 0;
+	}
+	
+	public boolean isWinter() {
+		return this == Level.WINTER;
 	}
 
 	@Override
