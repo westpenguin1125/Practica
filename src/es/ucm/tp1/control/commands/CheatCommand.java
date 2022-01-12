@@ -4,9 +4,10 @@ import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.logic.GameObjectGenerator;
 
 public class CheatCommand extends Command {
+	
 	private static final String NAME = "Cheat";
 
-	private static final String DETAILS = "Cheat [1..5]";
+	private static final String DETAILS = String.format("Cheat [%d..%d]", GameObjectGenerator.MIN_ID, GameObjectGenerator.MAX_ID);
 
 	private static final String SHORTCUT = "";
 
